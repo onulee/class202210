@@ -11,7 +11,7 @@ public class J1025_10 {
 	    char ch = str.charAt(0);
 		if(ch>='a' && ch<='z') {
 			System.out.println("영문소문자입니다.");
-			
+			System.out.println((char)(ch-32));
 			
 			
 			
