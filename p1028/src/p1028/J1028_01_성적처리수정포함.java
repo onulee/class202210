@@ -2,7 +2,7 @@ package p1028;
 
 import java.util.Scanner;
 
-public class J1028_01 {
+public class J1028_01_성적처리수정포함 {
 
 	public static void main(String[] args) {
 		
