@@ -2,7 +2,7 @@ package p1027;
 
 import java.util.Scanner;
 
-public class J1027_06 {
+public class J1027_06_성적처리 {
 
 	public static void main(String[] args) {
 		
@@ -12,6 +12,7 @@ public class J1027_06 {
 		int kor=0,eng=0,math=0,total=0;
 		double avg = 0;
 		String name="",grade="";
+		
 		
 		System.out.println("  [ 성적처리 프로그램 ]");
 		System.out.println("1. 성적입력");
@@ -94,6 +95,12 @@ public class J1027_06 {
 			break;
 			
 		}//switch
+		
+		
+		
+		
+		
+		
 		
 
 	}//main
