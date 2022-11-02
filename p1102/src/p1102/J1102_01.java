@@ -53,12 +53,11 @@ public class J1102_01 {
 					}//if
 					name[count] = check;
 					
-					System.out.println("국어 점수를 입력하세요.>>");
-					score[count][0] = scan.nextInt();
-					System.out.println("영어 점수를 입력하세요.>>");
-					score[count][1] = scan.nextInt();
-					System.out.println("수학 점수를 입력하세요.>>");
-					score[count][2] = scan.nextInt();
+					// 점수입력
+					for(int i=0;i<3;i++) {
+						System.out.printf("%s 점수를 입력하세요.>>\n",title[i+1]);
+						score[count][i] = scan.nextInt();
+					}//for
 					
 					total[count] = score[count][0]+score[count][1]+score[count][2];
 					avg[count] = total[count]/3.0;
