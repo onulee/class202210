@@ -14,7 +14,9 @@ public class J1102_01 {
 		int checkNo=0;   // 해당되는 수정학생번호
 		int flag=0;      // 검색할때 사용
 		int count = 0;   // 입력된 학생수
+		String[] title= {"이름","국어","영어","수학","합계","평균"};
 		String[] name=new String[10];
+		int[][] score = new int[10][3]; //10명의 학생의 3과목
 		int[] kor=new int[10];
 		int[] eng=new int[10];
 		int[] math=new int[10];
@@ -50,14 +52,17 @@ public class J1102_01 {
 						break;
 					}//if
 					name[count] = check;
+					
 					System.out.println("국어 점수를 입력하세요.>>");
-					kor[count] = scan.nextInt();
+					score[count][0] = scan.nextInt();
 					System.out.println("영어 점수를 입력하세요.>>");
-					eng[count] = scan.nextInt();
+					score[count][1] = scan.nextInt();
 					System.out.println("수학 점수를 입력하세요.>>");
-					math[count] = scan.nextInt();
-					total[count] = kor[count]+eng[count]+math[count];
+					score[count][2] = scan.nextInt();
+					
+					total[count] = score[count][0]+score[count][1]+score[count][2];
 					avg[count] = total[count]/3.0;
+					
 					System.out.println("성적입력이 완료되었습니다.!!");
 					
 					count++;
@@ -67,11 +72,11 @@ public class J1102_01 {
 				
 			case 2: // 4.성적출력
 				System.out.println("[[ 성적출력 ]]");
-				System.out.println("이름\t국어\t영어\t수학\t합계\t평균");
+				System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\n",title[0],title[1],title[2],title[3],title[4],title[5]);
 				System.out.println("----------------------------------------------------------");
 				
 				for(int i=0;i<count;i++) {
-					System.out.printf("%s\t%d\t%d\t%d\t%d\t%.2f\n",name[i],kor[i],eng[i],math[i],total[i],avg[i]);
+					System.out.printf("%s\t%d\t%d\t%d\t%d\t%.2f\n",name[i],score[i][0],score[i][1],score[i][2],total[i],avg[i]);
 				}//for
 				break;
 				
@@ -110,29 +115,29 @@ public class J1102_01 {
 				// 수정할 프로그램 구성
 				switch(choice) {
 				case 1: //국어점수수정
-					System.out.printf("현재 국어점수 : %d \n",kor[checkNo]);
+					System.out.printf("현재 국어점수 : %d \n",score[checkNo][0]);
 					System.out.println("수정할 국어점수 입력 : ");
-					kor[checkNo] = scan.nextInt();
-					total[checkNo] = kor[checkNo]+eng[checkNo]+math[checkNo];
+					score[checkNo][0] = scan.nextInt();
+					total[checkNo] = score[checkNo][0]+score[checkNo][1]+score[checkNo][2];
 					avg[checkNo] = total[checkNo]/3.0;
-					System.out.printf("%d 점으로 국어점수가 변경되었습니다!!\n",kor[checkNo]);
+					System.out.printf("%d 점으로 국어점수가 변경되었습니다!!\n",score[checkNo][0]);
 					break;
 				case 2: //영어점수수정
-					System.out.printf("현재 영어점수 : %d \n",eng[checkNo]);
+					System.out.printf("현재 영어점수 : %d \n",score[checkNo][1]);
 					System.out.println("수정할 영어점수 입력 : ");
-					eng[checkNo] = scan.nextInt();
-					total[checkNo] = kor[checkNo]+eng[checkNo]+math[checkNo];
+					score[checkNo][1] = scan.nextInt();
+					total[checkNo] = score[checkNo][0]+score[checkNo][1]+score[checkNo][2];
 					avg[checkNo] = total[checkNo]/3.0;
-					System.out.printf("%d 점으로 영어점수가 변경되었습니다!!\n",eng[checkNo]);
+					System.out.printf("%d 점으로 영어점수가 변경되었습니다!!\n",score[checkNo][1]);
 					break;
 					
 				case 3:
-					System.out.printf("현재 수학점수 : %d \n",math);
+					System.out.printf("현재 수학점수 : %d \n",score[checkNo][2]);
 					System.out.println("수정할 수학점수 입력 : ");
-					math[checkNo] = scan.nextInt();
-					total[checkNo] = kor[checkNo]+eng[checkNo]+math[checkNo];
+					score[checkNo][2] = scan.nextInt();
+					total[checkNo] = score[checkNo][0]+score[checkNo][1]+score[checkNo][2];
 					avg[checkNo] = total[checkNo]/3.0;
-					System.out.printf("%d 점으로 수학점수가 변경되었습니다!!\n",math[checkNo]);
+					System.out.printf("%d 점으로 수학점수가 변경되었습니다!!\n",score[checkNo][2]);
 					break;
 				
 				case 0: //취소
