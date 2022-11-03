@@ -35,8 +35,6 @@ public class J1101_04_배열맞추기 {
 		}//for
 		
 		
-		
-		
 		// 무한반복
 		while(true) {
 			// 출력
