@@ -1,9 +1,14 @@
 package p1103;
 
+import java.util.Scanner;
+
 public class J1103_07 {
 
 	public static void main(String[] args) {
 		// 변수선언
+		Scanner scan = new Scanner(System.in);
+		int x = 0;
+		int y = 0;
 		int[] num = new int[25];
 		int[][] score = new int[5][5];
 		String[][] score2 = new String[5][5];
@@ -38,35 +43,50 @@ public class J1103_07 {
 		}//for
 		
 		//무한반복 시작 ---->
-		
-		//score배열 출력
-		System.out.println("               [ 숫자 확인 ]");
-		System.out.printf("0|\t0\t1\t2\t3\t4\n");
-		System.out.println("----------------------------------------------");
-		for(int i=0;i<score.length;i++) {
-			//앞쪽 좌표표시
-			System.out.printf("%d|\t",i);
-			for(int j=0;j<score[i].length;j++) {
-				System.out.printf("%d\t",score[i][j]);
-			}//for
+		while(true) {
+			//score배열 출력
+//			System.out.println("               [ 숫자 확인 ]");
+//			System.out.printf("0|\t0\t1\t2\t3\t4\n");
+//			System.out.println("----------------------------------------------");
+//			for(int i=0;i<score.length;i++) {
+//				//앞쪽 좌표표시
+//				System.out.printf("%d|\t",i);
+//				for(int j=0;j<score[i].length;j++) {
+//					System.out.printf("%d\t",score[i][j]);
+//				}//for
+//				System.out.println();
+//			}//for
+			
+			//-----------------------------------------------------------
 			System.out.println();
-		}//for
-		
-		//-----------------------------------------------------------
-		System.out.println();
-		// 하트 화면표시
-		System.out.println("               [ 화트 표시 ]");
-		System.out.printf("0|\t0\t1\t2\t3\t4\n");
-		System.out.println("----------------------------------------------");
-		for(int i=0;i<score.length;i++) {
-			//앞쪽 좌표표시
-			System.out.printf("%d|\t",i);
-			for(int j=0;j<score[i].length;j++) {
-				System.out.printf("%s\t",score2[i][j]);
+			// 하트 화면표시
+			System.out.println("               [ 하트 표시 ]");
+			System.out.printf("0|\t0\t1\t2\t3\t4\n");
+			System.out.println("----------------------------------------------");
+			for(int i=0;i<score.length;i++) {
+				//앞쪽 좌표표시
+				System.out.printf("%d|\t",i);
+				for(int j=0;j<score[i].length;j++) {
+					System.out.printf("%s\t",score2[i][j]);
+				}//for
+				System.out.println();
 			}//for
-			System.out.println();
-		}//for
-		
+			
+			// X,Y 좌표입력
+			System.out.println("X좌표를 입력하세요.(0-4)>>");
+			x = scan.nextInt();
+			System.out.println("Y좌표를 입력하세요.(0-4)>>");
+			y = scan.nextInt();
+			
+			//프로그램 구성
+			if(score[x][y]==1) {
+				score2[x][y] ="당첨";
+			}else {
+				score2[x][y] ="꽝";
+			}//if
+			
+			
+		}//while
 		
 		
 		//무한반복 끝 ---->
