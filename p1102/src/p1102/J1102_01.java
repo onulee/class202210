@@ -10,18 +10,17 @@ public class J1102_01 {
 		// 1.변수선언
 		Scanner scan = new Scanner(System.in);
 		int choice = 0;  // switch선택
+		
+		String[] title= {"이름","국어","영어","수학","합계","평균"};
+		String[] name=new String[10];
+		int[][] score = new int[10][3]; //10명의 학생의 3과목
+		int[] total=new int[10];
+		double[] avg=new double[10];
+		
 		String check=""; // 이전페이지 이동때 사용 
 		int checkNo=0;   // 해당되는 수정학생번호
 		int flag=0;      // 검색할때 사용
 		int count = 0;   // 입력된 학생수
-		String[] title= {"이름","국어","영어","수학","합계","평균"};
-		String[] name=new String[10];
-		int[][] score = new int[10][3]; //10명의 학생의 3과목
-		int[] kor=new int[10];
-		int[] eng=new int[10];
-		int[] math=new int[10];
-		int[] total=new int[10];
-		double[] avg=new double[10];
 		
 		// 무한반복
 		loop:
@@ -101,7 +100,6 @@ public class J1102_01 {
 					break;
 				}//if
 				
-				
 				//국어점수,영어점수,수학점수
 				System.out.println("1.국어점수");
 				System.out.println("2.영어점수");
@@ -112,40 +110,22 @@ public class J1102_01 {
 				choice = scan.nextInt();
 				flag=0; // 검색flag 리셋
 				// 수정할 프로그램 구성
-				switch(choice) {
-				case 1: //국어점수수정
-					System.out.printf("현재 국어점수 : %d \n",score[checkNo][0]);
-					System.out.println("수정할 국어점수 입력 : ");
-					score[checkNo][0] = scan.nextInt();
-					total[checkNo] = score[checkNo][0]+score[checkNo][1]+score[checkNo][2];
-					avg[checkNo] = total[checkNo]/3.0;
-					System.out.printf("%d 점으로 국어점수가 변경되었습니다!!\n",score[checkNo][0]);
-					break;
-				case 2: //영어점수수정
-					System.out.printf("현재 영어점수 : %d \n",score[checkNo][1]);
-					System.out.println("수정할 영어점수 입력 : ");
-					score[checkNo][1] = scan.nextInt();
-					total[checkNo] = score[checkNo][0]+score[checkNo][1]+score[checkNo][2];
-					avg[checkNo] = total[checkNo]/3.0;
-					System.out.printf("%d 점으로 영어점수가 변경되었습니다!!\n",score[checkNo][1]);
-					break;
-					
-				case 3:
-					System.out.printf("현재 수학점수 : %d \n",score[checkNo][2]);
-					System.out.println("수정할 수학점수 입력 : ");
-					score[checkNo][2] = scan.nextInt();
-					total[checkNo] = score[checkNo][0]+score[checkNo][1]+score[checkNo][2];
-					avg[checkNo] = total[checkNo]/3.0;
-					System.out.printf("%d 점으로 수학점수가 변경되었습니다!!\n",score[checkNo][2]);
-					break;
 				
-				case 0: //취소
+				// 취소
+				if(choice==0) {
 					System.out.println("점수수정이 취소되었습니다.!!");
 					break;
+				}
 				
-				}//switch
+				//국어점수 choice = 1,영어점수 choice=2,수학점수 choice=3;
+				System.out.printf("현재 %s점수 : %d \n",title[choice],score[checkNo][choice-1]);
+				System.out.printf("수정할 %s점수 입력 : ",title[choice]);
+				score[checkNo][choice-1] = scan.nextInt();
+				total[checkNo] = score[checkNo][0]+score[checkNo][1]+score[checkNo][2];
+				avg[checkNo] = total[checkNo]/3.0;
+				System.out.printf("%d 점으로 %s점수가 변경되었습니다!!\n",score[checkNo][choice-1],title[choice]);
+				break; //메인 switch
 				
-				break; //switch
 			case 0: // 종료
 				System.out.println("[[ 프로그램 종료 ]]");
 				break loop;
