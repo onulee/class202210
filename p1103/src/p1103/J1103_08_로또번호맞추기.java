@@ -2,7 +2,7 @@ package p1103;
 
 import java.util.Scanner;
 
-public class J1103_08 {
+public class J1103_08_로또번호맞추기 {
 
 	public static void main(String[] args) {
 		
