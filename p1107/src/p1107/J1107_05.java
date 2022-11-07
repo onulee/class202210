@@ -10,21 +10,29 @@ public class J1107_05 {
 		// 숫자를 넣고 출력하시오.
 		
 		// 26장 카드생성후 
-		// kind = Heart,Clover
+		// kind = Heart,Clover,Spade,Diamond
 		// 1,2,3,4,5,6,7,8,9,10,J,Q,K
 		
-		Card[] c = new Card[13]; //배열선언
+		Card[] c = new Card[52]; //배열선언
 		// 입력
 		for(int i=0;i<c.length;i++) {
 			c[i] = new Card(); //객체선언
-			c[i].kind = "Heart";
-			if(i<10) {
-				c[i].number = ""+(i+1);
-			}else if(i==10) {
+			if(i<13) {
+				c[i].kind = "Heart";
+			}else if(i<26) {
+				c[i].kind = "Clover";
+			}else if(i<39) {
+				c[i].kind = "Spade";
+			}else{
+				c[i].kind = "Diamond";
+			}
+			if(i%13<10) {
+				c[i].number = ""+(i%13+1);
+			}else if(i%13==10) {
 				c[i].number="J";
-			}else if(i==11) {
+			}else if(i%13==11) {
 				c[i].number="Q";
-			}else if(i==12) {
+			}else if(i%13==12) {
 				c[i].number="K";
 			}
 		}
