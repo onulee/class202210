@@ -7,6 +7,7 @@ public class Student {
 	int math;
 	int total;
 	double avg;
+	int rank;
 	
 	Student(){} //기본생성자
 	Student(String name,int kor,int eng,int math){
