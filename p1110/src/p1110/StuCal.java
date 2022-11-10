@@ -10,7 +10,7 @@ public class StuCal {
 	String name,checkName;
 	int kor,eng,math,total,rank;
 	double avg;
-	int choice,count,checkNo,flag;
+	int choice,count,r_count,checkNo,flag;
 	
 	
 	// 1. 화면출력
@@ -45,6 +45,7 @@ public class StuCal {
 		eng = scan.nextInt();
 		System.out.println("수학점수를 입력하세요.>>");
 		math = scan.nextInt();
+		// Student s배열 -> Student객체 선언
 		s[count] = new Student(name,kor,eng,math);
 		System.out.printf("%d명 입력이 완료되었습니다.!!\n",count+1);
 		count++;
@@ -128,6 +129,20 @@ public class StuCal {
 	
 	// 등수처리
 	void score_rank() {
+		System.out.println("[[ 등수처리 ]]");
+		//등수처리 입력
+		for(int i=0;i<count;i++) {
+			r_count=1; //등수초기화
+			for(int j=0;j<count;j++) {
+				if(s[i].total<s[j].total) { //total[j]가 클때 1증가
+					r_count++;
+				}//if
+			}//for
+			s[i].rank = r_count; //등수입력
+		}//for
+		
+		System.out.println("등수처리가 완료되었습니다!!");
+		System.out.println();
 		
 	}
 	
