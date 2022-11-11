@@ -1,5 +1,5 @@
 package p1110_02;
 
-public class StuCal {
+class StuCal {
 
 }
