@@ -2,7 +2,7 @@ package p1110;
 
 import java.util.Scanner;
 
-public class J1110_03 {
+public class J1110_03_학생성적처리클래스분리 {
 
 	public static void main(String[] args) {
 		// 변수선언
