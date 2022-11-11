@@ -4,7 +4,7 @@ public class Deck {
 	Card[] c = new Card[52]; //배열선언 카드개수-52개
 	
 	Deck() {  //생성자
-		//입력
+		//입력 for 4번 for 13
 		for(int i=0;i<c.length;i++) { //1-13/
 			c[i] = new Card();  //객체선언
 			if(i%13==10) {
@@ -31,7 +31,7 @@ public class Deck {
 	
 	//카드 1장 뽑기메소드
 	Card pick(int index) {
-		return c[index];
+		return c[index%52];
 	}
 	
 	// 카드 섞기메소드
