@@ -26,5 +26,7 @@ public class Student {
 		this.avg = this.total/3.0;
 		
 	}
+	
+	
 
 }

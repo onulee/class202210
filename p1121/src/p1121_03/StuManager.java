@@ -25,7 +25,8 @@ public class StuManager {
 				stuCal.score_print();
 				break;
 			case 3:
-				
+				// 성적수정메소드 호출
+				stuCal.score_modify();
 				break;
 			case 4:
 				

@@ -12,7 +12,7 @@ public class StuCal {
 	String stuNum,name,checkName;
 	int kor,eng,math,total,rank;
 	double avg;
-	int choice,count;
+	int choice,count,checkNo,flag;
 	
 	//화면출력메소드
 	int screen_print() {
@@ -68,8 +68,61 @@ public class StuCal {
 		
 	}//성적출력
 	
+	// 3. 성적수정메소드 
+	void score_modify() {
+		System.out.println("[[ 성적수정 ]]");
+		System.out.println("수정할 학생의 이름을 입력하세요.>>");
+		name = scan.next();
+		
+		for(int i=0;i<list.size();i++) {
+			if(name.equals(list.get(i).name)) {
+				System.out.printf("%s의 학생이 검색되었습니다. \n",name);
+				checkNo = i;  // 학생이 검색되었을때 번호를 저장해둠.
+				flag = 1;     // 학생 검색시 확인
+				break;
+			}
+		}
+		
+		if(flag==0) {
+			System.out.println("해당학생이 없습니다. 다시 검색해주세요.!!");
+			return;
+		}//if
+		
+		flag = 0; //검색 리셋
+		
+		modify_print(checkNo); // 점수수정부분 - 메소드분리
+		
+		
+		
+		
+	}//성적수정
 	
+	// 3. 성적수정메소드 - 점수수정부분메소드
+	void modify_print(int checkNo) {
+		System.out.println("[[[ 점수수정 ]]]");
+		System.out.println("1. 국어점수수정");
+		System.out.println("2. 영어점수수정");
+		System.out.println("3. 수학점수수정");
+		System.out.println("0. 수정취소");
+		System.out.println("-------------------------");
+		System.out.println("수정할 과목을 선택하세요.>>");
+		choice = scan.nextInt();
+		
+	    switch(choice) {
+	    case 1:
+	    	System.out.println("현재 국어점수 : " + list.get(checkNo).kor);
+	    	System.out.println("수정할 국어점수를 입력하세요.>>");
+	    	int score = scan.nextInt();
+	    	list.get(checkNo).kor = score; //변수에 직접수정
+	    	System.out.printf("국어점수가 %d 로 수정되었습니다. \n",score);
+	    	System.out.println();
+	    	break;
+	    }//switch
+	    list.get(checkNo).total = list.get(checkNo).kor + list.get(checkNo).eng + list.get(checkNo).math;
+	    list.get(checkNo).avg = list.get(checkNo).total/3.0;
+	    
+	}//modify_print
 	
 	
 
-}
+}//class
