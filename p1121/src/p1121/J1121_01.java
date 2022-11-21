@@ -84,18 +84,14 @@ public class J1121_01 {
 				break;
 				
 			
-			}
+			}//switch
 			
-			
-			
-			
-		}
+		}//while
 		
 		
 		
 		
 		
 
-	}
-
-}
+	}//main
+}//class
