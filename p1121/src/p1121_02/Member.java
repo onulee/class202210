@@ -28,6 +28,7 @@ public class Member {
 		
 		money = money - c.price;
 		bonusPoint = bonusPoint + c.bonusPoint;
+		System.out.println(c.name + "1대를 구매했습니다.");
 		// 차량구매후 list 추가
 		list.add(c);
 	}

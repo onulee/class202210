@@ -2,18 +2,14 @@ package p1121_02;
 
 import java.util.Scanner;
 
-import p1121.Buyer;
-import p1121.Cond;
-import p1121.Ref;
-import p1121.Tv;
-import p1121.Wash;
-
 public class Shop {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in); 
 		String input = "",userId="",userPw="";
 		int choice = 0;
 		
+		
+		// 로그인부분
 		while(true) {
 			System.out.println("로그인을 하셔야 프로그램에 접속이 가능합니다.!");
 			System.out.println("로그인 하시겠습니까?(y/n)");
@@ -30,7 +26,7 @@ public class Shop {
 					
 					// 류승택님 로그인
 					Member ryu = new Member("ryu","류승택",5000,0);
-					
+					//온라인구매부분
 					while(true) {
 						System.out.println("[ 현대자동차 구로디지털 온라인지점 ]");
 						System.out.println("인기차량 빅세일");
@@ -49,20 +45,28 @@ public class Shop {
 						switch(choice) {
 						
 						case 1:
-							System.out.println("그랜져 1대가 구매되었습니다.");
+							ryu.buy(new Grandeur());
+							System.out.printf("현재 보유금액 : %,d %n",ryu.money);
 							break;
 						case 2:
-							System.out.println("산타페 1대가 구매되었습니다.");
+							ryu.buy(new Santafe());
+							System.out.printf("현재 보유금액 : %,d %n",ryu.money);
 							break;
 						case 3:
-							System.out.println("아이오닉6 1대가 구매되었습니다.");
+							ryu.buy(new Ioniq6());
+							System.out.printf("현재 보유금액 : %,d %n",ryu.money);
 							break;
 						case 4:
-							System.out.println("스타리아 1대가 구매되었습니다.");
+							ryu.buy(new Staria());
+							System.out.printf("현재 보유금액 : %,d %n",ryu.money);
 							break;
 							
 						case 5:
-							System.out.println("50만원 이상부터 전환가능합니다.");
+							System.out.println(" [ * 보너스포인트는 50만원부터 전환가능!! ]");
+							if(ryu.bonusPoint<500000) {
+								System.out.println("50만원 이상부터 전환가능합니다.");
+								break;
+							}
 							System.out.println("현재 포인트 : "+ryu.bonusPoint);
 							System.out.println("변경할 포인트를 입력하세요.>>");
 							choice = scan.nextInt();
@@ -74,13 +78,14 @@ public class Shop {
 							ryu.bonusPoint = ryu.bonusPoint - choice;
 							ryu.money = ryu.money + choice;
 							System.out.println("전환이 완료되었습니다.!!");
+							break;
 							
 						case 7:
 							System.out.println("충전금액을 입력하세요.>>");
 							choice = scan.nextInt();
 							ryu.money = ryu.money + choice;
-							System.out.println("충전금액 : "+choice);
-							System.out.println("현재보유금액 : "+ryu.money);
+							System.out.printf("충전금액 : %,d %n",choice);
+							System.out.printf("현재보유금액 : %,d %n",ryu.money);
 							
 							break;
 							
@@ -89,14 +94,15 @@ public class Shop {
 							System.out.println("총 구매상품 개수 : "+ryu.list.size());
 							System.out.printf("구매상품리스트 : ");
 							for(int i=0;i<ryu.list.size();i++) {
+								System.out.printf("%s ,",ryu.list.get(i).name);
 							}
 							System.out.println();
 							
 							break;
 							
 						case 9:
-							System.out.println("보유금액 : "+ryu.money);
-							System.out.println("보너스포인트 : "+ryu.bonusPoint);
+							System.out.printf("보유금액 : %,d %n",ryu.money);
+							System.out.printf("보너스포인트 : %,d %n",ryu.bonusPoint);
 							break;
 							
 						
@@ -106,10 +112,6 @@ public class Shop {
 					
 					
 					//-------------------------------------->
-					
-					
-					
-					
 					
 					
 				}else {
