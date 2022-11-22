@@ -27,6 +27,10 @@ public class Student {
 		
 	}
 	
+	public String toString() {
+		return ""+stuNum +","+name;
+	}
+	
 	
 
 }

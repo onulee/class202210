@@ -14,6 +14,7 @@ public class StuCal {
 	double avg;
 	int choice,count,checkNo,flag;
 	
+	
 	//화면출력메소드
 	int screen_print() {
 		System.out.println("[ 성적처리프로그램 ]");
@@ -29,6 +30,7 @@ public class StuCal {
 		
 		return choice;
 	}//screen_print
+	
 	
 	// 1. 성적입력메소드
 	void score_input() {
@@ -53,6 +55,7 @@ public class StuCal {
 		}//while
 	}//성적입력
 	
+	
 	// 2. 성적출력메소드 
 	void score_print() {
 		System.out.println("[[ 성적출력 ]]");
@@ -67,6 +70,7 @@ public class StuCal {
 		System.out.println();
 		
 	}//성적출력
+	
 	
 	// 3. 성적수정메소드 
 	void score_modify() {
@@ -92,10 +96,8 @@ public class StuCal {
 		
 		modify_print(checkNo); // 점수수정부분 - 메소드분리
 		
-		
-		
-		
 	}//성적수정
+	
 	
 	// 3. 성적수정메소드 - 점수수정부분메소드
 	void modify_print(int checkNo) {
@@ -109,19 +111,37 @@ public class StuCal {
 		choice = scan.nextInt();
 		
 	    switch(choice) {
-	    case 1:
+	    case 1: //국어
 	    	System.out.println("현재 국어점수 : " + list.get(checkNo).kor);
 	    	System.out.println("수정할 국어점수를 입력하세요.>>");
-	    	int score = scan.nextInt();
-	    	list.get(checkNo).kor = score; //변수에 직접수정
-	    	System.out.printf("국어점수가 %d 로 수정되었습니다. \n",score);
+	    	list.get(checkNo).kor = scan.nextInt(); //변수에 직접수정
+	    	System.out.printf("국어점수가 %d 로 수정되었습니다. \n",list.get(checkNo).kor);
 	    	System.out.println();
 	    	break;
+	    	
+	    case 2: //영어
+	    	System.out.println("현재 영어점수 : " + list.get(checkNo).eng);
+	    	System.out.println("수정할 영어점수를 입력하세요.>>");
+	    	list.get(checkNo).eng = scan.nextInt(); //변수에 직접수정
+	    	System.out.printf("영어점수가 %d 로 수정되었습니다. \n",list.get(checkNo).eng);
+	    	System.out.println();
+	    	break;
+	    
+	    case 3: //수학	
+	    	System.out.println("현재 수학점수 : " + list.get(checkNo).math);
+	    	System.out.println("수정할 수학점수를 입력하세요.>>");
+	    	list.get(checkNo).math = scan.nextInt(); //변수에 직접수정
+	    	System.out.printf("수학점수가 %d 로 수정되었습니다. \n",list.get(checkNo).math);
+	    	System.out.println();
+	    	break;
+	    	
 	    }//switch
+	    
 	    list.get(checkNo).total = list.get(checkNo).kor + list.get(checkNo).eng + list.get(checkNo).math;
 	    list.get(checkNo).avg = list.get(checkNo).total/3.0;
 	    
 	}//modify_print
+	
 	
 	
 
