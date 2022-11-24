@@ -29,7 +29,8 @@ public class StuManager {
 				stuCal.score_modify();
 				break;
 			case 4:
-				
+				// 학생검색메소드 호출
+				stuCal.stu_search();
 				break;
 			case 5:
 				

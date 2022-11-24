@@ -32,11 +32,36 @@ public class StuCal {
 	}//screen_print
 	
 	
+	// 4. 학생검색메소드
+	void stu_search() {
+		System.out.println("[[ 학생 검색 ]]");
+		System.out.println("검색하고자 하는 학생이름을 입력하세요.>>");
+		scan.nextLine(); //enter키 제거목적
+		name = scan.nextLine();
+		System.out.println("학번\t이름\t국어\t영어\t수학\t합계\t평균\t등수");
+		System.out.println("---------------------------------------------------------------");
+		count=0;
+		for(int i=0;i<list.size();i++) {
+			if(list.get(i).name.contains(name)) {
+				System.out.printf("%s\t%s\t%d\t%d\t%d\t%d\t%.2f\t%d\n",
+						list.get(i).stuNum,list.get(i).name,list.get(i).kor,
+						list.get(i).eng,list.get(i).math,list.get(i).total,list.get(i).avg,
+						list.get(i).rank);
+				count++;
+			}//if
+		}//for
+		System.out.printf("찾고자 하는 학생 [ %d ]명이 검색되었습니다.! ",count);
+		System.out.println();
+		
+	}// stu_search
+	
+	
+	
 	// 1. 성적입력메소드
 	void score_input() {
 		while(true) {
 			System.out.println("[[ 성적입력 ]]");
-			System.out.printf("%d 번째 이름을 입력하세요.(0.이전페이지 이동)>>",(list.size()+1));
+			System.out.printf("%d 번째 이름을 입력하세요.(0.이전페이지 이동)>> \n",(list.size()+1));
 			name = scan.next();
 			if(name.equals("0")) {
 				System.out.println("이전페이지로 이동합니다.!!");
@@ -141,6 +166,8 @@ public class StuCal {
 	    list.get(checkNo).avg = list.get(checkNo).total/3.0;
 	    
 	}//modify_print
+	
+	
 	
 	
 	
