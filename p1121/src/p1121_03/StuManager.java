@@ -36,6 +36,14 @@ public class StuManager {
 				// 등수처리 호출
 				stuCal.score_rank();
 				break;
+			case 6:
+				// 성적정렬선택 호출
+				stuCal.name_sort();
+				break;
+			case 7:
+				// 파일불러오기 호출
+				stuCal.score_rank();
+				break;
 			case 0:
 				System.out.println(" [[ 프로그램 종료 ]] ");
 				break loop;

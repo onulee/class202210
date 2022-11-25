@@ -1,6 +1,7 @@
 package p1121_03;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class StuCal {
@@ -23,10 +24,9 @@ public class StuCal {
 		System.out.println("3. 성적수정");
 		System.out.println("4. 학생검색");
 		System.out.println("5. 등수처리");
-		System.out.println("6. 이름정렬");
-		System.out.println("7. 점수정렬");
-		System.out.println("8. 파일불러오기");
-		System.out.println("9. 파일저장하기");
+		System.out.println("6. 성적정렬선택");
+		System.out.println("7. 파일불러오기");
+		System.out.println("8. 파일저장하기");
 		System.out.println("0. 프로그램 종료");
 		System.out.println("-------------------------");
 		System.out.println("원하는 번호를 입력하세요.>>");
@@ -35,6 +35,50 @@ public class StuCal {
 		return choice;
 	}//screen_print
 	
+	
+	// 6. 이름정렬메소드
+	void name_sort() {
+		System.out.println("[[[ 성적정렬선택 ]]]");
+		System.out.println("1. 이름순차정렬");
+		System.out.println("2. 이름역순정렬");
+		System.out.println("3. 점수순차정렬");
+		System.out.println("4. 점수역순정렬");
+		System.out.println("0. 취소");
+		System.out.println("-------------------------");
+		System.out.println("정렬 방법을 선택하세요.>>");
+		choice = scan.nextInt();
+		switch(choice) {
+		case 1:
+			Collections.sort(list,new StudentName());
+			System.out.println("이름 순차정렬이 완료되었습니다.!!");
+			System.out.println();
+			break;
+		case 2:
+			Collections.sort(list,new StudentName().reversed());
+			System.out.println("이름 역순정렬이 완료되었습니다.!!");
+			System.out.println();
+			break;
+		case 3:
+			Collections.sort(list,new StudentTotal());
+			System.out.println("점수 순차정렬이 완료되었습니다.!!");
+			System.out.println();
+			break;
+		case 4:
+			Collections.sort(list,new StudentTotal().reversed());
+			System.out.println("점수 역순정렬이 완료되었습니다.!!");
+			System.out.println();
+			break;
+		case 0:
+			System.out.println("정렬을 취소했습니다.!!");
+			System.out.println();
+			break;
+		}//switch
+		
+		
+		
+		
+		
+	}//name_sort
 	
 	
 	
@@ -172,7 +216,7 @@ public class StuCal {
 		
 	}// stu_search
 	
-	// 5.등수처리
+	// 5.등수처리메소드
 	void score_rank() {
 		System.out.println("[[ 등수처리 ]]");
 		for(int i=0;i<list.size();i++) {
