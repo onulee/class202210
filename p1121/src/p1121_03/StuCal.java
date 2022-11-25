@@ -183,6 +183,9 @@ public class StuCal {
 	    	System.out.printf("수학점수가 %d 로 수정되었습니다. \n",list.get(checkNo).math);
 	    	System.out.println();
 	    	break;
+	    case 0:
+	    	System.out.println("점수수정을 취소하였습니다.!!");
+	    	return; //메소드 종료
 	    	
 	    }//switch
 	    
