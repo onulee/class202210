@@ -1,5 +1,8 @@
 package p1121_03;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -10,7 +13,8 @@ public class StuCal {
 	ArrayList<Student> list = new ArrayList<Student>(); //list 자동10개 생성
 //	Student[] s = new Student[10];
 	String[] title = {"학번","이름","국어","영어","수학","합계","평균","등수"};
-	String stuNum,name,checkName;
+	String stuNum,name,checkName,data;
+	String[] temp;
 	int kor,eng,math,total,rank;
 	double avg;
 	int choice,count,checkNo,flag;
@@ -35,52 +39,46 @@ public class StuCal {
 		return choice;
 	}//screen_print
 	
-	
-	// 6. 이름정렬메소드
-	void name_sort() {
-		System.out.println("[[[ 성적정렬선택 ]]]");
-		System.out.println("1. 이름순차정렬");
-		System.out.println("2. 이름역순정렬");
-		System.out.println("3. 점수순차정렬");
-		System.out.println("4. 점수역순정렬");
-		System.out.println("0. 취소");
-		System.out.println("-------------------------");
-		System.out.println("정렬 방법을 선택하세요.>>");
-		choice = scan.nextInt();
-		switch(choice) {
-		case 1:
-			Collections.sort(list,new StudentName());
-			System.out.println("이름 순차정렬이 완료되었습니다.!!");
-			System.out.println();
-			break;
-		case 2:
-			Collections.sort(list,new StudentName().reversed());
-			System.out.println("이름 역순정렬이 완료되었습니다.!!");
-			System.out.println();
-			break;
-		case 3:
-			Collections.sort(list,new StudentTotal());
-			System.out.println("점수 순차정렬이 완료되었습니다.!!");
-			System.out.println();
-			break;
-		case 4:
-			Collections.sort(list,new StudentTotal().reversed());
-			System.out.println("점수 역순정렬이 완료되었습니다.!!");
-			System.out.println();
-			break;
-		case 0:
-			System.out.println("정렬을 취소했습니다.!!");
-			System.out.println();
-			break;
-		}//switch
+	// 8. 파일저장하기메소드
+	void save_file() throws Exception{
+		System.out.println("[[ 파일저장하기 ]]");
+		FileWriter fw = new FileWriter("c:/list.txt");
+		for(int i=0;i<list.size();i++) {
+			data = String.format("%s,%s,%d,%d,%d,%d,%.2f,%d\r\n",list.get(i).stuNum,
+					list.get(i).name,list.get(i).kor,list.get(i).eng,list.get(i).math,
+					list.get(i).total,list.get(i).avg,list.get(i).rank);
+			fw.write(data);
+		}
+		fw.close();
 		
+		System.out.println("데이터를 파일에 저장했습니다.!!");
+		System.out.println();
 		
-		
-		
-		
-	}//name_sort
+	}//save_file
 	
 	
+	// 7. 파일불러오기메소드
+	void open_file() throws Exception {
+		System.out.println("[[ 파일불러오기 ]]");
+		BufferedReader br = new BufferedReader(new FileReader("c:/list.txt"));
+		while(true) {
+			data = br.readLine();
+			if(data==null) break;
+			temp = data.split(","); //split : 데이터를 ,로 분리해서 배열로 리턴메소드 
+			//list에 데이터 추가 
+			list.add(new Student(temp[0],temp[1],Integer.parseInt(temp[2]),
+					Integer.parseInt(temp[3]),Integer.parseInt(temp[4]),
+					Integer.parseInt(temp[5]),Double.parseDouble(temp[6]),
+					Integer.parseInt(temp[7])));
+		}
+		br.close(); //파일닫기
+		
+		Student.count = list.size();
+		
+		System.out.println("파일에서 데이터 불러오기 성공!!");
+		System.out.println();
+		
+	}//open_file
 	
 	
 	// 1. 성적입력메소드
@@ -233,6 +231,58 @@ public class StuCal {
 		System.out.println();
 		
 	}//score_rank
+	
+	// 6. 이름정렬메소드
+	void name_sort() {
+		System.out.println("[[[ 성적정렬선택 ]]]");
+		System.out.println("1. 번호순차정렬");
+		System.out.println("2. 번호역순정렬");
+		System.out.println("3. 이름순차정렬");
+		System.out.println("4. 이름역순정렬");
+		System.out.println("5. 점수순차정렬");
+		System.out.println("6. 점수역순정렬");
+		System.out.println("0. 취소");
+		System.out.println("-------------------------");
+		System.out.println("정렬 방법을 선택하세요.>>");
+		choice = scan.nextInt();
+		switch(choice) {
+		case 1:
+			Collections.sort(list,new StudentStuNum());
+			System.out.println("번호 순차정렬이 완료되었습니다.!!");
+			System.out.println();
+			break;
+		case 2:
+			Collections.sort(list,new StudentStuNum().reversed());
+			System.out.println("번호 역순정렬이 완료되었습니다.!!");
+			System.out.println();
+			break;
+		case 3:
+			Collections.sort(list,new StudentName());
+			System.out.println("이름 순차정렬이 완료되었습니다.!!");
+			System.out.println();
+			break;
+		case 4:
+			Collections.sort(list,new StudentName().reversed());
+			System.out.println("이름 역순정렬이 완료되었습니다.!!");
+			System.out.println();
+			break;
+		case 5:
+			Collections.sort(list,new StudentTotal());
+			System.out.println("점수 순차정렬이 완료되었습니다.!!");
+			System.out.println();
+			break;
+		case 6:
+			Collections.sort(list,new StudentTotal().reversed());
+			System.out.println("점수 역순정렬이 완료되었습니다.!!");
+			System.out.println();
+			break;
+		case 0:
+			System.out.println("정렬을 취소했습니다.!!");
+			System.out.println();
+			break;
+		}//switch
+		
+	}//name_sort
 	
 	
 	

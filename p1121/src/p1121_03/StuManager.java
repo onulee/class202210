@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class StuManager {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		StuCal stuCal = new StuCal();
 		int choice = 0;
@@ -42,7 +42,11 @@ public class StuManager {
 				break;
 			case 7:
 				// 파일불러오기 호출
-				stuCal.score_rank();
+				stuCal.open_file();
+				break;
+			case 8:
+				// 파일저장오기 호출
+				stuCal.save_file();
 				break;
 			case 0:
 				System.out.println(" [[ 프로그램 종료 ]] ");
