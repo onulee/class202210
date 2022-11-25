@@ -33,7 +33,8 @@ public class StuManager {
 				stuCal.stu_search();
 				break;
 			case 5:
-				
+				// 등수처리 호출
+				stuCal.score_rank();
 				break;
 			case 0:
 				System.out.println(" [[ 프로그램 종료 ]] ");

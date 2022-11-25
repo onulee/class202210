@@ -23,6 +23,10 @@ public class StuCal {
 		System.out.println("3. 성적수정");
 		System.out.println("4. 학생검색");
 		System.out.println("5. 등수처리");
+		System.out.println("6. 이름정렬");
+		System.out.println("7. 점수정렬");
+		System.out.println("8. 파일불러오기");
+		System.out.println("9. 파일저장하기");
 		System.out.println("0. 프로그램 종료");
 		System.out.println("-------------------------");
 		System.out.println("원하는 번호를 입력하세요.>>");
@@ -32,28 +36,6 @@ public class StuCal {
 	}//screen_print
 	
 	
-	// 4. 학생검색메소드
-	void stu_search() {
-		System.out.println("[[ 학생 검색 ]]");
-		System.out.println("검색하고자 하는 학생이름을 입력하세요.>>");
-		scan.nextLine(); //enter키 제거목적
-		name = scan.nextLine();
-		System.out.println("학번\t이름\t국어\t영어\t수학\t합계\t평균\t등수");
-		System.out.println("---------------------------------------------------------------");
-		count=0;
-		for(int i=0;i<list.size();i++) {
-			if(list.get(i).name.contains(name)) {
-				System.out.printf("%s\t%s\t%d\t%d\t%d\t%d\t%.2f\t%d\n",
-						list.get(i).stuNum,list.get(i).name,list.get(i).kor,
-						list.get(i).eng,list.get(i).math,list.get(i).total,list.get(i).avg,
-						list.get(i).rank);
-				count++;
-			}//if
-		}//for
-		System.out.printf("찾고자 하는 학생 [ %d ]명이 검색되었습니다.! ",count);
-		System.out.println();
-		
-	}// stu_search
 	
 	
 	
@@ -167,7 +149,46 @@ public class StuCal {
 	    
 	}//modify_print
 	
+	// 4. 학생검색메소드
+	void stu_search() {
+		System.out.println("[[ 학생 검색 ]]");
+		System.out.println("검색하고자 하는 학생이름을 입력하세요.>>");
+		scan.nextLine(); //enter키 제거목적
+		name = scan.nextLine();
+		System.out.println("학번\t이름\t국어\t영어\t수학\t합계\t평균\t등수");
+		System.out.println("---------------------------------------------------------------");
+		count=0;
+		for(int i=0;i<list.size();i++) {
+			if(list.get(i).name.contains(name)) {
+				System.out.printf("%s\t%s\t%d\t%d\t%d\t%d\t%.2f\t%d\n",
+						list.get(i).stuNum,list.get(i).name,list.get(i).kor,
+						list.get(i).eng,list.get(i).math,list.get(i).total,list.get(i).avg,
+						list.get(i).rank);
+				count++;
+			}//if
+		}//for
+		System.out.printf("찾고자 하는 학생 [ %d ]명이 검색되었습니다.! ",count);
+		System.out.println();
+		
+	}// stu_search
 	
+	// 5.등수처리
+	void score_rank() {
+		System.out.println("[[ 등수처리 ]]");
+		for(int i=0;i<list.size();i++) {
+			count=1; //등수체크
+			for(int j=0;j<list.size();j++) {
+				if(list.get(i).total<list.get(j).total) {
+					count++;
+				}
+			}
+			list.get(i).rank = count; //등수 입력
+		}//for
+		
+		System.out.println("등수처리가 완료되었습니다.!!");
+		System.out.println();
+		
+	}//score_rank
 	
 	
 	
