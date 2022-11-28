@@ -6,8 +6,35 @@ public class StuManager {
 
 	public static void main(String[] args) throws Exception {
 		
+		Scanner scan = new Scanner(System.in);
 		StuCal stuCal = new StuCal();
-		int choice = 0;
+		int choice = 0,count=0;
+		String id,pw;
+		
+		
+		//로그인
+		while(true) {
+			System.out.println("[ 로그인을 해야 접속이 가능합니다. ]");
+			System.out.println("ID를 입력하세요.(0.프로그램종료)>>");
+			id = scan.next();
+			System.out.println("PASS를 입력하세요.>>");
+			pw = scan.next();
+			
+			if(count>3) {
+				System.out.println("");
+				break;
+			}
+			// 3번이상 맞지 않으면 프로그램 자동종료
+			if(id.equals("admin") && pw.equals("1111")) {
+				System.out.println("정상적으로 로그인 되었습니다.");
+				break;
+			}else {
+				System.out.println("아이디 또는 패스워드가 일치하지 않습니다.");
+				count++;
+			}
+			break;
+		}//
+		
 		
 		loop:
 		while(true) {
