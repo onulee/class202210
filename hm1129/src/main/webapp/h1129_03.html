@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+		  table,td{border:1px solid black; border-collapse: collapse;}
+		  td{width:100px; height:40px; text-align: center; }
+		</style>
+	</head>
+	<body>
+		<!-- 3행 4열 -->
+		<table>
+		  <tr>
+		  	<td rowspan="2">1행1열</td>
+		  	<td colspan="2">1행2열</td>
+		  	<td>1행4열</td>
+		  </tr>
+		  <tr>
+		  	<td colspan="3">2행2열</td>
+		  </tr>
+		  <tr>
+		  	<td>3행1열</td>
+		  	<td>3행2열</td>
+		  	<td>3행3열</td>
+		  	<td>3행4열</td>
+		  </tr>
+		</table>
+		
+		<hr>
+		<!-- 4행 3열 -->
+		<table>
+		  <tr>
+		  	<td colspan="3">1행1열</td>
+		  </tr>
+		  <tr>
+		  	<td>2행1열</td>
+		  	<td rowspan="2">2행2열</td>
+		  	<td rowspan="3">2행3열</td>
+		  </tr>
+		  <tr>
+		  	<td>3행1열</td>
+		  </tr>
+		  <tr>
+		  	<td>4행1열</td>
+		  	<td>4행2열</td>
+		  </tr>
+		</table>
+	
+	</body>
+</html>
