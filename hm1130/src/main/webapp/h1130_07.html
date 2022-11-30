@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>form</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script>
 		  function zipBtn(){
@@ -22,6 +23,16 @@
 			  location.href="http://www.naver.com";
 			  return false;
 		  }
+		  function idBtn(){
+			  var formId = $("#id").val();
+			  alert("데이터확인 : "+formId);
+		  }
+		  
+		  /* function idBtn(){
+			var formId = document.getElementById("id").value;
+			alert("데이터확인 : "+formId); 
+		  } */
+		  
 		</script>
 	</head>
 	<body>
@@ -29,6 +40,9 @@
 		<form action="result.html" method="get" name="frm">
 		   <label>아이디</label>
 		   <input type="text" id="id" name="id" autofocus placeholder="5자리이상 입력"><br>
+		   <button type="button" onclick="idBtn()">아이디값확인</button>
+		   <br>
+		   <br>
 		   <label>패스워드</label>
 		   <input type="password" id="pw" name="pw" required><br>
 		   <label>패스워드확인</label>

@@ -1,0 +1,46 @@
+@charset "UTF-8";
+* { margin:0; padding:0;
+	list-style: none;
+ }
+div{
+	width:920px;
+	margin:50px auto;
+}
+
+h4{ 
+	color:#333; font-weight:bold;
+	font-size:20px;
+	margin-top:50px;
+}
+
+table,th,td{
+	border:1px solid #d4d7db;
+	border-collapse: collapse;
+	vertical-align: middle;
+	color:#454545;
+	font-size:14px;
+	text-align: center;
+}
+table{
+	width:100%;
+	border-top:2px solid #7b8290;
+	border-left:0px;
+	border-right:0px;
+	margin-top:15px;
+}
+
+th{
+	width:50%; height:48px;
+	font-weight:bold;
+	background:#f5f5f5;
+	border-left:0px;
+}
+td{
+	width:50%;
+	border-right:0px;
+}
+
+
+
+
+
