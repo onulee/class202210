@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>form</title>
+		<style>
+		  #inBtn {width:70px; height:25px; background:#F2C84B;
+		          border:1px solid #8C4830; 
+		  }
+		  #inBtn:hover{background:#BF8360; cursor: pointer; border:2px solid #8C4830; }
+		</style>
+		<script>
+		   function sendBtn(){
+			   alert("버튼이 클릭되었습니다.");
+			   frm.submit();
+		   }
+		   function btn(){
+			   alert("button 클릭");
+			   frm.submit();
+		   }
+		</script>
+	</head>
+	<body>
+		<form action="result.html" name="frm">
+			<label>10초 남음</label>
+			<progress value="80" max="100"></progress>
+		
+		    <br><br>
+			<select id="class" name="major">
+			  <option value="archi">건축공학과</option>
+			  <option value="mechanic">기계공학과</option>
+			  <option value="indust">산업공학과</option>
+			  <option value="elec">전기전자공학과</option>
+			  <option value="computer" selected>컴퓨터공학과</option>
+			  <option value="chemical">화학공학과</option>
+			</select>
+			<br>
+			<textarea name="memo" rows="20" cols="80"></textarea>
+			<br>
+			
+			
+			<input id="inBtn" type="button" onclick="sendBtn()" value="전송"><br><br>
+			<button type="button" onclick="btn()">버튼</button>
+		</form>
+		
+	
+	
+		<!-- <select>
+			<option value="www.google.com">구글</option>
+			<option value="www.naver.com">네이버</option>
+			<option value="www.daum.net">다음</option>
+			<option value="www.nate.com">네이트</option>
+		</select> -->
+	
+	</body>
+</html>

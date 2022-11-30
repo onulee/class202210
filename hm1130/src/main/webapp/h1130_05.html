@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>form</title>
+	</head>
+	<body>
+		<form action="result.html" method="get" name="frm">
+			<label>검색</label>
+			<input type="search" name="search">
+			<br>
+			<br>
+			<label>이름</label>
+			<input type="text" name="name" size="10" maxlength="5"
+			 readonly value="홍길동">
+			<br><br>
+			<label>패스워드</label>
+			<input type="password" name="pw" maxlength="10"
+			placeholder="숫자만 가능합니다." required >
+			<br><br>
+			<label>전화번호</label>
+			<input type="tel" name="tel" autofocus required >
+			<br><br>
+			<label>유료가입 년수</label>
+			<br>
+			<input type="radio" name="period" id="1" value="1">
+			<label for="1">1년</label> 
+			<input type="radio" name="period" id="2" value="2">
+			<label for="2">2년</label> 
+			<input type="radio" name="period" id="3" value="3">
+			<label for="3">3년</label> 
+			<input type="radio" name="period" id="4" value="4">
+			<label for="4">4년</label> 
+			<input type="radio" name="period" id="5" value="5" checked>
+			<label for="5">5년</label> 
+			<br><br>
+			<label>성별</label>
+			<br>
+			<input type="radio" name="gender" id="male" value="male" checked>
+			<label for="male">남자</label> 
+			<input type="radio" name="gender" id="female" value="female">
+			<label for="female">여자</label> 
+			<br><br>
+			<label>취미</label><br>
+			<input type="checkbox" name="hobbys" id="golf" value="golf">
+			<label for="golf">골프</label>
+			<input type="checkbox" name="hobbys" id="swim" value="swim">
+			<label for="swim">수영</label>
+			<input type="checkbox" name="hobbys" id="run" value="run" checked>
+			<label for="run">조깅</label>
+			<input type="checkbox" name="hobbys" id="book" value="book">
+			<label for="book">독서</label>
+			<input type="checkbox" name="hobbys" id="game" value="game">
+			<label for="game">게임</label>
+			<br><br>
+			<label>url</label>
+			<input type="url" name="url">
+			<br><br>
+			<label>email</label>
+			<input type="email" name="email">
+			<br><br>
+			<label>날짜</label>
+			<input type="date" name="date">
+			<br><br>
+			<label>날짜시간</label>
+			<input type="datetime" name="datetime">
+			<br><br>
+			<label>슬라이드조절</label>
+			<input type="range" name="range">
+			<br><br>
+			<label>파일첨부</label>
+			<input type="file" name="imageFile">
+			<br><br>
+			<input type="submit" value="확인">
+			<input type="reset" value="취소">
+			<br>
+		</form>
+	
+	</body>
+</html>

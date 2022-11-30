@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>form</title>
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		<script>
+		  function zipBtn(){
+			 alert("테스트");
+			 new daum.Postcode({
+			        oncomplete: function(data) {
+			            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+			            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+			        }
+			    }).open();
+		  }
+		  function submitBtn(){
+			  alert("각 항목별 정규표현식 체크후 이상이 없으면 전송됨.");
+			  frm.submit();
+		  }
+		  function cancelBtn(){
+			  location.href="http://www.naver.com";
+			  return false;
+		  }
+		</script>
+	</head>
+	<body>
+		<h2>회원가입</h2>
+		<form action="result.html" method="get" name="frm">
+		   <label>아이디</label>
+		   <input type="text" id="id" name="id" autofocus placeholder="5자리이상 입력"><br>
+		   <label>패스워드</label>
+		   <input type="password" id="pw" name="pw" required><br>
+		   <label>패스워드확인</label>
+		   <input type="password" id="pw2" name="pw2"><br>
+		   <label>전화번호</label>
+		   <input type="text" id="tel" name="tel"><br>
+		   <label>우편번호</label>
+		   <input type="text" id="zipcode" name="zipcode" required>
+		   <button type="button" onclick="zipBtn()">우편번호찾기</button>
+		   <br>
+		   <label>성별</label><br>
+		   <label for="male">남자</label>
+		   <input type="radio" id="male" name="gender" value="male" checked>
+		   <label for="female">여자</label>
+		   <input type="radio" id="female" name="gender" value="female">
+		   <br>
+		   <label>취미</label><br>
+		   <label for="game">게임</label>
+		   <input type="checkbox" id="game" name="hobbys" value="game" checked>
+		   <label for="golf">골프</label>
+		   <input type="checkbox" id="golf" name="hobbys" value="golf">
+		   <label for="book">독서</label>
+		   <input type="checkbox" id="book" name="hobbys" value="book">
+		   <label for="swim">수영</label>
+		   <input type="checkbox" id="swim" name="hobbys" value="swim">
+		   <label for="run">조깅</label>
+		   <input type="checkbox" id="run" name="hobbys" value="run">
+		   <br>
+		   <label>학과</label>
+		   <select name="major">
+		     <option value="archi">건축공학과</option>
+		     <option value="mechanic">기계공학과</option>
+		     <option value="indust">산업공학과</option>
+		     <option value="elec">전자공학과</option>
+		     <option value="computer" selected>컴퓨터공학과</option>
+		   </select>
+		   <br>
+		   <br>
+		   <button type="button" onclick="submitBtn()">저장</button>
+		   <button type="button" onclick="cancelBtn()">취소</button>
+		   <br>
+		</form>
+	
+	</body>
+</html>
