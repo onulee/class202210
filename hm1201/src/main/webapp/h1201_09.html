@@ -4,15 +4,34 @@
 		<meta charset="UTF-8">
 		<title>background-repeat</title>
 		<style>
-		    * {margin:0; padding:0;}
-		    div{width:100%; height:900px; border:10px solid black; 
-		        background: url('images/bg01.jpg');
+		    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+		    * {margin:0; padding:0; color:#fff;
+		       font-family: 'Noto Sans KR', sans-serif;
+		    }
+		    #article { box-sizing:border-box;
+		    width:100%; height:950px;  
+		        background: url('images/wips04.jpg') no-repeat;
+		        background-size:cover;
+		    }
+		    #banner{padding:250px 0 0 200px; box-sizing: border-box; }
+		    h5{ font-weight:600; font-size:20px;}
+		    h2{ margin-top:10px;
+		    font-weight:700; font-size:60px; letter-spacing: -3px;   }
+		    p{ margin-top:25px; 
+		    font-size:25px; line-height:1.3636;
 		    }
 		    
 		</style>
 	</head>
 	<body>
-		<div></div>
+		<div id="article">
+			<div id="banner">
+				<h5>Technology Valuation</h5>
+				<h2>공신력을 인정받은 가치평가 전문기관</h2>
+				<p>민간기업 최초 발명의 평가기관, 기술평가기관 지정!<br>
+				 공신력을 인정받은 가치평가 서비스를 제공합니다.</p>
+			</div>
+		</div>
 	
 	
 	</body>
