@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>text-overflow</title>
+		<style>
+			p{
+			   width:300px; height:200px; border:1px solid black;
+			   white-space: nowrap;
+			   overflow:hidden;
+			   text-overflow:ellipsis; /* 말줄임표 */
+			}
+			
+			p:hover{ 
+			   overflow:visible; white-space:normal; }
+			#u01{ list-style:disc; }
+			#u02{ list-style:circle; }
+			#u03{ list-style:square; }
+		</style>
+	</head>
+	<body>
+	  <ul id="u01">
+	  	<li>네이버</li>
+	  	<li>다음</li>
+	  	<li>구글</li>
+	  	<li>네이트</li>
+	  </ul>
+	  <ul id="u02">
+	  	<li>네이버</li>
+	  	<li>다음</li>
+	  	<li>구글</li>
+	  	<li>네이트</li>
+	  </ul>
+	  <ul id="u03">
+	  	<li>네이버</li>
+	  	<li>다음</li>
+	  	<li>구글</li>
+	  	<li>네이트</li>
+	  </ul>
+	
+	
+	
+	  <p>
+	     퇴실 시 객실을 정리하시고 자율퇴실 점검증을 작성하시어 프런트에 객실키와 함께 반납하신 후 객실요금을 지불하십시오.
+Late check-out(늦은 퇴실)의 경우 별도의 요금이 부과됩니다. (30분당 금액/VAT 포함)
+
+	  </p>
+	
+	</body>
+</html>
