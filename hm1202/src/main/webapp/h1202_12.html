@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>z-index</title>
+		<style>
+		  *{margin:0; padding:0;}
+		  section{position: relative; left:300px; top:300px;}
+		  div{width:200px; height:200px; border:2px solid black;
+		       position: relative; color:#fff; font-size: 40px;
+		   }
+		   
+		  #d01{ background: #A63247; z-index:4; }
+		  #d02{ background: #D9556D; top:-50px; left:150px; z-index:3; }
+		  #d03{ background: #A66658; top:-300px; left:175px; z-index:1; }
+		</style>
+	</head>
+	<body>
+	  <section>
+		  <div id="d01">div01</div>
+		  <div id="d02">div02</div>
+		  <div id="d03">div03</div>
+	  </section>
+	
+	</body>
+</html>

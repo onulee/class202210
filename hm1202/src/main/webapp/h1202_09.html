@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>position</title>
+		<style>
+		  *{ margin:0;padding:0; list-style:none; }
+		  article{width:1000px; height:3000px;}
+		  header{width:500px; height:80px; background: pink; }
+		  nav{width:300px; height:120px; background: aqua;}
+		  section{position: relative; }
+		  #d01{ width:200px; height:100px; background: yellow;
+		        margin-left:300px; position: fixed; left:600px; top:340px;  }
+		  #d02{ width:500px; height:200px; background: blue;
+		        position: absolute; top:140px; left:400px;  }
+		</style>
+	</head>
+	<body>
+	  <article>
+		  <header></header>
+		  <nav></nav>
+		  <section>
+			  <div id="d01"></div>
+			  <div id="d02"></div>
+		  </section>
+	  </article>
+	
+	</body>
+</html>

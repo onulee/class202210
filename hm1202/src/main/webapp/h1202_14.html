@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>동영상</title>
+		<style>
+		   * { margin:0; padding:0; }
+		   header{ width:100%; height:60px; background: #fff;
+		           position: absolute; z-index:10;
+		    }
+		   #video_area{ width:100%; height:800px; overflow: hidden;
+		                position: absolute; top:0; z-index:3;
+		    }
+		   video{width:100%; }
+		   #txt_area { position: absolute; left:200px; top:285px;}
+		   #txt_area h2{ font-size:56px; line-height: 1.32;
+		   color:#eee; }
+		   #txt_area h6{ 
+		   margin-top:50px;
+		   font-size:16px; line-height: 1.625;
+		   color:#eee;
+		   }
+		</style>
+	</head>
+	<body>
+	    <header>
+	      <nav></nav>
+	    </header>
+		<div id="video_area">
+			<video src="images/k01.mp4" autoplay muted loop></video>
+		</div>
+		<div id="txt_area">
+			<h2>Sustainable Technology Creator,<br>
+				Kolon Industries</h2>
+			<h6>지속가능한 미래를 위해 변화를 이끌어 갑니다.</h6>	
+		</div>
+	
+	</body>
+</html>
