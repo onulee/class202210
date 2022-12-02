@@ -8,6 +8,20 @@
 		   header{ width:100%; height:60px; background: #fff;
 		           position: absolute; z-index:10;
 		    }
+		    nav{width: 1400px; height:60px; margin:0 auto; 
+		        background: #BF8360;
+		    }
+		    nav div{height:60px; 
+		    box-sizing:border-box; border:1px solid black;
+		    float:left;
+		    }
+		    nav #d01{width:230px; } 
+		    nav #d02{width:970px; }
+		    nav #d02 ul{ width:600px; height:60px; background: #F2C84B;
+		    
+		     }
+		     
+		    nav #d03{width:200px; } 
 		   #video_area{ width:100%; height:800px; overflow: hidden;
 		                position: absolute; top:0; z-index:3;
 		    }
@@ -24,7 +38,19 @@
 	</head>
 	<body>
 	    <header>
-	      <nav></nav>
+	      <nav>
+	        <div id="d01">로고</div>
+	        <div id="d02">
+	        	<ul>
+	        		<li>회사정보</li>
+	        		<li>제품정보</li>
+	        		<li>지속가능경영</li>
+	        		<li>투자정보</li>
+	        		<li>채용정보</li>
+	        	</ul>
+	        </div>
+	        <div id="d03">퀵메뉴</div>
+	      </nav>
 	    </header>
 		<div id="video_area">
 			<video src="images/k01.mp4" autoplay muted loop></video>
