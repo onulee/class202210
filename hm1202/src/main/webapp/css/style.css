@@ -1,0 +1,9 @@
+@charset "UTF-8";
+div{width:620px; height:3000px; border:1px solid black; }
+#top{ position:fixed; width:45px; height:45px; background: #5e2bb8;
+      border-radius: 8px 0 8px 8px; border:0px;
+      color: #fff; font-size:20px; font-weight:600;
+      text-align: center; line-height: 40px; 
+      top:700px; left:650px;
+       }
+img{width:620px; }
