@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css선택자</title>
+		<style type="text/css">
+			section ul{ border:3px dotted blue; } /* 하위선택자 */
+			section>ul{ border:3px dotted red; } /* 자식선택자 */
+			header+p{ color:green; }
+			/* #u01+li{ color:pink; }  인접 형제 선택자 */
+			#u01>li:nth-child(1) ul>li:nth-child(2) {color:pink;}
+		</style>
+	</head>
+	<body>
+		<section>
+			<header>
+				<h1>예약 방벙 및 요금</h1>
+			</header>
+			<p>요안도라 숙소에 예약하려면?
+				<ul id="u01">
+					<li>예약 방법
+					  <ul >
+					  	<li >직접 통화</li>
+					  	<li>문자 남기기</li> <!-- pink -->
+					  </ul>
+					</li>
+					<li>요금
+						<ul>
+							<li>1인 : 40,000원</li>
+							<li>2인 : 60,000원</li>
+							<li>3인 : 80,000원</li>
+							<li>4인 : 100,000원</li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+		
+		</section>
+	
+	</body>
+</html>

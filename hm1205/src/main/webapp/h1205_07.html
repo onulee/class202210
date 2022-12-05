@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>nth-child(n)</title>
+		<style>
+		    * {margin:0; padding:0; list-style:none;}
+			ul li{width:180px; height:60px; border:1px solid black; text-align:center;
+			line-height:60px; }
+			ul li:nth-child(3){ color:red; font-weight:900;
+			 }
+			ul li:nth-child(2n+1){
+			   background:#efefef;
+			} 
+			ul li:first-child{
+			  border-top-left-radius:30px;
+			  border-top-right-radius:30px;
+			}
+			ul li:last-child{
+			  border-bottom-left-radius:30px;
+			  border-bottom-right-radius:30px;
+			}
+			p{width:180px; height:60px; border:1px solid black; text-align:center; }
+			p:nth-of-type(4){ color:blue; font-weight: 900;}
+		</style>
+	</head>
+	<body>
+	    <ul>
+	  	<li>블루베리</li>
+	  	<li>귀리</li>
+	  	<li>토마토</li>
+	  	<li>시금치</li>
+	  	<li>적포도주</li>
+	  	<li>견과류</li>
+	  	<li>연어</li>
+	  	<li>마늘</li>
+	  	<li>녹차</li>
+	  </ul>
+	  
+		<div>
+		  <p>구글</p>
+		  <div>좋은하루</div>
+		  <p>네이버</p>
+		  <p>다음</p>
+		  <p>페이스북</p>
+		  <p>트위터</p>
+		</div>
+		
+		  <br>
+		  <br>
+		  <hr>
+		  <br>
+		  <br>
+	  
+	  
+	  
+	  
+	
+	</body>
+</html>

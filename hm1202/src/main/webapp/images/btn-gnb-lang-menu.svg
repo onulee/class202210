@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>BA5844CA-E606-4A67-8087-3DC4B1C4F6A0</title>
+    <g id="Structure" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="GNB" transform="translate(-1881.000000, -1144.000000)">
+            <g id="gnb/language" transform="translate(120.000000, 1126.000000)">
+                <g id="btn/glyph/language/black" transform="translate(1761.000000, 18.000000)">
+                    <rect id="Rectangle" fill="#000000" opacity="0" x="0" y="0" width="24" height="24"></rect>
+                    <g id="icon/language" transform="translate(2.000000, 2.000000)" stroke="#171717" stroke-width="1.6">
+                        <circle id="Oval" cx="10" cy="10" r="9.2"></circle>
+                        <path d="M10,1 C7.23857625,1 5,5.05742404 5,9.98660196 C5,14.9157799 7.23857625,19 10,19" id="Path" stroke-linejoin="round"></path>
+                        <path d="M15,1 C12.2385763,1 10,5.05742404 10,9.98660196 C10,14.9157799 12.2385763,19 15,19" id="Path" stroke-linejoin="round" transform="translate(12.500000, 10.000000) scale(-1, 1) translate(-12.500000, -10.000000) "></path>
+                        <line x1="1.68071747" y1="6.65629069" x2="18.3473841" y2="6.65629069" id="Path-4" stroke-linecap="round"></line>
+                        <line x1="1.68071747" y1="13.3229574" x2="18.3473841" y2="13.3229574" id="Path-4-Copy" stroke-linecap="round"></line>
+                        <line x1="9.98549779" y1="1.86018403" x2="9.98549779" y2="18.1820335" id="Path-5" stroke-linecap="round"></line>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

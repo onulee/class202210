@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css 선택자</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<style>
+		   input[type="text"]{ background:yellow; }
+		   input[type="submit"]{ background:green; }
+		</style>
+		
+	</head>
+	<body>
+		<form>
+		    <label>학번</label>
+			<input type="text" name="stuNum" id="stuNum"><br>
+			<label>이름</label>
+			<input type="text" name="name" id="name"><br>
+			<label>성별</label>
+			<br>
+			<input type="radio" name="gender" id="male" value="male">
+			<label for="male">남자</label>
+			<input type="radio" name="gender" id="female" value="female">
+			<label for="female">여자</label>
+			<br>
+			<label>취미</label>
+			<br>
+			<input type="checkbox" name="hobbys" id="game" value="game">
+			<label for="game">게임</label> 
+			<input type="checkbox" name="hobbys" id="golf" value="golf">
+			<label for="golf">골프</label>
+			<br>
+			<input type="submit" value="완료">
+			<input type="reset" value="취소">
+			<br> 
+		</form>
+	
+	</body>
+</html>

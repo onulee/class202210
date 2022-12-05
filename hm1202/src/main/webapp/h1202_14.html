@@ -4,24 +4,30 @@
 		<meta charset="UTF-8">
 		<title>동영상</title>
 		<style>
-		   * { margin:0; padding:0; }
+		   * { margin:0; padding:0; list-style:none; }
 		   header{ width:100%; height:60px; background: #fff;
 		           position: absolute; z-index:10;
 		    }
 		    nav{width: 1400px; height:60px; margin:0 auto; 
-		        background: #BF8360;
+		       
 		    }
 		    nav div{height:60px; 
-		    box-sizing:border-box; border:1px solid black;
 		    float:left;
 		    }
-		    nav #d01{width:230px; } 
+		    nav #d01{width:230px; 
+		    background: url("images/logo-kolon-industries-color.svg") 0 20px / 223px auto no-repeat; } 
 		    nav #d02{width:970px; }
-		    nav #d02 ul{ width:600px; height:60px; background: #F2C84B;
-		    
+		    nav #d02 ul{ width:600px; height:60px; 
+		       margin: 0 auto;
 		     }
+		    nav #d02 ul li{ float:left; width:120px; height:60px;
+		       font-size:14px; color:#000; text-align: center; line-height: 56px;  } 
 		     
-		    nav #d03{width:200px; } 
+		    nav #d03{width:200px;  line-height: 56px; } 
+		    nav #d03 #q01 { 
+		      
+		     }
+		    
 		   #video_area{ width:100%; height:800px; overflow: hidden;
 		                position: absolute; top:0; z-index:3;
 		    }
@@ -39,7 +45,7 @@
 	<body>
 	    <header>
 	      <nav>
-	        <div id="d01">로고</div>
+	        <div id="d01"></div>
 	        <div id="d02">
 	        	<ul>
 	        		<li>회사정보</li>
@@ -49,7 +55,11 @@
 	        		<li>채용정보</li>
 	        	</ul>
 	        </div>
-	        <div id="d03">퀵메뉴</div>
+	        <div id="d03">
+	          <div id="q01"></div>
+	          <div id="q02"></div>
+	          <div id="q03"></div>
+	        </div>
 	      </nav>
 	    </header>
 		<div id="video_area">

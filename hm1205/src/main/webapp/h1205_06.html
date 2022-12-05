@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>enabled</title>
+		<style>
+			input:checked+label>span{ color:blue; font-weight:600; }
+		</style>
+	</head>
+	<body>
+		<form action="#" method="get">
+			<br>
+			<input type="radio" name="subject" id="standard" value="standard">
+			<label for="standard"><span>기초</span></label>
+			
+			<label>
+				<input type="radio" name="subject" id="speaking" value="speaking">
+				<span>회화</span>
+			</label>
+			
+			<label>
+				<input type="radio" name="subject" id="grammer" value="grammer">
+				<span>문법</span>
+			</label>
+			<label>
+				<input type="radio" name="subject" id="writing" value="writing">
+				<span>작문</span>
+			</label>
+			<br>
+			<input type="submit" value="전송">
+			<input type="reset" value="취소"><br>
+		</form>
+	
+	</body>
+</html>
