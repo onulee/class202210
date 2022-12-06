@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>scale</title>
+		<title>skew</title>
 		<style>
 		  * {margin:0; padding:0; }
 		  section{ width:210px; height:352px; margin:100px auto; 
@@ -11,33 +11,21 @@
 		  #sec01 div:nth-child(1){ overflow: hidden;}
 		  #sec01 div:nth-child(1) img{ width:210px; }
 		  #sec01 div:nth-child(1) img:hover{
-		     animation-name:iuscale;
+		     animation-name:iuskew;
 		     animation-duration:2s;
 		     animation-fill-mode: forwards;
 		     
 		    }
-		  #sec02 img:hover{
-		     animation-name:iuscale3d;
-		     animation-duration:2s;
-		     animation-fill-mode: forwards;
-		     
-		    }
-		  @keyframes iuscale{
+		 
+		  @keyframes iuskew{
 		    from{
 		    }
 		    to{
-		       transform:scale(1.5);
+		       transform:skewX(30deg);
 		    }
 		  
 		  }
-		  @keyframes iuscale3d{
-		    from{
-		    }
-		    to{
-		       transform:scale3d(10,10,200);
-		    }
 		  
-		  }
 		  
 		  
 		</style>
@@ -49,11 +37,7 @@
 	    	</div>
 	    	<div></div>
 	    </section>
-	    <section id="sec02">
-	    	<img src="images/iu01.jpg">
-	    	
-	    	
-	    </section>
+	    
 	    
 	    
 		

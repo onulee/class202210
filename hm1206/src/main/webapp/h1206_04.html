@@ -29,14 +29,28 @@
 		    animation-direction:alternate;
 		  }
 		  
+		  #sec05 div:nth-child(1) img:hover{
+		    animation-name: iurotate2;
+		    animation-duration:1.5s;
+		    animation-iteration-count:infinite;
+		    animation-direction:alternate;
+		  }
+		  
 		  @keyframes iurotate{
 		  	from{
 		  	  transform: perspective(300px) rotateX(0deg);
-		  	
 		  	}
 		  	to{
 		  	  transform: perspective(300px) rotateX(360deg);
-		  	
+		  	}
+		  
+		  }
+		  @keyframes iurotate2{
+		  	from{
+		  	  transform: perspective(300px) rotate3d(0deg);
+		  	}
+		  	to{
+		  	  transform: perspective(300px) rotate3d(0, 0, -1.5, 45deg);
 		  	}
 		  
 		  }
@@ -65,6 +79,12 @@
 	    	<div></div>
 	    </section>
 	    <section id="sec04">
+	    	<div>
+	    	  <img src="images/iu04.jpg">
+	    	</div>
+	    	<div></div>
+	    </section>
+	    <section id="sec05">
 	    	<div>
 	    	  <img src="images/iu04.jpg">
 	    	</div>

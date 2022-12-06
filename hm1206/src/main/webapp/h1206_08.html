@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>transition</title>
+		<style>
+		  *{margin:0; padding:0; list-style:none;   }
+		  body{background: #F26A4B; }
+		  section{width:500px; height:80px; margin:50px auto; border:2px solid #fff;
+		      box-sizing: border-box; 
+		      
+		      position: relative; 
+		      font-size:40px; text-align: center; line-height: 75px; 
+		      font-weight: 900; color:#fff;
+		   }
+		  div{
+		    width:20px; height:80px; 
+		    transition-property:all;
+		    transition-duration:2s; background:#fff;
+		    box-sizing: border-box;
+		    
+		    position: absolute; top:-2px; left:-2px; 
+		  }
+		  div:hover{ width:500px; height:80px; color:#000; }
+		</style>
+	</head>
+	<body>
+		<section>Loading
+			<div></div>
+		</section>
+	</body>
+</html>
+
+
+
+
+
+
+
+
