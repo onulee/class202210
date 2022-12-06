@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>scale</title>
+		<style>
+		  * {margin:0; padding:0; }
+		  img{ width:210px; }
+		  section{ width:210px; height:352px; margin:100px auto; 
+		     border:1px solid rgb(223,228,234); 
+		     float:left; margin-right:100px;
+		  }
+		  #sec01 div:nth-child(1) img:hover{
+		     transform:rotate(20deg);
+		  }
+		  
+		  #sec02 div:nth-child(1) img:hover{
+		     transform:rotate(-40deg);
+		  }
+		  #sec03 div:nth-child(1) img:hover{
+		     transform:rotate(-40deg);
+		     transform-origin:left top;
+		  }
+		  
+		  #sec04 div:nth-child(1) img:hover{
+		    animation-name: iurotate;
+		    animation-duration:1.5s;
+		    animation-iteration-count:infinite;
+		    animation-direction:alternate;
+		  }
+		  
+		  @keyframes iurotate{
+		  	from{
+		  	  transform: perspective(300px) rotateX(0deg);
+		  	
+		  	}
+		  	to{
+		  	  transform: perspective(300px) rotateX(360deg);
+		  	
+		  	}
+		  
+		  }
+		  
+		  
+		  
+		</style>
+	</head>
+	<body>
+	    <section id="sec01">
+	    	<div>
+	    	  <img src="images/iu01.jpg">
+	    	</div>
+	    	<div></div>
+	    </section>
+	    <section id="sec02">
+	    	<div>
+	    	  <img src="images/iu02.jpg">
+	    	</div>
+	    	<div></div>
+	    </section>
+	    <section id="sec03">
+	    	<div>
+	    	  <img src="images/iu03.jpg">
+	    	</div>
+	    	<div></div>
+	    </section>
+	    <section id="sec04">
+	    	<div>
+	    	  <img src="images/iu04.jpg">
+	    	</div>
+	    	<div></div>
+	    </section>
+	    
+		
+	
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>트랜지션</title>
+		<style>
+		  section{ width:1000px; margin:100px auto; }
+		  div{ width:100px; height:100px;
+		       background:#F26A4B;
+		       border:1px solid black;
+		   }
+		   div:hover{
+		   	   animation-name:chbackground;
+		       animation-direction:normal;
+		       animation-iteration-count:1;
+		       animation-duration: 2s;
+		   
+		   }
+		   
+		   @keyframes chbackground{
+		      from{
+		         background:#F26A4B;
+		         border:1px solid black; 
+		      }
+		      to{
+		         background: #A7EBF2;
+		         border:1px solid black;
+		         transform:translateY(-20px);
+		      }
+		   
+		   } 
+		</style>
+	</head>
+	<body>
+		<section>
+			<div>
+			
+			</div>
+		</section>
+	
+	</body>
+</html>
