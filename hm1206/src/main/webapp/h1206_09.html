@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>timing</title>
+		<style>
+		    * { margin:0; padding:0; }
+			section{width:1000px; margin:50px auto; }
+			div{ width:100px; height: 100px; box-sizing: border-box;
+			     border:1px solid black; background: #efefef;
+			     margin-bottom:20px;
+			     transition-property:all;
+			     transition-duration:2s;
+			     
+			 }
+			#d01{ transition-timing-function:linear;
+			      transition-delay:2s;
+			 } 
+			#d02{ transition-timing-function:ease-in; } 
+			#d03{ transition-timing-function:ease-out; } 
+			#d04{ transition-timing-function:ease-in-out; } 
+			#d01:hover{ width:500px; }
+			#d02:hover{ transform: scale(2) perspective(100px) rotateX(180deg);
+			 }
+			#d03:hover{ width:500px; }
+			#d04:hover{ width:500px; }
+			 
+		</style>
+	</head>
+	<body>
+	  <section>
+	    <div id="d01"></div>
+	    <div id="d02">ease-in</div>
+	    <div id="d03">ease-out</div>
+	    <div id="d04">ease-in-out</div>
+	  </section>
+	
+	</body>
+</html>

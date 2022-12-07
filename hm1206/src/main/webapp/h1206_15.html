@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<style>
+			*{margin:0; padding:0; }
+		  section{width:1000px; height:700px; margin:50px auto; }
+		  div{
+		    width:100px; height:100px; border:1px solid black;
+		    background:pink; 
+		    animation: divmove 2s alternate infinite ease-in;
+		  }
+		  
+		  @keyframes divmove{
+		    from{
+		      transform: translateX(0px) rotate(0deg) ;
+		    }
+		    50%{
+		      transform: translateX(500px) rotate(360deg) ;
+		      border-radius:50%;
+		      background:red;
+		    }
+		    to{
+		      transform: translateX(1000px) rotate(0deg) ;
+		      background:green;
+		    }
+		  }
+		  
+		  button{ width:80px; height:40px; margin-top:50px; }
+		</style>
+		<script>
+		   function startBtn(){
+			   $("div").css("animation-play-state","running");
+		   }
+		   
+		   function stopBtn(){
+			   $("div").css("animation-play-state","paused");
+		   }
+		</script>
+		</style>
+	</head>
+	<body>
+		<section>
+	  	<div id="d01"></div>
+	  	<button onclick="startBtn()">시작</button> <button onclick="stopBtn()">멈춤</button>
+	  </section>
+	
+	</body>
+</html>

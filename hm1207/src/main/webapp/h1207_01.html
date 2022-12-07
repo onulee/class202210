@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>viewport</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+		  * { margin:0; padding:0; font-size:40px; text-align: center; }
+		  header{ width:100%; height:100px; background:green;
+		      line-height:90px; color:white;
+		   }
+		  section div{ float:left; box-sizing: border-box; padding:3%; }
+		  section div:nth-child(1){width:30%; height:400px; background:yellow;
+		     
+		   }
+		  section div:nth-child(2){width:70%; height:400px; background:pink; }
+		  footer{width:100%; height:200px; background:aqua;
+		    clear:both;
+		  }
+		  
+		  @media screen and (max-width:800px){
+		      section div:nth-child(1){ width:100%; } 
+		      section div:nth-child(2){ display: none; }
+		      
+		  
+		  }
+		  
+		  @media screen and (min-width:801px) and (max-width:1000px){
+		     header{background: red; }
+		  
+		  }
+		  
+		  
+		
+		</style>
+		
+		
+		
+	</head>
+	<body>
+	   <header>가변 그리드 레이아웃</header>
+	   <section>
+	     <div>left메뉴</div>
+	     <div>본문</div>
+	   </section>
+	   <footer>푸터</footer>
+	
+	</body>
+</html>

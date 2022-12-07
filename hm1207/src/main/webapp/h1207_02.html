@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>media query</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/icofont.min.css">
+		<style>
+		  *{ margin:0; padding:0; list-style:none; }
+		  header{ width:100%; height:80px; background:#efefef; 
+		    font-size:20px;
+		  }
+		  header ul li { float:left; width: 150px; height:80px;  margin-right:20px;
+		          line-height:75px;
+		   }
+		  header div:nth-child(2){
+		     float:right; margin-right:50px;
+		     line-height:75px;
+		  } 
+		  section{ width:100%; height:700px; overflow: hidden; }
+		  section div{
+		    width:100%; height:700px; 
+		    background:url('images/main_visual1.jpg') 0 -200px no-repeat;
+		  }
+		  
+		  @media screen and (max-width:800px){
+		    section div{
+			    background:url('images/img_slide_m01.jpg') 0 -200px no-repeat;
+		    }
+		    header ul{ display:none; }
+		    
+		  }
+		</style>
+	</head>
+	<body>
+		<header>
+		  <div>
+		    <ul>
+		      <li>회사소개</li>
+		      <li>제품</li>
+		      <li>ESG</li>
+		      <li>투자자정보</li>
+		    </ul>
+		  </div>
+		  <div><i class="icofont-navigation-menu"></i></div>
+		</header>
+		
+		<section>
+		  <div></div>
+		</section>
+	
+	</body>
+</html>
