@@ -31,16 +31,42 @@
 		  article ul li { float:left; width:300px; height:320px; 
 		  }
 		  article ul li div:nth-child(1){width:282px; height:210px;
-		    overflow: hidden;
+		    overflow: hidden; margin-bottom:15px;
+		  }
+		  article ul li div:nth-child(2)>strong{
+		    font-size:17px; color:#111; font-weight: 600;
+		  }
+		  article ul li div:nth-child(2)>p{
+		    font-size:14px; color:#333; font-weight: 400;
+		    margin-top:5px;
+		  }
+		  article ul li div:nth-child(2)>div{
+		    font-size:22px; color:#111; font-weight: 600;
+		    margin-top:5px;
+		  }
+		  article ul li div:nth-child(2)>div>span{
+		    font-size:17px; color:#333; font-weight: 400;
+		   
 		  }
 		  article>ul>li>div>img{ width:282px; }
 		  #img04{ height:210px; }
 		  footer{ width:100%; height:749px;
 		      background: url('images/011_bg.jpg') no-repeat;    
 		   }
-		  footer div{ width:1200px; margin: 100px auto;
+		  footer div{ width:1200px; margin: 100px auto 0;
 		    padding-top:60px;
 		    color:#fff; font-size:30px; font-weight:400;
+		  }
+		  
+		  @media screen and (max-width:800px){
+		     nav>ul:nth-child(1){display: none; }
+		     nav{ width:100%; }
+		     #banner{height:500px;
+		     background:url('images/img_slide_m01.jpg') 0 -500px no-repeat;
+		  }
+		     section article{ width:100%; height:376px; margin:30px auto 0; }
+		     article ul li:nth-child(3) { clear:both; }
+		     footer div{ width:90%; padding-top:15px;  margin-top: 400px }
 		  }
 		  
 		</style>
