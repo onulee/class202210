@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>배열</title>
+		<script>
+		  var arr = ["green","red","blue","pink","yellow"];
+		  var num=0;
+		  var btnColor;
+		  //1씩 감소
+		  function btn(){
+			  btnColor = document.querySelector("#d01");
+			  num--;
+			  if(num<0){ //0보다 작으면 -1
+				  num=4; //
+			  }//if
+			  btnColor.style.backgroundColor = arr[num];
+			  btnColor.innerText = num;
+		  }//function
+		  
+		  // 1씩 증가
+		  function btn2(){
+			  btnColor = document.querySelector("#d01");
+			  num++;
+			  if(num>=arr.length){ //5보다 크면
+				  num=0;
+			  }//if
+			  btnColor.style.backgroundColor = arr[num];
+			  btnColor.innerText = num;
+		  }//function
+		</script>
+		<style>
+		  * {margin:0; padding:0; }
+		   section{ width:500px; height:440px; margin:50px auto 0px; 
+		   }
+		   
+		   div{ width:400px; height:400px; margin:0 auto; 
+		        border:1px solid black; background-color:green;
+		        font-size:80px; font-weight:600; text-align: center;
+		        line-height: 300px;
+		   }
+		   article{width:210px; margin:0 auto; }
+		   button{ display:inline-block;
+		   width:100px; height:40px; text-align: center; margin:0 auto;}
+		</style>
+	</head>
+	<body>
+	  <section>
+	    <div id="d01">0</div>
+	  </section>
+	  <article>
+		  <button onclick="btn()">◀</button>
+		  <button onclick="btn2()">▶</button>
+	  </article>
+	
+	</body>
+	
+</html>

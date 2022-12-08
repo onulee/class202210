@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>기본 입출력</title>
+		<script src="js/main2.js"></script>
+		<script>
+		   function btn1(){
+			   alert("알럿창 띄움");
+		   }
+		   function btn2(){
+			   if(confirm("글자를 삭제하시겠습니까?")){
+				   alert("삭제 되었습니다.");
+			   }else{
+				   alert("삭제 취소 되었습니다.");
+			   }
+		   }
+		</script>
+		
+		<style>
+		   * {margin:0; padding:0;}
+		  section{width:302px; margin:0 auto; }
+		  div{ width:300px; height:300px; margin:50px auto; 
+		       border:2px solid black; text-align: center;
+		       line-height:200px; font-size:30px; font-weight:600;
+		       transition:all 1s;
+		  }
+		  button{width:80px; height:40px; }
+		</style>
+	</head>
+	<body>
+		<section>
+		   <div id="d01"></div>
+		   <button onclick="btn1()">경고창</button>  
+		   <button onclick="btn2()">확인창</button>  
+		   <button onclick="btn3()">입력창</button>
+		</section>
+		
+	</body>
+</html>

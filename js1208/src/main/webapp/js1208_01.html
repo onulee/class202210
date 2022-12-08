@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<!-- <script src="js/main.js"></script> -->
+		<script>
+		    $(document).ready(function(){
+		    	/* document.querySelector("#d01");
+		    	$("#d01") */
+		    });
+		    
+		    $(function(){
+		    	
+		    });
+		</script>
+		
+		<style>
+		  * {margin:0; padding:0;}
+		  section{width:302px; margin:0 auto; }
+		  div{ width:300px; height:300px; margin:50px auto; 
+		       border:2px solid black; text-align: center;
+		       line-height:200px; font-size:30px; font-weight:600;
+		       transition:all 1s;
+		  }
+		  button{width:100px; height:40px; }
+		</style>
+		
+		<!-- 
+			<link rel="stylesheet" href="css/style.css">
+		-->
+	</head>
+	<body>
+	  <section>
+		  <div id="d01">색상을 보여줌.</div>
+		  <br>
+		  <button onclick="btn()">색상변경</button>
+	  </section>
+	  <script>
+		   var btnColor = document.querySelector("#d01");
+		   btnColor.style.backgroundColor = "red";
+		   btnColor.style.borderRadius ="50%";
+	  </script>
+	  
+	
+	</body>
+</html>

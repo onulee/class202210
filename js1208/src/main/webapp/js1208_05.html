@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>자바스크립트 타입 - string,number,boolean</title>
+		<script>
+		   function btn(){
+			   
+			   a = Number(prompt("숫자를 입력하세요."));
+			   b = Number(prompt("숫자를 입력하세요."));
+			   alert(a+b);
+			   alert(typeof(a));
+			   alert(typeof(String(a))); //String : 문자열 변환
+		   }
+		
+		   function btn3(){
+			   var a = 10;
+			   var b = "10";
+			   if(a===b){
+				   alert("같습니다.");
+			   }else{
+				   alert("다릅니다.");
+			   }
+		   }
+		 
+		
+		   function btn2(){
+			   var a = 10;    //number - 정수,실수
+			   var b = "10";  //string - 문자,문자열
+			   var c = a + b;
+			   console.log(c);  //1010
+			   console.log(typeof(a+""));
+			   alert(parseInt(b)+a); //20  Number:정수,실수   parseInt:정수, parseFloat:실수
+			   
+		   }
+		</script>
+	</head>
+	<body>
+		<button onclick="btn()">버튼</button>
+	
+	
+	</body>
+</html>

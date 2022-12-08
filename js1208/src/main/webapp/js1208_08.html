@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>이동</title>
+		<style>
+		  section{ width:800px; margin:50px auto; }
+		  article{ box-sizing:border-box; border:1px solid black; 
+		  width:800px; height:80px; margin: 0 auto; }
+		  section>article>div{ width:80px; height:80px; background:blue; 
+		    transition:all 1s;
+		    transform:translate(0px);
+		    font-size:40px; font-weight:600; text-align: center;
+		    line-height: 60px; color:white;
+		  }
+		  section>div{ width:200px; height:40px; margin:50px auto; }
+		  button{ display:inline-block; width:80px; height:40px;
+		  }
+		</style>
+		<script>
+		   var transValue = 0;
+		   function nextBtn(){
+			   transValue += 80;
+			   if(transValue>720){
+				   transValue = 0;
+			   }
+			   var d01 = document.getElementById("d01");
+			   d01.innerText = transValue;
+			   d01.style.transform = "translate("+ transValue +"px)";
+		   }
+		  
+		</script>
+	</head>
+	<body>
+		<section>
+		   <article>
+		     <div id="d01">0</div>
+		   </article>
+		   <div>
+		     <button onclick="preBtn()">◀</button>
+		     <button onclick="nextBtn()">▶</button>
+		   </div>
+		
+		</section>
+	
+	</body>
+</html>
