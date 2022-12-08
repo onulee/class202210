@@ -9,7 +9,6 @@
 		  width:800px; height:80px; margin: 0 auto; }
 		  section>article>div{ width:80px; height:80px; background:blue; 
 		    transition:all 1s;
-		    transform:translate(0px);
 		    font-size:40px; font-weight:600; text-align: center;
 		    line-height: 60px; color:white;
 		  }
@@ -19,6 +18,15 @@
 		</style>
 		<script>
 		   var transValue = 0;
+		   function preBtn(){
+			   transValue -= 80;
+			   if(transValue<0){
+				   transValue = 720;
+			   }
+			   var d01 = document.getElementById("d01");
+			   d01.innerText = transValue;
+			   d01.style.transform = "translate("+ transValue +"px)";
+		   }
 		   function nextBtn(){
 			   transValue += 80;
 			   if(transValue>720){
