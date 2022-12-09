@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>switch</title>
+		<style>
+		   * { margin:0; padding:0;}
+		   section { width:800px; height:600px; border:1px solid black;
+		     margin:50px auto 10px;
+		    }
+		   #screen{ width: 800px; height:600px; margin:0 auto; 
+		    font-size:30px; font-weight:600; text-align: center;
+		    line-height: 300px; 
+		    background:url("images/ive02.jpg") no-repeat;
+		    background-size:cover;
+		    transition:all 1s;
+		   }
+		   #btn{ width: 400px; margin:0 auto; }
+		   button{ display:inline-block; 
+		   width:50px; height:60px; text-align: center;   }
+		</style>
+		<script type="text/javascript">
+		// 변수선언 - var:변수,let:변수,const:상수
+		var imgArr = ["ive01.jpg","ive02.jpg","ive03.jpg","ive04.jpg","ive05.jpg"
+			,"ive06.jpg","ive07.jpg"];
+		function btn(num){
+			 var screen = document.querySelector("#screen");
+			 switch (num) {
+				case 1:
+			        screen.style.backgroundImage = "url('images/ive01.jpg')";
+					break;
+				case 2:
+			        screen.style.backgroundImage = "url('images/ive02.jpg')";
+					break;
+				case 3:
+			        screen.style.backgroundImage = "url('images/ive03.jpg')";
+					break;
+				case 4:
+			        screen.style.backgroundImage = "url('images/ive04.jpg')";
+					break;
+				case 5:
+			        screen.style.backgroundImage = "url('images/ive05.jpg')";
+					break;
+				case 6:
+			        screen.style.backgroundImage = "url('images/ive06.jpg')";
+					break;
+				case 7:
+			        screen.style.backgroundImage = "url('images/ive07.jpg')";
+					break;
+			 }
+			 
+		 }
+		 
+		</script>
+	</head>
+	<body>
+	   <section>
+	      <div id="screen"></div>
+	   </section>
+	   <div id="btn">
+	     <button onclick="btn(1)">1</button>
+	     <button onclick="btn(2)">2</button>
+	     <button onclick="btn(3)">3</button>
+	     <button onclick="btn(4)">4</button>
+	     <button onclick="btn(5)">5</button>
+	     <button onclick="btn(6)">6</button>
+	     <button onclick="btn(7)">7</button>
+	   </div>
+	</body>
+</html>

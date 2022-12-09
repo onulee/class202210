@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>switch</title>
+		<style>
+		   * { margin:0; padding:0;}
+		   section { width:800px; height:600px; border:1px solid black;
+		     margin:50px auto 10px;
+		    }
+		   #screen{ width: 800px; height:600px; margin:0 auto; 
+		    font-size:30px; font-weight:600; text-align: center;
+		    line-height: 300px; 
+		    background:url("images/ive1.jpg") no-repeat;
+		    background-size:cover;
+		    transition:all 1s;
+		   }
+		   #btn{ width: 220px; margin:0 auto; }
+		   button{ display:inline-block; 
+		   width:100px; height:60px; text-align: center;   }
+		</style>
+		<script type="text/javascript">
+		// 변수선언 - var:변수,let:변수,const:상수
+		var imgArr = ["ive1.jpg","ive2.jpg","ive3.jpg","ive4.jpg","ive5.jpg"
+			,"ive6.jpg","ive7.jpg"];
+		var num=0;
+		function btn(count){
+			var screen = document.querySelector("#screen");
+			if(count==1){
+				 num++;
+				 if(num>=7) num=0;
+				 // 배열을 활용하여 01 , 02, 03, 04...07 -> 01
+				 screen.style.backgroundImage = "url('images/"+imgArr[num]+"')";
+			}else{
+				 num--;
+				 if(num<=0) num=6;
+				 // 배열을 활용하여 01 , 02, 03, 04...07 -> 01
+				 screen.style.backgroundImage = "url('images/"+imgArr[num]+"')";
+			}
+			 
+		 }
+		 
+		</script>
+	</head>
+	<body>
+	   <section>
+	      <div id="screen"></div>
+	   </section>
+	   <div id="btn">
+	     <button onclick="btn(0)">◀</button>
+	     <button onclick="btn(1)">▶</button>
+	   </div>
+	</body>
+</html>

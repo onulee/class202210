@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>while</title>
+	</head>
+	<style>
+		   * { margin:0; padding:0;}
+		   section { width:800px; height:300px; border:1px solid black;
+		     margin:50px auto 10px;
+		    }
+		   h2{ text-align: center; margin-top:30px; } 
+		   #screen{ width: 800px; height:100px; margin:0 auto; 
+		    font-size:30px; font-weight:600; text-align: center;
+		    line-height: 100px; 
+		   }
+		   h4{ text-align: center; }
+		   #btn{ width: 100px; margin:0 auto; }
+		   button{ display:inline-block; 
+		   width:100px; height:60px; text-align: center;   }
+		</style>
+	<body>
+	   <section>
+	      <h2>랜덤숫자를 맞추세요!!</h2>
+	      <div id="screen">?</div>
+	      <h4 id="str">결과는?</h4>
+	   </section>
+	   <div id="btn">
+	     <button onclick="btn()">확인</button>
+	   </div>
+	   <script>
+	      function btn(){ 
+	    	  // 0<= x < 1   int(Math.random()*10)+1 => 1-10
+	    	  // 0<= x <=1   Math.floor(Math.random()*(최대값-최소값))	+최소값
+	    	  // Math.floor(Math.random()*(10-1))+1  => 1<= x <= 10
+	    	  var ranNum = Math.floor(Math.random()*(10-1))+1; //1-10
+	    	  console.log(ranNum);
+	    	  var str="";
+	    	  while(true){
+		    	  var inputNum = prompt("숫자를 입력하세요.");
+		    	  console.log(inputNum);
+	    		  if(ranNum==inputNum){
+	    			  str="정답입니다.";
+	    			  document.querySelector("h4").innerText = str;
+	    			  break;
+	    		  }else if(ranNum>inputNum) {
+	    			  str="입력한 숫자보다 더 큽니다.";
+	    			  document.querySelector("h4").innerText = str;
+	    		  }
+	    		  else {
+	    			  str="입력한 숫자보다 작습니다.";
+	    			  document.querySelector("h4").innerText = str;
+	    		  }
+	    		  
+	    		  console.log(str);
+	    	  }//while
+	      }
+	   </script>
+	
+	</body>
+</html>

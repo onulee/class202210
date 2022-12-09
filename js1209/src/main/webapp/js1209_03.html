@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>if</title>
+		<script>
+		  function btn(){
+			  var num = prompt("숫자를 입력하세요.");
+			  var result="";
+			  if(num%2==0) result="짝수입니다.";
+			  else result="홀수입니다."
+			  
+			  document.querySelector("div").innerText = result;
+		  }
+		</script>
+	</head>
+	<body>
+	  <div>홀수입니다.</div>
+	  <button onclick="btn()">숫자입력</button>
+	
+	</body>
+</html>

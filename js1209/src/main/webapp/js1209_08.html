@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>짝수 구구단</title>
+		<style>
+		  section{width:800px; margin:50px auto; }
+		  table,th,td{border:1px solid black; border-collapse: collapse;}
+		  th,td{width:100px; height:40px; 
+		    font-size:20px; text-align: center; vertical-align: middle;
+		  }
+		</style>
+	</head>
+	<body>
+	   <section id="table01">
+	      	   
+	   </section>
+	   <script>
+		  var htmlData="<table>";
+		  for(var i=2;i<=9;i++){
+			     if(i%2!=0) continue;
+			     htmlData +="<tr><th colspan='5'>[ "+i+"단 ]</th></tr>";
+			  for(var j=1;j<=9;j++){
+				 htmlData +="<tr>";
+				 htmlData +="<td>"+i+"</td>";
+				 htmlData +="<td>*</td>";
+				 htmlData +="<td>"+j+"</td>";
+				 htmlData +="<td>=</td>";
+				 htmlData +="<td>"+i*j+"</td>";
+				 htmlData +="</tr>";
+			  }
+		  }
+		  htmlData +="</table>"; 
+		  document.querySelector("#table01").innerHTML = htmlData;
+		  Do
+		</script>
+	</body>
+</html>

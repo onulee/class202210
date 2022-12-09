@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>변수</title>
+		<style>
+		   * { margin:0; padding:0;}
+		   section { width:800px; height:600px; border:1px solid black;
+		     margin:50px auto 10px;
+		    }
+		   h2{ text-align: center; margin-top:30px; } 
+		   #screen{ width: 800px; height:600px; margin:0 auto; 
+		    font-size:30px; font-weight:600; text-align: center;
+		    line-height: 300px; 
+		   }
+		   #btn{ width: 100px; margin:0 auto; }
+		   button{ display:inline-block; 
+		   width:100px; height:60px; text-align: center;   }
+		</style>
+		<script type="text/javascript">
+		// 변수선언 - var:변수,let:변수,const:상수
+		
+		function btn(){
+			  var date = new Date();
+			  var currentYear = date.getFullYear();
+			  var birthYear = prompt("태어난 년도를 입력하세요.","2022");
+			  age = currentYear - birthYear + 1;
+			  document.querySelector("#screen").innerText = age;
+		 }
+		 
+		</script>
+	</head>
+	<body>
+	   <section>
+	      <h2>현재 나이</h2>
+	      <div id="screen">0</div>
+	   </section>
+	   <div id="btn">
+	     <button onclick="btn()">확인</button>
+	   </div>
+	</body>
+</html>

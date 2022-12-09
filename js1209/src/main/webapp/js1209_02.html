@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>학생성적프로그램</title>
+		<script>
+		  function btn(){
+			  var name = document.querySelector("#name").value;
+			  var kor = document.querySelector("#kor").value;
+			  var eng = document.querySelector("#eng").value;
+			  var math = document.querySelector("#math").value;
+			  var total = Number(kor)+Number(eng)+Number(math);
+			  var avg = total/3;
+			  avg = avg.toFixed(2);
+			  var grade;
+			  if(avg>=90) grade = "A";
+			  else if(avg>=80) grade = "B";
+			  else if(avg>=70) grade = "C";
+			  else if(avg>=60) grade = "D";
+			  else grade = "F";
+			  var htmlData="";
+			  htmlData += "<table>";
+			  htmlData += "<tr><td>이름</td><td>"+name+"</td></tr>";
+			  htmlData += "<tr><td>국어점수</td><td>"+kor+"</td></tr>";
+			  htmlData += "<tr><td>영어점수</td><td>"+eng+"</td></tr>";
+			  htmlData += "<tr><td>수학점수</td><td>"+math+"</td></tr>";
+			  htmlData += "<tr><td>합계</td><td>"+total+"</td></tr>";
+			  htmlData += "<tr><td>평균</td><td>"+avg+"</td></tr>";
+			  htmlData += "<tr><td>등급</td><td>"+grade+"</td></tr>";
+			  htmlData += "</table>";
+ 			  document.querySelector("#screen").innerHTML = htmlData;	
+ 			  document.querySelector("#name").value ="";
+ 			  document.querySelector("#kor").value ="";
+ 			  document.querySelector("#eng").value ="";
+ 			  document.querySelector("#math").value ="";
+ 			 
+		  }
+		</script>
+		<style>
+		  * { margin:0; padding:0; }
+		  section{ width:800px; margin:50px auto; }
+		  table,td{border:1px solid black; border-collapse: collapse;}
+		  td{width:200px; text-align: center; vertical-align: middle; 
+		     font-size:25px; font-weight:600; }
+		  h4{ margin-top:30px; font-size:35px; } 
+		  form{font-size:20px; }  
+		  
+		  button{ margin-top:10px; font-size:25px; }
+		</style>
+	</head>
+	<body>
+	   <section>
+		   <div id="screen"></div>
+		   <h4>학생성적입력</h4>
+		   <form action="https://www.naver.com" name="frm" method="get">
+		     <label>이름</label>
+		     <input type="text" name="name" id="name"><br>
+		     <label>국어</label>
+		     <input type="text" name="kor" id="kor"><br>
+		     <label>영어</label>
+		     <input type="text" name="eng" id="eng"><br>
+		     <label>수학</label>
+		     <input type="text" name="math" id="math"><br>
+		     <button type="button" onclick="btn()">성적결과</button>
+		   </form>
+	   </section>
+	
+	
+	
+	</body>
+</html>
+
+
+
+
