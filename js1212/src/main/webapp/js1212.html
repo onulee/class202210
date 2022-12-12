@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>자유게시판</title>
+		<style>
+		  * { margin:0; padding:0;}
+		  section{ width:90%; margin:50px auto; }
+		  h2{width:100%; text-align: center; margin-bottom:40px; }
+		  table{width:100%; box-sizing: border-box;}
+		  table,th,td{border:1px solid #111; border-collapse: collapse; text-align: center; }
+		  #freeBoard tr td:nth-child(1) {
+		    text-align: left; padding-left:10px; 
+		  }
+		  th{height:60px; background:#efefef; }
+		  td{height:40px; }
+		</style>
+		<script>
+		  var titleArr =["좋은 글입니다.","이벤트를 홍보합니다.","게시판을 오픈합니다.","사진을 등록합니다."
+			  , "공지사항을 알려드립니다.","이벤트를 중지합니다.","게시글 작성시 유의사항"
+			  , "파일등록시 유의사항","12월 이벤트 알림","휴무 안내"];
+		  var dateArr = ['2020-11-1','2021-1-3', '2021-2-8', '2021-3-20',
+			  '2021-4-19','2021-5-30', '2022-3-24', '2022-5-20',
+			  '2022-11-1','2022-12-12'  ];
+		  var htmlData="";
+		  
+	      function btn(){
+	    	  for(var i=0;i<10;i++){
+				  var today = new Date(dateArr[i]);
+				  var year = today.getFullYear();
+				  var month = today.getMonth();
+				  var date = today.getDate();
+				  var day = today.getDay();
+				  var dayStr="";
+				  console.log(today);
+				  console.log(year); //2022
+				  console.log(month); // 11 + 1
+				  console.log(date);  // 12
+				  console.log(day);   // 1 -> 0:일, 1:월, 2:화, 3:수, 4:목, 5:금, 6:토
+				  switch(day){
+				  case 0:
+					  dayStr="(일)";
+					  break;
+				  case 1:
+					  dayStr="(월)";
+					  break;
+				  case 2:
+					  dayStr="(화)";
+					  break;
+				  case 3:
+					  dayStr="(수)";
+					  break;
+				  case 4:
+					  dayStr="(목)";
+					  break;
+				  case 5:
+					  dayStr="(금)";
+					  break;
+				  case 6:
+					  dayStr="(토)";
+					  break;
+				  
+				  }
+				  
+		    	  htmlData += "<tr>";
+		    	  htmlData += "<td>"+ titleArr[i] +"</td>";
+		    	  htmlData += "<td>홍길동</td>";
+		    	  htmlData += "<td>"+year+"."+(month+1)+"."+date+dayStr+"</td>";
+		    	  htmlData += "<td>"+ (i+1) +"</td>";
+		    	  htmlData += "<td>"+ (i+1) +"</td>";
+		    	  htmlData += "</tr>";
+	    	  }
+	    	  document.querySelector("#freeBoard").innerHTML = htmlData;
+	      }
+	    </script>
+	</head>
+	<body>
+	  <section>
+	    <h2>자유게시판</h2> <button type="button" onclick="btn()">데이터가져오기</button>
+	    
+	    <table>
+	      <colgroup>
+	        <col width="50%">
+	        <col width="15%">
+	        <col width="15%">
+	        <col width="10%">
+	        <col width="10%">
+	      </colgroup>
+	      <thead>
+		      <tr>
+		        <th>제목</th>
+		        <th>작성자</th>
+		        <th>작성일</th>
+		        <th>조회</th>
+		        <th>좋아요</th>
+		      </tr>
+	      </thead>
+	      <tbody id="freeBoard">
+	      </tbody>
+	    </table>
+	  </section>
+	
+	</body>
+</html>
