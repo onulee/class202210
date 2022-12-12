@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>style onclick</title>
+		<style>
+		   * { margin:0; padding:0; list-style: none; }
+		   section{width:70%; margin:50px auto; }
+		   ul li {width:33%; height:40px; border:1px solid #111; box-sizing:border-box;
+		   text-align: center; line-height: 35px; float:left; margin-right:1px;
+		   cursor: pointer; }
+		   ul { margin-bottom: 30px; height:40px; }
+		   div{ clear:both;
+		    width:100%; height:300px; border:1px solid #111;  }
+		</style>
+	</head>
+	<body>
+	   
+	   <section>
+	     <ul>
+	       <li onclick="btn('Green')">대한민국</li>
+	       <li onclick="btn('Orange')">프랑스</li>
+	       <li onclick="btn('Purple')">아르헨티나</li>
+	     </ul>
+	     <div></div>
+	   </section>
+	   <script>
+	     var worldcup =["다음은 FIFA 월드컵에서 대한민국의 결과를 기록한 것이다.대한민국 축구 국가대표팀은 1954년과 1986년 ~ 2022년까지 10번에 걸쳐 FIFA 월드컵 본선에 모습을 드러냈다. 아시아 팀 최초로 10회 연속이자 통산 11회 본선 진출을 이어가고 있으며, 최고 성적은 2002년 FIFA 월드컵에서 기록한 4위이다.",
+	    	 "1998년 FIFA 월드컵(프랑스어: Coupe du monde de football de 1998)은 남자부 축구 국가대항전의 세계 선수권 대회인 FIFA 월드컵의 16번째 대회이며, 1998년 6월 10일부터 7월 12일까지 프랑스에서 열렸다.",
+	    	 "1978년 FIFA 월드컵(영어: 1978 FIFA World Cup, 스페인어: Copa Mundial de Fútbol de 1978)은 제11회 FIFA 월드컵으로 1978년 6월 1일부터 6월 25일까지 아르헨티나에서 열렸다."
+	    	 ];
+	   
+	     function btn(color){
+	    	 document.querySelector("div").style.backgroundColor = color;
+	     }
+	   </script>
+	
+	</body>
+</html>

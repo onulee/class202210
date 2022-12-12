@@ -21,23 +21,35 @@
 	    <span>성장</span>
 	  </form>
 	  <script>
+	  
+	    // 로딩시 실행
 	    var htmlData ="";
 	    for(var i=1900;i<=2022;i++){
 	    	htmlData += "<option value='"+i+"'>"+i+"</option>";
 	    }
+	    // innerText:글 저장
 	    document.querySelector("#year").innerHTML = htmlData;
 	    
 	    
 	    
-	    var selectData="";
+	    // onchange시 실행
 	    function btn(){
 	    	// 1900-2000: 500-1000, 2001-2022:1001-2000
+	    	var selectData="";
+	    	selectYear = document.querySelector("#year").value;
+	    
+	        if(selectYear>=1900 && selectYear<=2000){
+		    	for(var i=500;i<=1000;i++){
+		    		selectData += "<option value='"+i+"'>"+i+"</option>";
+			    }
+	        }else{
+	        	for(var i=1001;i<=2000;i++){
+		    		selectData += "<option value='"+i+"'>"+i+"</option>";
+			    }
+	        }
+	        
+			document.querySelector("#stock").innerHTML = selectData;
 	    	
-	    	
-	    	for(var i=500;i<=1000;i++){
-	    		selectData += "<option value='"+i+"'>"+i+"</option>";
-		    }
-		    document.querySelector("#stock").innerHTML = selectData;
 	    }
 	    
 	  </script>
