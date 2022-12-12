@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>익명함수</title>
+		<script>
+			(function(){
+				console.log("익명함수를 자동실행해 줌");
+			}());
+			
+			
+			var result = function(){
+				return 100;
+			}
+			(function(a,result){
+			   console.log(a+b);
+			}(100,200));
+			
+			document.write(result())
+			
+			//$(document).ready( function(){}    );
+		</script>
+	</head>
+	<body>
+	  
+	
+	</body>
+</html>

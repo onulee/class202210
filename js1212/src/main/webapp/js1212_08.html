@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			  * { margin:0; padding:0;}
+			  section{ width:60%; margin:50px auto; }
+			  h2{width:100%; text-align: center; margin-bottom:40px; }
+			  div{width:100%; height:60px; border:1px solid black; }
+			  article{ width:200px;  margin:30px auto; }
+			  button{width:200px; height:80px;  }
+		</style>
+		
+	</head>
+	<body>
+	  <section>
+	    <h2>결과값</h2>
+	    <div></div>
+	    <article>
+	    	<button>버튼</button>
+	    </article>
+	    <br>
+	  </section>  
+	  <script>
+	     //changeBtn.onclick = btn;  //자바스크립트내 이벤트처리할때는 함수에 ()를 붙이지 않음.
+	     document.querySelector("button").onclick = function(){
+	    	 document.querySelector("div").style.backgroundColor = "red";
+	     };  
+	     
+	     
+	     function btn1(){
+	    	 document.querySelector("div").style.backgroundColor = "green";
+	     }
+	  
+	  </script>
+	</body>
+</html>

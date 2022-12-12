@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>호이스팅</title>
+		<script>
+			var x = 10;
+			function number(num1,num2){
+				console.log("x : "+x);
+				console.log("y : "+y);
+				var y = 20;
+				console.log("y : "+y);
+				return num1+num2;
+			}
+			input1 = Number(prompt("첫번째 숫자를 입력하세요."));
+			input2 = Number(prompt("두번째 숫자를 입력하세요."));
+			var result = number(input1,input2);
+			document.write(result);
+			
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

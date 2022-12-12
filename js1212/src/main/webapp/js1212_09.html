@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>form</title>
+	</head>
+	<body>
+	  <form action="" method="get" >
+	    <h4>년도</h4>
+	    
+	    <select name="year" id="year" onchange="btn()">
+	    </select>
+	    <span>년</span>
+	    <h4>주식성장</h4>
+	    <select name="stock" id="stock" >
+	       <option value="500">500</option>
+	       <option value="502">502</option>
+	       <option value="504">504</option>
+	       <option value="506">506</option>
+	    </select>
+	    <span>성장</span>
+	  </form>
+	  <script>
+	    var htmlData ="";
+	    for(var i=1900;i<=2022;i++){
+	    	htmlData += "<option value='"+i+"'>"+i+"</option>";
+	    }
+	    document.querySelector("#year").innerHTML = htmlData;
+	    
+	    
+	    
+	    var selectData="";
+	    function btn(){
+	    	// 1900-2000: 500-1000, 2001-2022:1001-2000
+	    	
+	    	
+	    	for(var i=500;i<=1000;i++){
+	    		selectData += "<option value='"+i+"'>"+i+"</option>";
+		    }
+		    document.querySelector("#stock").innerHTML = selectData;
+	    }
+	    
+	  </script>
+	
+	</body>
+</html>
