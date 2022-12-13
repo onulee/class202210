@@ -86,10 +86,10 @@
 	  <script>
 	    var con2img = document.querySelectorAll("#con2 img");
 	    for(i = 0;i<con2img.length;i++){
-	    	con2img[i].addEventListener("click",function(){
-	    		alert(this.src);
+	    	con2img[i].addEventListener("mouseover",function(){
+	    		alert(this.getAttribute("data-src"));
 	    		var maxImage = document.querySelector("#maxImage img")
-	    		maxImage.setAttribute("src",this.src);
+	    		maxImage.setAttribute("src",this.getAttribute("data-src"));
 	    	});
 	    }
 	    

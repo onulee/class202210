@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>setAttribute</title>
+		<style>
+		  * {margin:0; padding:0; }
+		  #main{
+		  position:fixed; top:0; left:0;
+		  width:100%; height:100%; background-color:rgba(0,0,0,0.7);
+		    display:none;
+		  }
+		  #main img{ width:850px; 
+		    position:absolute; top:50%; left:50%;
+		    transform:translate(-50%,-50%);
+		    border:5px solid #fff;
+		   }
+		  section{width:600px; margin:50px auto 0;} 
+		  section article{width:200px; height:100px; 
+		  overflow: hidden; 
+		  float:left; margin-bottom:10px;   }
+		  section article img {width:190px;  }
+		</style>
+	</head>
+	<body>
+	   <section id="sec">
+	      <article>
+	        <img src="images/ha01.jpg">
+	      </article>
+	      <article>
+	        <img src="images/ha02.jpg">
+	      </article>
+	      <article>
+	        <img src="images/ha03.jpg">
+	      </article>
+	      <article>
+	        <img src="images/ha04.jpg">
+	      </article>
+	      <article>
+	        <img src="images/ha05.jpg">
+	      </article>
+	      <article>
+	        <img src="images/ha06.jpg">
+	      </article>
+	   </section>
+	   <div id="main">
+	     <img id="img01" src="images/ha06.jpg">
+	   </div>
+	   <script>
+	        //이미지 나타나기
+	        var imgArr = document.querySelectorAll("article img");
+	        console.log(imgArr);
+	        for(i=0;i<imgArr.length;i++){
+	        	imgArr[i].addEventListener("click",function(){
+	        		var src = this.getAttribute("src");
+	        		document.querySelector("#img01").setAttribute("src",src);
+	        		document.querySelector("#main").style.display = "block";
+	        	});
+	        }
+	        
+	        //이미지 삭제하기
+	        document.querySelector("#main").addEventListener("click",function(){
+	        	document.querySelector("#main").style.display = "none";
+	        });
+	        
+	        
+	     
+	   </script>
+	
+	</body>
+</html>
