@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>속성</title>
+		<style>
+		  section{width:70%; margin:0 auto; }
+		  img{width:100%; }
+		</style>
+	</head>
+	<body>
+	  <section>
+	    <img src="images/ive1.jpg" alt="걸그룹 아이브">
+	  </section>
+	  <script>
+	     img = document.querySelector("img");
+	     img.onclick = function(){
+	    	 alert("링크 주소 : " + img.getAttribute("src"));
+	    	 img.setAttribute("src","images/ive2.jpg"); 
+	     }
+	  </script>
+	
+	</body>
+</html>

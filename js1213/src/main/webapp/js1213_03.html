@@ -40,7 +40,8 @@
 		  }
 		  .oceanColor{color:#0083dc; }
 		  #con2{ margin-top:50px; }
-		  #maxImage{ margin:50px 0; height:600px; border:1px solid #d4d7db; }
+		  #maxImage{ margin:50px 0; height:300px; border:1px solid #d4d7db; }
+		  #maxImage img{ width:100%; }
 		</style>
 	</head>
 	<body>
@@ -78,8 +79,21 @@
 	      <img src="images/intro4.jpg">
 	      <img src="images/intro5.jpg">
 	    </div>
-	    <div id="maxImage"></div>
+	    <div id="maxImage" >
+	      <img src="images/intro3.jpg">
+	    </div>
 	  </section>
+	  <script>
+	    var con2img = document.querySelectorAll("#con2 img");
+	    for(i = 0;i<con2img.length;i++){
+	    	con2img[i].addEventListener("click",function(){
+	    		alert(this.src);
+	    		var maxImage = document.querySelector("#maxImage img")
+	    		maxImage.setAttribute("src",this.src);
+	    	});
+	    }
+	    
+	  </script>
 	  
 	
 	</body>

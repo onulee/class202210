@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>src 속성 가져오기</title>
+		<style>
+		  * {margin:0; padding:0; list-style: none; } 
+		  img{width:100px; }
+		  ul li{width:200px; height:200px; border:1px solid black; }
+		</style>
+	</head>
+	<body>
+	  <div>
+	    <ul>
+	      <li id="img01"><img src="images/ive1.jpg"></li>
+	      <li>링크주소를 넣습니다.</li>
+	    </ul>
+	  </div>
+	  <div>
+	    <ul>
+	      <li id="img02"><img src="images/ive2.jpg"></li>
+	      <li>링크주소를 넣습니다.</li>
+	    </ul>
+	  </div>
+	  <script>
+	     var img = document.querySelector("#img01>img")
+	     img.onclick = function(){
+	    	 document.querySelector("#img01+li").innerText = img.getAttribute("src");
+	     };
+	     
+	     var img02 = document.querySelector("#img02>img")
+	     img02.onclick = function(){
+	    	 document.querySelector("#img02+li").innerText = img02.getAttribute("src");
+	     };
+	     
+	  
+	  </script>
+	
+	</body>
+</html>

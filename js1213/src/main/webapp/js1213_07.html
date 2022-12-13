@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>setAttribute</title>
+		<style>
+		  * {margin:0; padding:0; }
+		  div{
+		  position:fixed; top:0; left:0;
+		  width:100%; height:100%; background-color:rgba(0,0,0,0.7);}
+		  img{ width:500px; 
+		    position:absolute; top:50%; left:50%;
+		    transform:translate(-50%,-50%);
+		    border:5px solid #fff;
+		   }
+		</style>
+	</head>
+	<body>
+	   <div>
+	     <img id="img01" src="images/ive1.jpg">
+	   </div>
+	   <script>
+	     var img = document.querySelector("#img01")
+	     img.onclick = function(event){
+	    	 alert("클릭한 이미지 파일 : "+this.src);
+	    	 /* alert("이벤트 유형 : "+event.type+"이벤트 발생위치 : "+event.pageX+","+
+	    			 event.pageY); */
+	     }
+	     
+	   </script>
+	
+	</body>
+</html>
