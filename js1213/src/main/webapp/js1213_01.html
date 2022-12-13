@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>style</title>
+		<style>
+		  * { margin:0; padding:0; }
+		  section{width:300px; margin:20px auto; }
+		  div{ width:100%; height:200px; border:1px solid black; margin-bottom:20px;
+		   }
+		  #d01 { background:url('images/ive1.jpg') no-repeat; 
+		         background-size: cover;
+		  } 
+		  #d02 { display:none; }
+		</style>
+	</head>
+	<body>
+	  <section>
+	    <div id="d01">
+	    	<button id="show" onclick="showBtn()">상세설명 보기</button>
+	    </div>
+	    <div id="d02">
+		    <p>2021년 12월 1일에 데뷔한 스타쉽엔터테인먼트 소속의 6인조 다국적 걸그룹.
+		    <br><br>
+						그룹명인 IVE는 I HAVE의 축약형인 I'VE에서 유래되었으며, 
+						‘우리가 가진 것들을 모두 당당히 보여 드리겠다.’는 포부를 담았다.
+			</p>	
+					
+			<button onclick="closeBtn()">상세설명 닫기</button>			
+		</div>
+	  </section>
+	  <script>
+	    function showBtn(){
+	    	document.querySelector("#d02").style.display = "block";
+	    	document.querySelector("#show").style.display = "none";
+	    }
+	    
+	    function closeBtn(){
+	    	document.querySelector("#d02").style.display = "none";
+	    	document.querySelector("#show").style.display = "block";
+	    }
+	  
+	  </script>
+	
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>dom요소</title>
+	</head>
+	<body>
+	  <div id="d01" class="c">
+	    <li id="l01">구글</li>
+	    <li>네이버</li>
+	    <li>다음</li>
+	    <li>네이트</li>
+	  </div>
+	  <div id="d02" class="c">
+	    <button id="btn1">확인</button>
+	  </div>
+	  <script>
+	    document.querySelector("#l01").onclick = function(){
+	    	document.querySelector("#l01").innerText = "구글코리아";
+	    	alert(document.querySelector("#l01").innerText);
+	    }
+	    console.log("id : "+document.getElementById("d01"));
+	    //$("#d01")
+	    console.log("class : "+document.getElementsByClassName("c"));
+	    //$(".c")
+	    console.log("li : "+document.getElementsByTagName("li"));
+	    //$("li")
+	    console.log("li : "+document.querySelectorAll("li"));
+	  </script>
+	
+	</body>
+</html>
