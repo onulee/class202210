@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery 노드추가</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	</head>
+	<body>
+	  <input type="text" name="list" id="list">
+	  <button onclick="btn()">추가버튼</button>
+	  <ul id="umain">
+	    <li>네이버</li>
+	    <li>구글</li>
+	    <li>다음</li>
+	    <li>네이트</li>
+	  </ul>
+	  
+	</body>
+	<script>
+	  function btn(){
+		  
+		  // 제이쿼리 구문
+		  var inputData = $("#list").val().trim();
+		  if(inputData=="" || inputData == null){
+			  alert("리스트 제목이 없습니다. 리스트 제목을 입력하세요.!!");
+			  return false;
+		  }
+		  $("#umain").append("<li>"+ inputData +"</li>");
+		  $("#list").val("");t
+		  
+		  		  
+		  /* 자바스크립트 구문
+		  
+		  var inputData = document.querySelector("#list").value.trim();
+		  if(inputData=="" || inputData == null){
+			  alert("리스트 제목이 없습니다. 리스트 제목을 입력하세요.!!");
+			  return false;
+		  }
+		  var addP = document.createElement("li");
+		  var addText = document.createTextNode(inputData);
+		  addP.appendChild(addText);
+		  document.querySelector("#umain").appendChild(addP);
+		  document.querySelector("#list").value = ""; */
+		  
+	  }
+	 
+	  
+	</script>
+</html>

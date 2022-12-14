@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>노드 삭제</title>
+	</head>
+	<body>
+	  <section>
+		  <form action="#" method="get">
+		    <input type="text" name="title" id="title">
+		    <button onclick="btn(); return false;">추가</button>
+		  </form>
+	  </section>
+	  <ul id="main"></ul>
+	  <script>
+		  function btn(){
+			  var text = document.querySelector("#title").value;
+			  var liNode = document.createElement("li");
+			  var textNode = document.createTextNode(text);
+			  liNode.appendChild(textNode);
+			  var main = document.querySelector("#main");
+			  main.insertBefore(liNode,main.childNodes[0]);
+			  // li 마지막에 추가
+			  // document.querySelector("#main").appendChild(liNode);
+			  document.querySelector("#title").value = "";
+			  
+		  }
+	  
+	  </script>
+	  
+	  
+	  
+	</body>
+</html>

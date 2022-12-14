@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>li 글 가져오기</title>
+	</head>
+	<body>
+	  <ul>
+	    <li>네이버</li>
+	    <li>구글</li>
+	    <li>다음</li>
+	    <li>네이트</li>
+	  </ul>
+	</body>
+	<script>
+	  //li를 클릭했을때 해당되는 text를 알럿으로 띄워보세요.
+	  var liArr = document.querySelectorAll("li");
+	  // forEach(함수(배열요소1개,순서){})
+	  liArr.forEach(function(li_data){
+		  li_data.addEventListener("click",function(){
+			  alert(this.innerText);
+		  });
+	  });	  
+	  
+	  /* for(i=0;i<liArr.length;i++){
+		  liArr[i].addEventListener("click",function(){
+			  alert(this.innerText);
+		  });
+	  } */
+	  
+	</script>
+</html>

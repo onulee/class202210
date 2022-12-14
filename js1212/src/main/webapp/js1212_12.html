@@ -10,14 +10,14 @@
 		   text-align: center; line-height: 35px; float:left; margin-right:1px;
 		   cursor: pointer; }
 		   ul { margin-bottom: 30px; height:40px; }
-		   #main{ clear:both; color:#fff;
+		   #main{ clear:both; 
 		    width:100%; height:300px; border:1px solid #111;  }
 		</style>
 	</head>
 	<body>
 	   <section>
 	     <ul>
-	       <li id="li01">대한민국</li>
+	       <li>대한민국</li>
 	       <li>프랑스</li>
 	       <li>아르헨티나</li>
 	     </ul>
@@ -28,17 +28,18 @@
 	    	 "1998년 FIFA 월드컵(프랑스어: Coupe du monde de football de 1998)은 남자부 축구 국가대항전의 세계 선수권 대회인 FIFA 월드컵의 16번째 대회이며, 1998년 6월 10일부터 7월 12일까지 프랑스에서 열렸다.",
 	    	 "1978년 FIFA 월드컵(영어: 1978 FIFA World Cup, 스페인어: Copa Mundial de Fútbol de 1978)은 제11회 FIFA 월드컵으로 1978년 6월 1일부터 6월 25일까지 아르헨티나에서 열렸다."
 	    	 ];
-	     var li01 = document.querySelector("#li01");
-	     li01.addEventListener("click",function(){
-	    	 alert(li01.innerText);
-	    	 
-	    	 if(li01.innerText=="대한민국"){
-	    		 document.querySelector("#main").style.backgroundColor = "blue";
-	    		 document.querySelector("#main").innerText = worldcup[0];
-	    	 }
-	     });
-	   
-	     
+	     var liArr = document.querySelectorAll("li");
+	     //li를 클릭할때
+	     for(i=0;i<liArr.length;i++){
+	    	 liArr[i].addEventListener("click",function(){
+	    		 if(this.innerText=="대한민국")
+	    			 document.querySelector("#main").innerText = worldcup[0];
+	    		 else if(this.innerText == "프랑스")
+	    			 document.querySelector("#main").innerText = worldcup[1];
+	    		 else
+	    			 document.querySelector("#main").innerText = worldcup[2];
+	    	 }); 
+	     }
 	   </script>
 	
 	</body>

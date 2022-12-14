@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>노드 추가</title>
+	</head>
+	<body>
+	  <section>
+	    <h2>노드 추가</h2>
+	    <button onclick="btn(); this.onclick='';" >추가</button>
+	    <br>
+	    <div id="main">
+	     
+	    </div>
+	  </section>
+	  <script>
+	    function btn(){
+	    	var newP = document.createElement("p");
+	    	var txtNode = document.createTextNode("노드를 추가합니다.");
+	    	newP.appendChild(txtNode);
+	    	document.querySelector("#main").appendChild(newP);
+	    }
+	    
+	  </script>
+	
+	</body>
+</html>
