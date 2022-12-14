@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>노드 추가</title>
+		<style>
+		  * { margin:0; padding:0; font-size:20px; }
+		  section{width:50%; margin:50px auto;}
+		  button{margin-bottom:30px; }
+		</style>
+	</head>
+	<body>
+	   <section>
+	       <input type="text" name="title" id="title">
+		   <button id="btn">리스트 추가</button>
+		   <br>
+		   <ul id="listAdd">
+		      <li>구글</li>
+		      <li>네이버</li>
+		   </ul>
+	   </section>
+	   
+	   <script>
+	      
+	   
+	   
+    	  document.querySelector("#title").addEventListener("keyup",function(event){
+    		  if(event.keyCode === 13){
+    		  	addBtn();
+    		  }
+    	  });
+    	  
+    	  document.querySelector("#btn").addEventListener("click",function(event){
+    		  addBtn();
+    	  });
+    	  
+    	  function addBtn(){
+   			  var inputText = document.querySelector("#title").value; 
+   	    	  var liNode = document.createElement("li");
+   	    	  var textNode = document.createTextNode(inputText);
+   	    	  liNode.appendChild(textNode);
+   	    	  //추가
+   	    	  document.querySelector("#listAdd").appendChild(liNode);
+   	    	  document.querySelector("#title").value = "";
+   	    	  itemsDelete();
+   	    	  
+    	  }
+    	  
+    	  function itemsDelete(){
+    		  var items = document.querySelectorAll("li");
+	  	      for(i=0;i<items.length;i++){
+	  	    	  // li에 있는 것을 모두 확인
+	  	    	  items[i].addEventListener("click",function(){
+	  	    		  if(this.parentNode)
+	  	    			  this.parentNode.removeChild(this);
+	  	    	  });
+	  	      }
+    	  }
+    	  
+    	  itemsDelete();
+    	  
+	      /* function listBtn(){
+	    	  var inputText = document.querySelector("#title").value; 
+	    	  var liNode = document.createElement("li");
+	    	  var textNode = document.createTextNode(inputText);
+	    	  liNode.appendChild(textNode);
+	    	  //추가
+	    	  document.querySelector("#listAdd").appendChild(liNode);
+	    	  document.querySelector("#title").value = "";
+	      } */
+	   
+	   </script>
+	
+	</body>
+</html>

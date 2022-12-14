@@ -3,22 +3,29 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>노드 삭제</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	</head>
 	<body>
 	  <section>
 		  <form action="#" method="get">
 		    <input type="text" name="title" id="title">
-		    <button onclick="btn(); return false;">추가</button>
+		    <button onclick="jqueryBtn(); return false;">추가</button>
 		  </form>
 	  </section>
 	  <ul id="main"></ul>
 	  <script>
+	      function jqueryBtn(){
+	    	  $("#main").prepend("<li>"+ $("#title").val() +"</li>");
+	    	  $("#title").val("");
+	      }
+	  
 		  function btn(){
 			  var text = document.querySelector("#title").value;
 			  var liNode = document.createElement("li");
 			  var textNode = document.createTextNode(text);
 			  liNode.appendChild(textNode);
 			  var main = document.querySelector("#main");
+			  // li 앞에 추가
 			  main.insertBefore(liNode,main.childNodes[0]);
 			  // li 마지막에 추가
 			  // document.querySelector("#main").appendChild(liNode);
