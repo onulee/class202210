@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script>
+		  $(function(){
+			  $("button").click(function(){
+				  $("#inner_wrap p:eq(2)").css("color","red");
+			  });
+			  
+			  /* $("#h02").click(function(){
+				 $(this).prev().css("background-color","green");  //클릭한 이전 형제요소
+				 $(this).next().css("background-color","green");  //클릭한 다음 형제요소
+			  }); */
+		  })
+		</script>
+	</head>
+	<body>
+	  <button>버튼</button>
+	  <div id="wrap">
+	    <div id="inner_wrap">
+	      <h1>제목</h1>
+	      <h2 id="h02">제목2</h2>
+	      <p>내용1</p>
+	      <p>내용2</p>
+	      <p>내용3</p>
+	    </div>
+	  </div>
+	
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>제이쿼리</title>
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script>
+		   $(function(){
+			   $("h2").click(function(){
+				  var liTxt = "<li>쿠팡</li>";
+				  $("ul").html(liTxt);  //html소스 모두 지우고 추가
+			   });
+			   
+			   /* $("h2").click(function(){
+				  var liTxt = "<li>쿠팡</li>";
+				  $("ul").prepend(liTxt);  //html소스 위에 삽입
+			   }); */
+			   
+			   /* $("h2").click(function(){
+				  var liTxt ="<li>쿠팡</li>"; 
+				  $("ul").append(liTxt);  //html소스 아래에 삽입
+			   }); */
+			   
+			   
+			   /* $("h2").click(function(){
+				   $("li:nth-child(1)").text("google");
+			   }); */
+			   
+			   
+			   /* $("h2").click(function(){
+				   $("li:first").css("color","red");
+			   });
+			   $("h2").mouseover(function(){
+				  $("h2").css("cursor","pointer"); 
+			   }); */
+			   
+			   $("#ul li")
+		   });
+		</script>
+		<style>
+		</style>
+	</head>
+	<body>
+	  <h2>리스트</h2>
+	  <ul id="ul">
+	    <li id="li01">구글
+	      <ul>
+	        <li>google</li>
+	      </ul>
+	    </li>
+	    <li class="li">네이버</li>
+	    <li class="li">다음</li>
+	    <li>네이트</li>
+	  </ul>
+	
+	</body>
+</html>

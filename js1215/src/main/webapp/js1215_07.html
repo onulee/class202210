@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<style>
+		  
+		</style>
+		
+		<script>
+		  $(function(){
+			   $("li").click(function(){
+				  $(this).parent().parent().prev().css("display","none"); 
+			   });
+			   $("h2").click(function(){
+				  $("ul").css("display","block"); 
+			   });
+		  });
+		</script>
+	</head>
+	<body>
+		  <h2>파란에너지</h2>
+		  <section>
+		    <ul>
+		     <li>전력거래</li>
+		     <li>수요관리</li>
+		     <li>에너지 컨설팅</li>
+		    </ul>
+		  </section>
+	</body>
+</html>

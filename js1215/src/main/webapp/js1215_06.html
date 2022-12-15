@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>제이쿼리</title>
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("li").click(function(){
+					//alert($(this).text());
+					$(this).siblings().removeClass("on");
+					$(this).toggleClass("on");
+				});
+				
+				
+				//$("#li03").click(function(){
+					//$("#li03").toggleClass("on");   // 클릭할때마다 추가,삭제 변경
+					//$("#li03").removeClass("on");   //class삭제
+					//$("#li03").addClass("on"); //class추가
+					
+					/* $("#li03").css({
+						"color":"#fff", "background":"#3d62b1", "font-weight": "600"
+					}) */
+				//})
+				
+				
+			})
+		  
+		</script>
+		<style>
+		  * {margin:0; padding:0; list-style: none; }
+		  section {width:1000px; margin:50px auto; }
+		  ul{ width:100%; height:70px; }
+		  ul li { width:200px; height:70px; float:left; 
+		  box-sizing: border-box; padding:0 30px; 
+		  font-size:20px; color:#c2c2c2; font-weight: 500; margin-right:18px;
+		  border-radius:70px; text-align: center;
+		  line-height: 65px; cursor: pointer; }
+		  .on { color:#fff; background:#3d62b1; font-weight: 600; }
+		</style>
+	</head>
+	<body>
+	  <section>
+	    <ul>
+	      <li>전력거래</li>
+	      <li>수요관리</li>
+	      <li id="li03">에너지 컨설팅</li>
+	    </ul>
+	  
+	  </section>
+	
+	</body>
+</html>
