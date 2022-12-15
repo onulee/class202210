@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>each</title>
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script>
+		   $(function(){
+			   var obj = [  //Json
+				 {"area":"서울"},
+				 {"area":"부산"},
+				 {"area":"대구"},
+				 {"area":"광주"},
+				 {"area":"대전"}
+			   ];
+			   
+			   $("button").click(function(){
+				   $(obj).each(function(idx,o){
+					  console.log(idx+":"+o.area); 
+				   });
+				  
+			   });
+		   });
+		   
+		   
+		</script>
+	</head>
+	<body>
+	   <button>버튼</button>
+	   <ul>
+	     <li>구글</li>
+	     <li>네이버</li>
+	     <li>다음</li>
+	     <li>네이트</li>
+	   </ul>
+	
+	</body>
+</html>

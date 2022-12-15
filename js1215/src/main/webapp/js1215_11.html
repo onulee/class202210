@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>each</title>
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script>
+		   $(function(){
+			   $("button").click(function(){
+				  alert("체크박스 개수 : "+$("input:checkbox[name=hobbys]").length);
+			   });
+		   });
+		</script>
+	</head>
+	<body>
+	   <button>버튼</button>
+	   <form action="#" method="get" name="frm">
+	     <label>취미</label><br>
+	     <input type="checkbox" name="hobbys" value="game" id="game">
+	     <label for="game">게임</label>
+	     <input type="checkbox" name="hobbys" value="golf" id="golf">
+	     <label for="golf">골프</label>
+	     <input type="checkbox" name="hobbys" value="swim" id="swim">
+	     <label for="swim">수영</label>
+	     <input type="checkbox" name="hobbys" value="book" id="book">
+	     <label for="book">독서</label>
+	   </form>
+	   <form action="#" method="get" name="frm">
+	     <label>관심분야</label><br>
+	     <input type="checkbox" name="part" value="a1" id="a1">
+	     <label for="a1">주식</label>
+	     <input type="checkbox" name="part" value="a2" id="a2">
+	     <label for="a2">부동산</label>
+	     <input type="checkbox" name="part" value="a3" id="a3">
+	     <label for="a3">비트코인</label>
+	     <input type="checkbox" name="part" value="a4" id="a4">
+	     <label for="a4">펀드</label>
+	   </form>
+	</body>
+</html>

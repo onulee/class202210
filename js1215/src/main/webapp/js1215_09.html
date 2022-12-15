@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>제이쿼리</title>
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<style>
+		   *{ margin:0; padding:0; }
+		   section {width:630px; height:330px; 
+		     margin:60px auto 0; padding-left:20px; 
+		     box-sizing: border-box; border:1px solid #111;
+		   }
+		   section h4{font-size:20px; text-align: center; margin:30px 0; }
+		   section div{width:200px; height:100px; overflow: hidden; 
+		     margin-bottom:10px; float:left;
+		   }
+		   section div img{ width:190px; }
+		   #allImg { position:fixed; left:0; top:0;
+		   width:100%; height:100%; background: rgba(0,0,0,0.5);
+		   display:none;   }
+		   #allImg img{ position:absolute; top:50%; left:50%; 
+		     transform:translate(-50%,-50%);
+		     width:600px; border:5px solid #fff;  }
+		</style>
+		<script>
+		   $(function(){
+			   $("section div>img").click(function(){
+				   var imgUrl = $(this).attr("src");
+				   $("#allImg").show();
+				   $("#allImg img").attr("src",imgUrl);
+			   });
+			   
+			   $("#allImg").click(function(){
+				  $("#allImg").hide(); 
+			   });
+		   });
+		</script>   
+	</head>
+	<body>
+	
+	   <section>
+	      <h4>ive 걸그룹</h4>
+	      <div>
+	        <img src="images/ive1.jpg">
+	      </div>
+	      <div>
+	        <img src="images/ive2.jpg">
+	      </div>
+	      <div>
+	        <img src="images/ive3.jpg">
+	      </div>
+	      <div>
+	        <img src="images/ive4.jpg">
+	      </div>
+	      <div>
+	        <img src="images/ive5.jpg">
+	      </div>
+	      <div>
+	        <img src="images/ive6.jpg">
+	      </div>
+	   </section>
+	   <div id="allImg">
+	      <img src="images/ive7.jpg">
+	   </div>
+	   
+	
+	</body>
+</html>
