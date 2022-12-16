@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>scroll</title>
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<style>
+		   * {margin:0;  padding:0;}
+		   section{width:800px; margin:50px auto; }
+		   button{ font-size:17px; width:150px; height:40px; }
+		   #menu { width:100%; margin-bottom:30px; }
+		   #contents { font-size:20px; width:100%; height:400px; border:3px solid black; box-sizing: border-box;}
+		</style>
+		<script>
+		   $(function(){
+			   var btnCheck=false;
+			   $(".btn").click(function(){
+				   $("#contents").stop(true,true).slideToggle(1000,"swing",function(){
+					   if($(".btn").text()=="슬라이드 닫기")
+						   $(".btn").text("슬라이드 열기")
+					   else
+						   $(".btn").text("슬라이드 닫기")
+				   })
+				   
+				   
+				   /* if(btnCheck==false){
+					   $("#contents").fadeOut(1000,"swing",function(){
+						   $(".btn").text("슬라이드 열기");
+					   })
+				   }else{
+					   $("#contents").fadeIn(1000,"swing",function(){
+						   $(".btn").text("슬라이드 닫기"); 
+					   })
+				   }
+				   btnCheck = !btnCheck; */
+			   });
+			   
+		   })
+		 
+		</script>
+	</head>
+	<body>
+	   <section>
+	     <div id="menu">
+	       <button class="btn">슬라이드 닫기</button>
+	     </div>
+	     <div id="contents">
+	        후크엔터테인먼트가 이승기 씨에게 미지급금을 지급하겠다고 밝힌 가운데, <br>
+	        이승기 씨가 이에 대한 입장을 전했다.<br>
+			16일 이승기 씨는 자신의 SNS 계정을 통해 "사실 저는 그리 '안녕'하지는 못했습니다.<br>
+			배신감에 분노했다가, 실망감에 좌절했다가, 하루는 원망을,<br>
+			또 하루는 자책하기를 반복하며 지내고 있었습니다"라고 운을 뗐다.<br>
+			이어 "오늘 아침 약 50억원 정도 금액이 제 통장에 입금되었다는 문자를 받았습니다.<br>
+			후크엔터테인먼트는 아마도 제가 단순히 돈을 받고자 법적 대응을 했다고 생각하는 듯 합니다.<br>
+			그 흔한 음원 정산서 한 번 받아본 적 없었는데…<br>
+			또 이렇게 일방적으로 '미지급금' 지급이라는 명목으로 사건을 매듭지으려 합니다"라고 쓸쓸한 심정을 토로했다.	앞서 이날 후크엔터테인먼트는 이승기 씨와 쌍방 합의에 이르지는 못했지만 이승기씨에게 미지급 정산금 29억원 상당과 그에 대한 지연이자 12억원 상당을 전액 지급했으며 법원에 채무부존재 확인 소송을 제기했다고 공식입장을 밝혔다.
+	     </div>
+	   </section>
+	  
+	</body>
+</html>

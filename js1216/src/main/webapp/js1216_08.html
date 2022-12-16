@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>html</title>
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script>
+		   $(function(){
+			   $("h2").click(function(){
+				   //console.log( $(this).next().html());
+				   $(this).next().html("<h4>검색사이트 리스트가 나타납니다.</<h4>");
+				   // html:안에 있는 html태그는 삭제후 현재태그를 추가
+				   // append: html태그 마지막에 html태그를 추가
+				   // prepend: html태그 첫부분에 html태그를 추가
+				   
+			   });
+		   });
+		</script>
+	</head>
+	<body>
+	  <h2>검색사이트</h2>
+	  <ul>
+	    <li>네이버</li>
+	    <li>구글</li>
+	    <li>다음</li>
+	    <li>네이트</li>
+	  </ul>
+	  <h2>은행사이트</h2>
+	  <ul>
+	    <li>국민은행</li>
+	    <li>우리은행</li>
+	    <li>기업은행</li>
+	    <li>산업은행</li>
+	  </ul>
+	  
+	  <tbody id="tbody">
+	    <tr>
+	      <td></td>
+	    </tr>
+	    <tr>
+	      <td></td>
+	    </tr>
+	    <tr>
+	      <td></td>
+	    </tr>
+	  </tbody>
+	
+	</body>
+</html>

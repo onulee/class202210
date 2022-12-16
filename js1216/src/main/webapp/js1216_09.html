@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>scroll</title>
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script>
+		  $(function(){
+			  $(window).mousemove(function(e){
+				  var x = e.pageX;
+				  var y = e.pageY;
+				  $("#screen").text(x+","+y);
+				  //$("#screen").text($(this).scrollTop()+","+$(this).scrollLeft()); 
+			  });
+			  /* $("#box").on("click scroll mouseover mouseout",function(){
+				  
+			  }); */
+			  
+		  });
+		</script>
+		<style>
+		  * { margin:0; padding:0; }
+		  
+		  body{width:3000px; height:4000px; border:3px solid black;}
+		  #screen{position:fixed; top:300px; left:300px; border:1px solid black; 
+		    font-size: 30px; text-align: center; 
+		    width:300px; height:300px;
+		  }
+		</style>
+	</head>
+	<body>
+	  <div id="box">
+	  </div>
+	  <div id="screen">left:100px, right:3000px</div>
+	
+	</body>
+</html>

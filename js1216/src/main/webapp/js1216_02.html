@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<title>prop속성</title>
+		<script>
+		   $(function(){
+			   //버튼 클릭시
+			   $("#agreeBtn").click(()=>{
+				   //alert(" input 개수 : "+$("input:checkbox[name='hobbys']").length);
+				   //alert("체크된 개수 : "+ $("input[name='hobbys']:checked").length);
+				   //if($("input[name='hobbys']:checked").length<2){
+					//   alert("2개 이상 체크 하셔야 합니다.")
+					//   return;
+				   //}
+				   
+				   //alert(" agrees 개수 : "+$("input:checkbox[name='agrees']:checked").length);
+				   /* if($("input:checkbox[name='agrees']:checked").length<3){
+					   alert("이용약관에 모두 동의 하셔야 합니다.");
+					   return;
+				   } */
+				   //agrees 배열 3개
+				   $("input[name='agrees']").each(function(){
+					   if(this.checked==false){ //객체안의 속성 값
+							alert($(this).next().text()+"에 동의하셔야 회원가입이 가능합니다.");
+							$(this).prop("checked",true);
+					        return false;
+					   }//if
+				   });//each
+				   
+			   });//click
+			   var checkAll=false;
+			   $("#all").click(function(){
+				   //alert(checkAll);
+				   if(checkAll==false){
+					   $("input:checkbox[name=agrees]").prop("checked",true);
+					   checkAll = !checkAll;
+				   }else{
+					   $("input:checkbox[name=agrees]").prop("checked",false);
+					   checkAll = !checkAll;
+				   }
+				   /* $("input:checkbox[name=agrees]").each(function(){
+					    this.checked=true;
+				   }); */
+			   });
+			   
+			   
+		   });//function
+		</script>
+		
+	</head>
+	<body>
+	   <form action="#" method="get" name="member">
+		   <h2>회원약관 동의</h2>
+		   <div></div>
+		   <input type="checkbox" name="agrees" id="agree1" value="agree1" >
+		   <label for="agree1">회원약관에 동의합니다.</label>
+		   <h2>개인정보 수집,이용 동의</h2>
+		   <div></div>
+		   <input type="checkbox" name="agrees" id="agree2" value="agree2">
+		   <label for="agree2">개인정보 수집,이용 동의합니다.</label>
+		   <h2>개인정보 취급위탁 동의</h2>
+		   <div></div>
+		   <input type="checkbox" name="agrees" id="agree3" value="agree3">
+		   <label for="agree3">개인정보 취급위탁 동의합니다.</label>
+		   <br>
+		   <p>전체동의</p>
+		   <input type="checkbox" name="agreeAll" id="all" value="all">
+		   <label for="all">전체동의</label>
+		   <br>
+		   <button id="agreeBtn" type="button">가입하기</button>
+	   </form>
+	   
+	   <hr>
+	
+	   <h2>학생회원정보</h2>
+	   <form action="#" method="get" name="frm">
+	       <label>취미</label><br>
+	       <input type="checkbox" name="hobbys" id="game" value="game">
+	       <label for="game">게임</label> 
+	       <input type="checkbox" name="hobbys" id="golf" value="golf">
+	       <label for="golf">골프</label> 
+	       <input type="checkbox" name="hobbys" id="swim" value="swim">
+	       <label for="swim">수영</label> 
+	       <input type="checkbox" name="hobbys" id="book" value="book">
+	       <label for="book">독서</label> 
+	       <br><br>
+	       <label>관심분야</label><br>
+	       <input type="checkbox" name="fields" id="stock" value="stock">
+	       <label for="stock">증권</label> 
+	       <input type="checkbox" name="fields" id="bit" value="bit">
+	       <label for="bit">비트코인</label> 
+	       <input type="checkbox" name="fields" id="apt" value="apt">
+	       <label for="apt">부동산</label> 
+	       <input type="checkbox" name="fields" id="fund" value="fund">
+	       <label for="fund">펀드</label> 
+	       
+	       <br><br>
+		   <button type="button">입력</button>
+	   </form>
+	
+	</body>
+</html>

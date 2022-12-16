@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<title>each idx obj</title>
+		<script>
+		   $(function(){
+			   $("button").click(function(){
+				   $("#list li").each(function(idx,obj){
+					   console.log($(obj).text());  // $(obj) 해야 함.
+				   });
+			   });
+		   })
+		</script>
+	</head>
+	<body>
+	   <button>버튼</button>
+	   <ul id="list">
+	     <li>구글</li>
+	     <li>네이버</li>
+	     <li>다음</li>
+	     <li>네이트</li>
+	   </ul>
+	
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<title>checkbox each</title>
+		<script>
+		   $(function(){
+			   $("button").click(function(){
+				  console.log($("#link")); 
+				  console.log($("#link").attr('href')); 
+				  console.log($("#link").prop('href')); 
+			   });
+		   })
+		</script>
+	</head>
+	<body>
+	   <button>버튼</button>
+	   <a id="link" href="naver">네이버 링크</a>
+	
+	</body>
+</html>

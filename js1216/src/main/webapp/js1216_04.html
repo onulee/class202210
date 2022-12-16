@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>map</title>
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script>
+		
+		   $(function(){
+			   var allArr =[
+				   {"grade":"1학년","name":"홍길동"},
+				   {"grade":"2학년","name":"유관순"},
+				   {"grade":"3학년","name":"이순신"},
+				   {"grade":"1학년","name":"김유신"},
+				   {"grade":"2학년","name":"김구"},
+				   {"grade":"1학년","name":"강감찬"},
+				   {"grade":"3학년","name":"홍길자"},
+				   {"grade":"1학년","name":"홍길순"}
+			   ];
+			   
+			   $("button").click(function(){
+				   var arrFirst = $.map(allArr,function(obj,idx){
+					   // console.log(obj);
+					   if(obj.grade=="1학년"){
+						   return obj;
+					   }
+				   });
+				   
+				   console.log(arrFirst[0].grade+","+arrFirst[0].name);
+				   
+				   var htmlData = "";
+				   
+				   for(i=0;i<arrFirst.length;i++){
+					   htmlData += "<tr>";
+					   htmlData += "<td>"+ arrFirst[i].grade +"</td>";
+					   htmlData += "<td>"+ arrFirst[i].name  +"</td>";
+					   htmlData += "</tr>";
+				   }
+				   
+				   $("#tbody").append(htmlData);
+				   
+			   });
+			   
+			   
+			   /* $("button").click(function(){
+				  var dataArr = $("p").map(function(idx,obj){
+					  return $(obj).text();
+				  }) 
+				 console.log(dataArr[0]);
+			   }); */
+		   });
+		</script>
+		<style>
+		   table,th,td{border:1px solid black; border-collapse: collapse;}
+		   th,td{width:150px; height:30px; text-align: center;}
+		</style>
+	</head>
+	<body>
+	  <button>버튼</button>
+	  <p>구글</p>
+	  <p>네이버</p>
+	  <p>다음</p>
+	  <p>네이트</p>
+	  
+	  <h2>1학년 리스트</h2>
+	  <table>
+	    <tr>
+	      <th>학년</th>
+	      <th>이름</th>
+	    </tr>
+	    <tbody id="tbody">
+		    
+	    </tbody>
+	  </table>
+	  <h2>1학년 리스트</h2>
+	  <table>
+	    <tr>
+	      <th>학년</th>
+	      <th>이름</th>
+	    </tr>
+	    <tbody id="tbody2">
+		    <tr>
+		      <td>1학년</td>
+		      <td>홍길동</td>
+		    </tr>
+		    <tr>
+		      <td>1학년</td>
+		      <td>김유신</td>
+		    </tr>
+	    </tbody>
+	  
+	  </table>
+	
+	</body>
+</html>

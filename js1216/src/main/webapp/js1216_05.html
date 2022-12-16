@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>map</title>
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script>
+		  $(function(){
+			 var arrData = [
+				 {"no":"1","title":"게시글을 올립니다.","writer":"홍길동","date":"2022-12-16","hit":"1" },
+				 {"no":"2","title":"게시글을 올립니다.","writer":"홍길순","date":"2022-12-16","hit":"1" },
+				 {"no":"3","title":"게시글을 올립니다.","writer":"홍길자","date":"2022-12-16","hit":"1" },
+				 {"no":"4","title":"게시글을 올립니다.","writer":"이순신","date":"2022-12-16","hit":"1" },
+				 {"no":"5","title":"게시글을 올립니다.","writer":"유관순","date":"2022-12-16","hit":"1" },
+				 {"no":"6","title":"게시글을 올립니다.","writer":"김구","date":"2022-12-16","hit":"1" },
+				 {"no":"7","title":"게시글을 올립니다.","writer":"강감찬","date":"2022-12-16","hit":"1" },
+				 {"no":"8","title":"게시글을 올립니다.","writer":"김유신","date":"2022-12-16","hit":"1" },
+				 {"no":"9","title":"게시글을 올립니다.","writer":"안중근","date":"2022-12-16","hit":"1" },
+				 {"no":"10","title":"게시글을 올립니다.","writer":"홍범도","date":"2022-12-16","hit":"1" },
+			 ]; 
+			 
+			 var mapArr = $.map(arrData,function(obj,idx){
+				 if(obj.writer.includes('홍')==true){
+				 	return obj;
+				 }
+			 }); //map
+			 
+			 var htmlData="";
+			 for(i=0;i<mapArr.length;i++){
+				 htmlData += "<tr>";
+				 htmlData += "<td>"+ mapArr[i].no +"</td>";
+				 htmlData += "<td>"+mapArr[i].title+"</td>";
+				 htmlData += "<td>"+mapArr[i].writer+"</td>";
+				 htmlData += "<td>"+mapArr[i].date+"</td>";
+				 htmlData += "<td>"+mapArr[i].hit+"</td>";
+				 htmlData += "<td class='boardDel' id='del"+ i +"'>X</td>";
+				 htmlData += "</tr>";
+			 }
+			 $("#tbody").html(htmlData);
+			 
+			 //삭제
+			 $(".boardDel").click(function(){
+				 //alert($(this).parent().children(0).first().text());
+				 if(confirm($(this).parent().children(0).first().text()+"번 게시글을 삭제하시겠습니까?"))
+					 $(this).parent().remove(); 
+			 });
+			 
+			 //var name = ['홍길동','홍길자','홍길순','이순신','유관순','김구','강감찬','김유신','안중근','홍범도'];
+			 
+			 /* $("h2").click(function(){
+				for(i=0;i<name.length;i++){
+					if(name[i].includes('순')==true){
+						console.log("해당이름 : "+name[i]);
+					}
+				}
+			 }); */
+			 
+			 // h2를 클릭하면 map함수를 사용하여 홍이 포함된 사람을 찾아서
+			 // table에 찾은 사람들의 게시글을 출력하시오.
+			 
+		  });//function
+		
+		</script>
+		<style>
+		  *{margin:0; padding:0; }
+		  section{width:800px; margin:30px auto; text-align: center; }
+		  h2{margin-bottom:30px; }
+		  table{width:100%; border-top:2px solid black; margin-bottom:40px; }
+		  table,th,td{border:1px solid black; border-collapse: collapse; }
+		  th{ height:50px; background:#efefef; }
+		  td{ height:40px; }
+		  button{font-size:20px; width:180px; height:40px; text-align: center;}
+		</style>
+	</head>
+	<body>
+	   <section>
+	     <h2>자유게시판</h2>
+	     <table>
+	       <colgroup>
+	         <col width="10%">
+	         <col width="35%">
+	         <col width="15%">
+	         <col width="15%">
+	         <col width="10%">
+	         <col width="5%">
+	       </colgroup>
+	       <tr>
+	         <th>번호</th>
+	         <th>제목</th>
+	         <th>작성자</th>
+	         <th>작성일</th>
+	         <th>조회</th>
+	         <th>삭제</th>
+	       </tr>
+	       <tbody id="tbody">
+		       
+	       </tbody>
+	     </table>
+	     <button>불러오기</button>
+	   </section>
+	
+	</body>
+</html>
