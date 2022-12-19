@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>게시판</title>
+		<style>
+		  *{margin:0; padding:0; }
+		  section{width:800px; margin:30px auto; text-align: center; }
+		  section h2{margin-bottom:30px; }
+		  section table{width:100%; border-top:2px solid black; margin-bottom:40px; }
+		  section table,th,td{border:1px solid black; border-collapse: collapse; }
+		  section th{ height:50px; background:#efefef; }
+		  section td{ height:40px; }
+		  section button{font-size:20px; width:180px; height:40px; text-align: center;
+		    margin-bottom:30px;
+		  }
+		  
+		</style>
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script>
+		  $(function(){
+			 
+			 var htmlData="";
+			 
+			 $("#openBtn").click(function(){
+				$.ajax({
+					 url:"js/students.json",     //요청 주소
+					 type:"post",              //get,post
+					 data:{"id":"aaa",
+						   "pw":"1111"
+						 }, //보낼데이터
+					 dataType:"json", //데이터타입:json,html,xml,text
+					 success:function(data){
+						 //alert("성공");
+						 console.log(data);
+						 htmlData="";
+						
+				       //날짜
+						 var today = new Date();
+						 var year = today.getFullYear();
+						 var month = today.getMonth()+1;
+						 var day = today.getDate();
+						 var dateString = year+"-"+month+"-"+day;
+						//ajax
+						 for(i=0;i<data.length;i++){
+							 htmlData += "<tr>";
+							 htmlData += "<td class='stuNum' id='no"+ i +"'>"+ data[i].stuNum +"</td>";
+							 htmlData += "<td>"+data[i].kor+"</td>";
+							 htmlData += "<td>"+data[i].eng+"</td>";
+							 htmlData += "<td>"+data[i].math+"</td>";
+							 htmlData += "<td>"+data[i].total+"</td>";
+							 htmlData += "<td>"+data[i].avg+"</td>";
+							 htmlData += "<td>"+dateString+"</td>";
+							 htmlData += "<td class='boardDel' id="+ i +">X</td>";
+							 //htmlData += "<td class='boardDel' id="+ i +" onclick='delBtn("+ i +")'>X</td>";
+							 htmlData += "</tr>";
+						 }
+						 $("#tbody").html(htmlData);
+					 },
+					 error:function(){
+						 alert("에러");
+					 }
+					 
+				 });//ajax
+			 });
+			 
+			 
+			//stuNum을 클릭시 id값을 alert창으로 띄워보세요.
+			
+			
+			  
+			$(document).on("click",".boardDel",function(){
+				console.log($(this).parent().children(0));
+				alert("boardDel : "+$(this).attr("id"));
+				 if(confirm($(this).parent().children(0).first().text()+"번 게시글을 삭제하시겠습니까?"))
+				$(this).parent().remove();
+			});
+			 
+		  });//function
+		  
+		  function delBtn(delId){
+			  alert("매개변수 id : "+delId);
+			  $("#"+delId).parent().remove();
+		  }
+		  
+		  
+		
+		</script>
+		
+	</head>
+	<body>
+	   <section>
+	     <h2>자유게시판</h2>
+	     <button id="openBtn">불러오기</button>
+	     <table>
+	       <colgroup>
+	         <col width="15%">
+	         <col width="10%">
+	         <col width="10%">
+	         <col width="10%">
+	         <col width="15%">
+	         <col width="15%">
+	         <col width="15%">
+	         <col width="10%">
+	       </colgroup>
+	       <tr>
+	         <th>학생번호</th>
+	         <th>국어</th>
+	         <th>영어</th>
+	         <th>수학</th>
+	         <th>합계</th>
+	         <th>평균</th>
+	         <th>등록일</th>
+	         <th>삭제</th>
+	       </tr>
+	       <tbody id="tbody">
+		       
+	       </tbody>
+	     </table>
+	   </section>
+	
+	</body>
+</html>

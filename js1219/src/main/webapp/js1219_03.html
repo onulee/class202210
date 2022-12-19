@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>게시판</title>
+		<style>
+		  *{margin:0; padding:0; }
+		  section{width:1000px; margin:30px auto; text-align: center; }
+		  section h2{margin-bottom:30px; }
+		  section table{width:100%; border-top:2px solid black; margin-bottom:40px; }
+		  section table,th,td{border:1px solid black; border-collapse: collapse; }
+		  section th{ height:50px; background:#efefef; }
+		  section td{ height:40px; }
+		  section button{font-size:20px; width:180px; height:40px; text-align: center;}
+		  div{ width:1000px; margin:30px auto;  }
+		  div h2{ text-align: center; }
+		  label {width:80px; height:30px; display: inline-block; }
+		  #writeBtn{ width:180px; height:30px; margin:0 auto; 
+		  text-align: center; display: block;}
+		  input,textarea { font-size: 18px; padding-left:10px;}
+		  textarea{padding-top:5px; }
+		  .tdUpdateBtn,.tdDeleteBtn { cursor: pointer;}
+		</style>
+		<!-- 필수!! 제이쿼리 링크 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script>
+		  $(function(){
+			 
+			 var htmlData="";
+			 
+			 $.ajax({
+				 url:"js/board.json",     //보낼주소
+				 type:"post",              //get,post
+				 data:{"id":"aaa",
+					   "pw":"1111"
+					 }, //보낼데이터
+				 dataType:"json", //데이터타입:json,html,xml,text
+				 success:function(data){
+					 alert("성공");
+					 console.log(data);
+					 htmlData="";
+					 //ajax
+					 for(i=0;i<data.length;i++){
+						 htmlData += "<tr>";
+						 htmlData += "<td>"+ data[i].no +"</td>";
+						 htmlData += "<td>"+data[i].title+"</td>";
+						 htmlData += "<td>"+data[i].writer+"</td>";
+						 htmlData += "<td>"+data[i].date+"</td>";
+						 htmlData += "<td>"+data[i].hit+"</td>";
+						 htmlData += "<td class='tdUpdateBtn'>수정</td>";
+						 htmlData += "<td class='tdDeleteBtn' id="+ i +"'>X</td>";
+						 htmlData += "</tr>";
+					 }
+					 $("#tbody").html(htmlData);
+					 
+				 },
+				 error:function(){
+					 alert("에러");
+				 }
+				 
+			 });//ajax
+			 
+			 //삭제
+			 $(document).on("click",".tdDeleteBtn",function(){
+				 //alert($(this).parent().children(0).first().text());
+				 if(confirm($(this).parent().children(0).first().text()+"번 게시글을 삭제하시겠습니까?"))
+					 $(this).parent().remove(); 
+			 });
+			 
+			 //수정
+			 $(document).on("click",".tdUpdateBtn",function(){
+				 //제목,작성자에 대한 정보를 alert 처리해보세요.
+				 $("#title").val($(this).parent().children(0).eq(1).text());
+				 $("#writer").val($(this).parent().children(0).eq(2).text());
+				 
+			 });
+			 
+			 //추가
+			 $("#writeBtn").click(function(){
+				 alert("test");
+				 
+				 // htmlData초기화
+				 htmlData="";
+				 // input데이터 읽기
+				 title = $("#title").val();
+				 writer = $("#writer").val();
+				 content = $("#content").val();
+				 
+				 count++;
+				 
+				 //날짜함수
+				 var today = new Date();
+				 var year = today.getFullYear();
+				 var month = today.getMonth()+1;
+				 var day = today.getDate();
+				 var dateString = year+"-"+month+"-"+day;
+				 
+				 htmlData += "<tr>";
+				 htmlData += "<td>"+ count +"</td>";
+				 htmlData += "<td>"+title+"</td>";
+				 htmlData += "<td>"+writer+"</td>";
+				 htmlData += "<td>"+dateString+"</td>";
+				 htmlData += "<td>1</td>";
+				 htmlData += "<td class='tdUpdateBtn'>수정</td>";
+				 htmlData += "<td class='tdDeleteBtn' id='del"+ count +"'>X</td>";
+				 htmlData += "</tr>";
+				 // tbody에 추가
+				 $("#tbody").append(htmlData);
+				 
+				 //input 박스 초기화
+				 $("#title").val("");
+				 $("#writer").val("");
+				 $("#content").val("");
+			 });
+			 
+			 
+		  });//function
+		
+		</script>
+		
+	</head>
+	<body>
+	   <div>
+	      <form action="#" name="frm" method="get" >
+	        <h2>게시글 입력</h2>
+	        <label>제목</label>
+	        <input type="text" name="title" id="title"><br>
+	        <label>작성자</label>
+	        <input type="text" name="writer" id="writer"><br>
+	        <label>게시글</label>
+	        <textarea rows="5" cols="80" id="content"></textarea> <br>
+	        <input type="button" id="writeBtn" name="writeBtn" value="글쓰기">
+	        <input type="button" id="updateBtn" name="updateBtn" value="수정">
+	        <br>
+	      </form>
+	   </div>
+	
+	   <section>
+	     <h2>자유게시판</h2>
+	     <table>
+	       <colgroup>
+	         <col width="10%">
+	         <col width="35%">
+	         <col width="20%">
+	         <col width="16%">
+	         <col width="7%">
+	         <col width="7%">
+	         <col width="5%">
+	       </colgroup>
+	       <tr>
+	         <th>번호</th>
+	         <th>제목</th>
+	         <th>작성자</th>
+	         <th>작성일</th>
+	         <th>조회</th>
+	         <th>수정</th>
+	         <th>삭제</th>
+	       </tr>
+	       <tbody id="tbody">
+		       
+	       </tbody>
+	     </table>
+	     <button>불러오기</button>
+	   </section>
+	
+	</body>
+</html>
