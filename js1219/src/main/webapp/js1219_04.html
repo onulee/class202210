@@ -45,8 +45,8 @@
 					 htmlData="";
 					 //ajax
 					 for(i=0;i<data.length;i++){
-						 htmlData += "<tr id='"+data[i].id+"'>";
-						 htmlData += "<td>"+ data[i].id +"</td>";
+						 htmlData += "<tr>";
+						 htmlData += "<td id='"+data[i].id+"'>"+ data[i].id +"</td>";
 						 htmlData += "<td>"+data[i].first_name+"</td>";
 						 htmlData += "<td>"+data[i].last_name+"</td>";
 						 htmlData += "<td>"+data[i].email+"</td>";
@@ -80,22 +80,25 @@
 			 //td삭제
 			 $(document).on("click",".tdDelete",function(){
 				 //alert($(this).parent().attr("id"));
-				 if(confirm($(this).parent().attr("id")+"번 게시글을 삭제하시겠습니까?"))
+				 el = $(this).parent().children();
+				 if(confirm(el.eq(0).attr("id")+"번 게시글을 삭제하시겠습니까?"))
 					 $(this).parent().remove(); 
 			 });
 
 			 //수정 버튼
 			 $(document).on("click","#updateBtn", function(){
-				 alert("수정버튼")
+				 alert("수정버튼11");
+				 //input에서 데이터 가져오기
+				 id = $("#id").val();
 				 first_name = $("#first_name").val();
 				 last_name = $("#last_name").val();
 				 email = $("#email").val();
 				 gender = $("#gender").val();
 				 ip_address = $("#ip_address").val();
-				 alert(first_name);
-				 console.log($("#"+id).children());
-				 alert($("#"+id).children().eq(1).text());
-				 el = $("#"+id).children();
+				 
+				 console.log($("#"+id).parent().children().eq(1).text());
+				 
+				 el = $("#"+id).parent().children();
 				 el.eq(1).text(first_name);
 				 el.eq(2).text(last_name);
 				 el.eq(3).text(email);
