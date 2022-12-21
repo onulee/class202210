@@ -5,6 +5,39 @@
 		<!-- 필수!! 제이쿼리 링크 -->
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/style_join01_terms.css">
+		<script>
+		  $(function(){
+			  //allCheck클릭
+			  $("#allCheck").click(function(){
+				 alert("모두 동의 체크를 합니다.");
+				 $("input:radio[value='agree']").each(function(){
+					 this.checked=true;
+				 });//each
+			  });//click
+			  
+			  //button클릭
+			  $("input:button").click(function(){
+				 var check_agree=0;
+				  $("input:radio[value='agree']").each(function(){
+					 if(this.checked==false){
+						 alert("모두 동의를 하셔야 가입이 가능합니다.");
+						 check_agree=1;
+						 $("input:radio[value='agree']").each(function(){
+							 this.checked=true;
+						 });//each
+						 return false; //each를 벗어남.
+					 }
+				  });//each
+				  
+				  if(check_agree==1) return false;
+				  
+				  alert("다음페이지로 이동합니다.")
+				  location.href="join02_info_input.html";
+				  
+			  });//click
+			  
+		  });//fuction
+		</script>
 		<title>회원가입 - 약관동의</title>
 	</head>
 	<body>
@@ -180,39 +213,7 @@
 				<div class="strong_div">
 					<strong>※ 이용자는 해당 개인정보 취급위탁 동의를 거부할 권리가 있으나, 미 동의시 회원가입을 하실 수 없습니다.</strong>
 				</div>
-				<script>
-				  $(function(){
-					  //allCheck클릭
-					  $("#allCheck").click(function(){
-						 alert("모두 동의 체크를 합니다.");
-						 $("input:radio[value='agree']").each(function(){
-							 this.checked=true;
-						 });//each
-					  });//click
-					  
-					  //button클릭
-					  $("input:button").click(function(){
-						 var check_agree=0;
-						  $("input:radio[value='agree']").each(function(){
-							 if(this.checked==false){
-								 alert("모두 동의를 하셔야 가입이 가능합니다.");
-								 check_agree=1;
-								 $("input:radio[value='agree']").each(function(){
-									 this.checked=true;
-								 });//each
-								 return false; //each를 벗어남.
-							 }
-						  });//each
-						  
-						  if(check_agree==1) return false;
-						  
-						  alert("다음페이지로 이동합니다.")
-						  location.href="join02_info_input.html";
-						  
-					  });//click
-					  
-				  });//fuction
-				</script>
+				
 				<div id="terms_button">
 					<input type="reset" value="취소하기" />
 					<input type="button" value="가입하기" />
