@@ -1,0 +1,98 @@
+*,
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: 돋움, sans-serif;
+  font-size: 16px;
+}
+
+/* Header */
+header {
+  height: 50px;
+  background: #3d3d3d;
+  color: white;
+  font-weight: bold;
+}
+
+header > div {
+  line-height: 50px;
+}
+
+#header-left {
+  float: left;
+  margin-left: 10px;
+}
+
+#header-right {
+  float: right;
+  margin-right: 10px;
+}
+
+header span {
+  color: #ed5f00;
+}
+
+/* Section */
+#loginArea {
+  width: 780px;
+  height: 600px;
+  margin: 150px auto 0 auto;
+
+  background: url(http://lmsenterprise2019.itmap.co.kr/_admin/image/bg_LoginBox.png) no-repeat;
+}
+
+#loginBox {
+  padding: 235px 0 0 300px;
+}
+
+.input-box {
+  width: 269px;
+  height: 38px;
+  border: 1px #b9babd solid;
+
+  background: white;
+}
+
+input {
+  padding: 8px 0 8px 17px;
+
+  font-size: 16px;
+  border: none;
+}
+
+input:active,
+input:focus,
+input:hover {
+  outline: none;
+}
+
+#id {
+  background: url(http://lmsenterprise2019.itmap.co.kr/_admin/image/bg_user.gif) 96% 48% no-repeat;
+}
+
+#pw {
+  background: url(http://lmsenterprise2019.itmap.co.kr/_admin/image/bg_pw.gif) 96% 48% no-repeat;
+}
+
+button {
+  width: 100px;
+  height: 80px;
+  margin-left: 12px;
+  border: 1px #90261b solid;
+
+  background: url(http://lmsenterprise2019.itmap.co.kr/_admin/image/btn_login.png) no-repeat;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  width: 310px;
+  margin: auto;
+}
+
+#copyright {
+  font-size: 12px;
+}
