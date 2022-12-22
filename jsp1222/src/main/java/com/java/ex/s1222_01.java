@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet(urlPatterns={"/s01"},initParams= {@WebInitParam(name="mapId",value="ddd"),
-		@WebInitParam(name="mapPw",value="1234")})
+//@WebServlet(urlPatterns={"/s01"},initParams= {@WebInitParam(name="mapId",value="ddd"),
+//		@WebInitParam(name="mapPw",value="1234")})
 public class s1222_01 extends HttpServlet {
 	
 	protected void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,6 +23,12 @@ public class s1222_01 extends HttpServlet {
 		//web.xml
 		//String id = getInitParameter("userId");
 		//String pw = getInitParameter("userPw");
+		
+		String conId = getServletContext().getInitParameter("conId");
+		String conPw = getServletContext().getInitParameter("conPw");
+		
+		System.out.println(conId);
+		System.out.println(conPw);
 		
 		String id = getInitParameter("mapId");
 		String pw = getInitParameter("mapPw");

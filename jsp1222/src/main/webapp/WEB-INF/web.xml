@@ -10,11 +10,22 @@
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
   
-  <!-- 
-  <servlet>
-    <servlet-name>s1221_01</servlet-name>
-    <servlet-class>com.java.ex.s1221_01</servlet-class>
-    ServletConfig 선언
+  
+  <!-- servletContext  -->
+  <!-- <context-param>
+    <param-name>conId</param-name>
+    <param-value>conaaa</param-value>
+  </context-param>
+  <context-param>
+    <param-name>conPw</param-name>
+    <param-value>con1111</param-value>
+  </context-param>
+   -->
+  
+  
+<!--   <servlet>
+    <servlet-name>s1222_02</servlet-name>
+    <servlet-class>com.java.ex.s1222_02</servlet-class>
     <init-param>
        <param-name>userId</param-name>
        <param-value>bbb</param-value>
@@ -25,10 +36,30 @@
     </init-param>
   </servlet>
   <servlet-mapping>
-    <servlet-name>s1221_01</servlet-name>
+    <servlet-name>s1222_02</servlet-name>
+    <url-pattern>/s002</url-pattern>
+  </servlet-mapping>  -->
+  
+  
+  
+<!-- ServletConfig 선언 -->
+<!--   <servlet>
+    <servlet-name>s1222_01</servlet-name>
+    <servlet-class>com.java.ex.s1222_01</servlet-class>
+    <init-param>
+       <param-name>mapId</param-name>
+       <param-value>bbb</param-value>
+    </init-param>
+    <init-param>
+       <param-name>mapPw</param-name>
+       <param-value>1234</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>s1222_01</servlet-name>
     <url-pattern>/s001</url-pattern>
-  </servlet-mapping> 
-  -->
+  </servlet-mapping> --> 
+ 
   
   
   
