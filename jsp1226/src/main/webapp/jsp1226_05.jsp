@@ -8,7 +8,7 @@
 	</head>
 	<body>
 	  <h2>원하는 것을 클릭하시오.</h2>
-	  <form action="">
+	  <form action="checkWrite.jsp">
 	    <h4>이름을 입력하세요.</h4>
 	    <input type="text" name="name" id="name"><br>
 	    <h4>좋아하는 색상을 선택하세요.</h4>
