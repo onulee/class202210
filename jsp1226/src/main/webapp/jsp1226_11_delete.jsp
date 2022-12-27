@@ -17,10 +17,10 @@
 	  
 	  //특정 쿠키만 삭제
 	  for(int i=0;i<cookies.length;i++){
-		  if(cookies[i].getName().equals("cookieId")){
+		  //if(cookies[i].getName().equals("cookieId")){
 			  cookies[i].setMaxAge(0);
 			  response.addCookie(cookies[i]);
-		  }
+		  //}
 	  }
 	
 	%>
