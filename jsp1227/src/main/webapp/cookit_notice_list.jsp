@@ -106,7 +106,9 @@
     </ul>
 
     <% if(session.getAttribute("sessionId") != null){ %>
+      <% if(session.getAttribute("sessionId").equals("admin")){ %>
       <a href="cookit_write.jsp"><div class="write">쓰기</div></a>
+      <% } %>
     <% } %>
   </section>
   <!-- footer include -->

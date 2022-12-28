@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %> 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -15,53 +16,45 @@
     	//로그인버튼 클릭
     	$("#loginCheck").click(function(){
     		if($("#uId").val().length<2){
-   	           alert("아이디를 확인하고 다시 입력하세요.");
-   	           $("#uId").val("");
-   	           $("#uId").focus();
-   	    	   return false; 	
-   	    	}
+    			alert("아이디를 입력하셔야 로그인이 가능합니다.");
+    			$("#uId").val("");
+    			$("#uId").focus();
+    			return false;
+    		}//if
     		
+    		//데이터 가져오기
     		$.ajax({
     			url:"js/member.json",
     			type:"post",
-    			data:{"id":"admin","pw":"1111"},
+    			data:{"id":$('#uId').val(),"pw":$('#uPw').val()},
     			dataType:"json",
     			success:function(data){
-    				//alert("성공");
-    				console.log(data);
-    				//로그인접속
-    				var id = $("#uId").val();
-    				var pw = $("#uPw").val();
-    				for(var i=0;i<data.length;i++){
-    					if(id==data[i].id && pw==data[i].pw){
+    				//alert("데이터가져오기 성공");
+    				successCheck=0;
+    				id = $('#uId').val();
+    				pw = $('#uPw').val();
+    				for(var mem of data){
+    					if(mem.id==id && mem.pw == pw){
     						alert("로그인이 되었습니다.");
-    						
-    						
+    						$("#nicName").val(mem.nicName);
+    						successCheck=1;
+    						login.submit();
     					}
-    				}
+    				}//for
     				
-    				<%-- for(var m:data){
-    					if(id==data[i].id && pw==data[i].pw){
-    						alert("로그인이 되었습니다.");
-    						<% 
-    						  session.setAttribute("sessionId",id);  
-    						  session.setAttribute("sessionName",nicName);  
-    						%>
-    						location.href="cookit_main.jsp";
-    					}
+    				if(successCheck==0){
+    					alert("아이디 또는 패스워드가 일치하지 않습니다. 다시 입력하세요.");
+    					$("#uId").val("");
+    	    			$("#uId").focus();
+    	    			return false;
     				}
-    				 --%>
-    				
     			},
     			error:function(){
-    				alert("데이터 읽기 에러");
+    				alert("데이터가져오기 실패");
     			}
-    			
-    		});
-    		
-   	    	//login.submit();
-    	});
-    });
+    		});//ajax
+    	});//click
+    });//function
   
   </script>
 </head>
@@ -80,7 +73,8 @@
       </ul>  
     </article>
 
-    <form action="cookit_doLogin.jsp" name="login" method="post">
+    <form action="cookit_doLogin2.jsp" name="login" method="post">
+      <input type="hidden" name="nicName" id="nicName">
       <div class="id">
         <input type="text" name="id" id="uId" size="30" placeholder="CJ ONE 통합아이디 6~20자">
       </div>

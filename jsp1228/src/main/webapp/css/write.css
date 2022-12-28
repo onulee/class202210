@@ -1,0 +1,95 @@
+/* Main Section */
+section {
+  margin: auto;
+  width: 90%;
+}
+
+h1 {
+  font-size: 32px;
+  margin: 50px 0 40px 0;
+  text-align: center;
+}
+
+hr {
+  border: 3px solid black;
+  margin-bottom: 30px;
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+  height: 50px;
+}
+
+th {
+  font-weight: normal;
+  font-size: 20px;
+}
+
+select,
+input,
+textarea {
+  width: 100%;
+  border: 2px solid #ccc;
+}
+
+.category-wrapper {
+  width: 100%;
+  border: 2px solid #ccc;
+
+}
+
+select {
+  padding: 5px 0px 5px 10px;
+  background: url(https://www.midashotel.co.kr/Midas_common/images/homepage/board/search-box-select.png) no-repeat 98% 50%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+input {
+  height: 30px;
+  font-size: 16px;
+}
+
+textarea {
+  resize: none;
+}
+
+#file {
+  border: none;
+}
+
+.button-wrapper {
+  padding-top: 20px;
+  width: 280px;
+  margin: auto;
+}
+
+button {
+  cursor : pointer;	
+  width: 130px;
+  height: 45px;
+
+  font-size: 18px;
+}
+
+.write {
+  color: white;
+  background: #3d3d3d;
+  border: none;
+  margin-right: 15px;
+}
+
+.cancel {
+  color: black;
+  background: white;
+  border: 2px solid #3d3d3d;
+}

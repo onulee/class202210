@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %> 
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,6 +17,7 @@
 	 				<li>회원가입</li>
 	 				<li><a href="cookit_login.jsp">로그인</a></li>
 	 				<%}else{ %>
+	 				<li><%=session.getAttribute("sessionNname")%>님</li>
 	 				<li>회원정보</li>
 	 				<li><a href="cookit_doLogout.jsp">로그아웃</a></li>
 	 				<%} %>

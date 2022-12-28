@@ -6,6 +6,7 @@
 		<li>회원가입</li><span>|</span>
 		<li><a href="cookit_login.jsp">로그인</a></li><span>|</span>
 		<%}else{ %>
+		<li><%=session.getAttribute("sessionNname")%>님</li><span>|</span>
 		<li>회원정보</li><span>|</span>
 		<li><a href="cookit_doLogout.jsp">로그아웃</a></li><span>|</span>
 		<%} %>
