@@ -11,15 +11,58 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/login.css">
   <script>
-    function loginCheck(){
-    	if($("#uId").val().length<2){
-           alert("아이디를 확인하고 다시 입력하세요.");
-           $("#uId").val("");
-           $("#uId").focus();
-    	   return false; 	
-    	}
-    	login.submit();
-    }
+    $(function(){
+    	//로그인버튼 클릭
+    	$("#loginCheck").click(function(){
+    		if($("#uId").val().length<2){
+   	           alert("아이디를 확인하고 다시 입력하세요.");
+   	           $("#uId").val("");
+   	           $("#uId").focus();
+   	    	   return false; 	
+   	    	}
+    		
+    		$.ajax({
+    			url:"js/member.json",
+    			type:"post",
+    			data:{"id":"admin","pw":"1111"},
+    			dataType:"json",
+    			success:function(data){
+    				//alert("성공");
+    				console.log(data);
+    				//로그인접속
+    				var id = $("#uId").val();
+    				var pw = $("#uPw").val();
+    				for(var i=0;i<data.length;i++){
+    					if(id==data[i].id && pw==data[i].pw){
+    						alert("로그인이 되었습니다.");
+    						
+    						
+    					}
+    				}
+    				
+    				<%-- for(var m:data){
+    					if(id==data[i].id && pw==data[i].pw){
+    						alert("로그인이 되었습니다.");
+    						<% 
+    						  session.setAttribute("sessionId",id);  
+    						  session.setAttribute("sessionName",nicName);  
+    						%>
+    						location.href="cookit_main.jsp";
+    					}
+    				}
+    				 --%>
+    				
+    			},
+    			error:function(){
+    				alert("데이터 읽기 에러");
+    			}
+    			
+    		});
+    		
+   	    	//login.submit();
+    	});
+    });
+  
   </script>
 </head>
 
@@ -54,7 +97,7 @@
         <span>아이디 찾기</span> <span class="separator">|</span> <span>비밀번호 찾기</span>
       </div>
 
-      <button type="button" onclick="loginCheck()">로그인</button>
+      <button type="button" id="loginCheck">로그인</button>
     </form>
 
     <ul class="login-icons">

@@ -105,7 +105,9 @@
       <li class="last"></li>
     </ul>
 
-    <a href="cookit_write.jsp"><div class="write">쓰기</div></a>
+    <% if(session.getAttribute("sessionId") != null){ %>
+      <a href="cookit_write.jsp"><div class="write">쓰기</div></a>
+    <% } %>
   </section>
   <!-- footer include -->
   <%@include file="cookit_footer.jsp" %>
