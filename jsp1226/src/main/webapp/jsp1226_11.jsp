@@ -14,6 +14,7 @@
 	    Cookie cookie = new Cookie("cookieId","aaa");  //name,value
 	    Cookie cookie2 = new Cookie("cNicName","smile");  //name,value
 	    cookie.setMaxAge(60*60); //60초*60분=1시간(3600)
+	    cookie2.setMaxAge(60*60); //60초*60분=1시간(3600)
 	    
 	    response.addCookie(cookie);
 	    response.addCookie(cookie2);

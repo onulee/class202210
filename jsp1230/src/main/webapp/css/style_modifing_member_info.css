@@ -3,6 +3,11 @@
 * { margin: 0px; padding: 0px;}
 ul, ol{ list-style-type: none; }
 
+@charset "UTF-8";
+
+* { margin: 0px; padding: 0px;}
+ul, ol{ list-style-type: none; }
+
 /* header */
 #nav_up {
 	width: 100%; height: 35px;
@@ -158,38 +163,6 @@ section{
 	margin-bottom: 15px;
 }
 
-/* 회원가입 진행 단계 */
-#join_step_div {
-	width: 1000px; height: 120px;
-	margin: 0 auto;
-}
-#join_step_div>ul {
-	width: 1000px; height: 100px;
-}
-#join_step_div>ul>li {
-	float: left;
-	width: 330px;
-	text-align: center;
-	box-sizing: border-box;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	margin: 0px 1px;
-}
-#join_step_div>ul>li>span {
-	font-size: 12px;
-	font-weight: 700;
-	display: block;
-	padding: 10px 0px 7px 0px;
-}
-#join_step_div>ul>li>p {
-	font-size: 20px;
-	font-weight: 700;	
-}
-#join_step_div>ul>li:nth-child(2) {
-	background-color: #8b8075;
-	color: #fff;
-}
-
 /* 입력 부분 시작 */
 h4 {
 	width: 1000px; height: 36px;
@@ -260,38 +233,38 @@ dd span {
 	margin-left: 3px;
 }
 
-#join_name_dl dt {
+#modify_name_dl dt {
 	height: 51px;
 }
-#join_name_dl dd{
+#modify_name_dl dd{
 	height: 51px;
 }
-#join_name_dl dt div {
+#modify_name_dl dt div {
 	top: 14px;
 }
-#join_name_dl dt label {
+#modify_name_dl dt label {
 	padding-top: 16px;
 }
-#join_name_dl input {
+#modify_name_dl input {
 	width: 276px;
 }
 
-#join_id_dl dt{
-	height: 93px;
+#modify_id_dl dt{
+	height: 51px;
 }
-#join_id_dl dd{
-	height: 93px;
+#modify_id_dl dd{
+	height: 51px;
 }
-#join_id_dl dt div {
-	top: 33px;
+#modify_id_dl dt div {
+	top: 14px;
 }
-#join_id_dl dt label {
-	padding-top: 35px;
+#modify_id_dl dt label {
+	padding-top: 16px;
 }
-#join_id_dl input[type="text"] {
+#modify_id_dl input[type="text"] {
 	width: 276px;
 }
-#join_id_dl input[type="button"] {
+#modify_id_dl input[type="button"] {
 	width: 80px; height: 30px;
 	background-color: #6f6f6f;
 	padding: 0px 10px;
@@ -301,116 +274,116 @@ dd span {
 	font-weight: 700;
 	font-size:12px;
 }
-#join_id_dl span {
+#modify_id_dl span {
 	display: block;
 	margin-top: 5px;
 }
 
-#join_pw1_dl dt{
+#modify_pw1_dl dt{
 	height: 87px;
 }
-#join_pw1_dl dd{
+#modify_pw1_dl dd{
 	height: 87px;
 }
-#join_pw1_dl dt div {
+#modify_pw1_dl dt div {
 	top: 33px;
 }
-#join_pw1_dl dt label {
+#modify_pw1_dl dt label {
 	padding-top: 35px;
 	background-position: 38% 90%;
 }
-#join_pw1_dl dd input {
+#modify_pw1_dl dd input {
 	width: 276px;
 }
-#join_pw1_dl span {
+#modify_pw1_dl span {
 	display: block;
 	margin-top: 2px;
 }
 
-#join_pw2_dl dt {
+#modify_pw2_dl dt {
 	height: 51px;
 }
-#join_pw2_dl dd{
+#modify_pw2_dl dd{
 	height: 51px;
 }
-#join_pw2_dl dt div {
+#modify_pw2_dl dt div {
 	top: 14px;
 }
-#join_pw2_dl dt label {
+#modify_pw2_dl dt label {
 	padding-top: 16px;
 }
-#join_pw2_dl input {
+#modify_pw2_dl input {
 	width: 276px;
 }
 
-#join_mail_dl dt {
+#modify_mail_dl dt {
 	height: 51px;
 }
-#join_mail_dl dd{
+#modify_mail_dl dd{
 	height: 51px;
 }
-#join_mail_dl dt div {
+#modify_mail_dl dt div {
 	top: 14px;
 }
-#join_mail_dl dt label {
+#modify_mail_dl dt label {
 	padding-top: 16px;
 }
-#join_mail_dl dd input:nth-child(1) {
+#modify_mail_dl dd input:nth-child(1) {
 	width: 130px;
 }
-#join_mail_dl dd span {
+#modify_mail_dl dd span {
 	font-size: 15px;
 }
-#join_mail_dl dd input:nth-child(3) {
+#modify_mail_dl dd input:nth-child(3) {
 	width: 160px;
 }
-#join_mail_dl dd select {
+#modify_mail_dl dd select {
 	width: 150px; height:25px;
 	font-size: 13px;
 	color: #666;
 }
 
-#join_tell_dl dt {
+#modify_tell_dl dt {
 	height: 51px;
 }
-#join_tell_dl dd {
+#modify_tell_dl dd {
 	height: 51px;
 }
-#join_tell_dl dt div {
+#modify_tell_dl dt div {
 	top: 14px;
 }
-#join_tell_dl dt label {
+#modify_tell_dl dt label {
 	padding-top: 16px;
 }
-#join_tell_dl dd input {
+#modify_tell_dl dd input {
 	width: 75px;
 	text-align: center;
 }
 
-#join_birth_dl dt {
+#modify_birth_dl dt {
 	height: 80px;
 }
-#join_birth_dl dd {
+#modify_birth_dl dd {
 	height: 80px;
 }
-#join_birth_dl dt div {
+#modify_birth_dl dt div {
 	top: 28px;
 }
-#join_birth_dl dt label {
+#modify_birth_dl dt label {
 	padding-top: 30px;
 }
-#join_birth_dl dd select {
+#modify_birth_dl dd select {
 	width: 80px; height: 30px;
 }
-#join_birth_dl dd span {
+#modify_birth_dl dd span {
 	margin-left: 0px;
 	margin-right: 10px;
 }
-#join_birth_dl dd div {
+#modify_birth_dl dd div {
 	width: 150px; height: 20px;
 	margin-top: 10px;
 }
-#join_birth_dl dd div label {
+#modify_birth_dl dd div label {
 	font-size: 13px;
 	font-weight: 600;
 	color: #555;
@@ -453,86 +426,88 @@ input[type="checkbox"]:not(old):checked + label {
 	padding-left: 24px;
 }
 
-#join_gender_dl dt {
+#modify_gender_dl dt {
 	height: 40px;
 }
-#join_gender_dl dd {
+#modify_gender_dl dd {
 	height: 40px;
 }
-#join_gender_dl dt div {
+#modify_gender_dl dt div {
 	top: 10px;
 }
-#join_gender_dl dt label {
+#modify_gender_dl dt label {
 	padding-top: 12px;
 }
-#join_gender_dl dd div {
+#modify_gender_dl dd div {
 	width: 150px; height: 20px;
 }
-#join_gender_dl dd div label {
+#modify_gender_dl dd div label {
 	font-size: 13px;
 	font-weight: 600;
 	color: #555;
 }
 
-#join_newsletter_dl dt{
+#modify_newsletter_dl dt{
 	height: 40px;
 }
-#join_newsletter_dl dd {
+#modify_newsletter_dl dd {
 	height: 40px;
 }
-#join_newsletter_dl dt div {
+#modify_newsletter_dl dt div {
 	top: 10px;
 }
-#join_newsletter_dl dt label {
+#modify_newsletter_dl dt label {
 	padding-top: 12px;
 }
-#join_newsletter_dl dd div {
+#modify_newsletter_dl dd div {
 	display: inline;
 	width: 150px; height: 20px;
 }
 
-#join_sms_dl dt{
+#modify_sms_dl dt{
 	height: 40px;
 }
-#join_sms_dl dd {
+#modify_sms_dl dd {
 	height: 40px;
 }
-#join_sms_dl dt div {
+#modify_sms_dl dt div {
 	top: 10px;
 }
-#join_sms_dl dt label {
+#modify_sms_dl dt label {
 	padding-top: 12px;
 }
-#join_sms_dl dd div {
+#modify_sms_dl dd div {
 	display: inline;
 	width: 150px; height: 20px;
 }
 
-#join_address_dl dt{
+#modify_address_dl dt{
 	height: 132px;
 }
-#join_address_dl dd {
+#modify_address_dl dd {
 	height: 132px;
 }
-#join_address_dl dt div {
+#modify_address_dl dt div {
 	top: 48px;
 }
-#join_address_dl dt label {
+#modify_address_dl dt label {
 	padding-top: 50px;
 }
-#join_address_dl dd>input:nth-child(1) {
-	width: 100px; height: 30px;	
+#modify_address_dl dd>input:nth-child(1) {
+	width: 80px; height: 30px;	
 }
-
-#join_address_dl dd>input:nth-child(3) {
+#modify_address_dl dd>input:nth-child(3) {
+	width: 80px; height: 30px;	
+}
+#modify_address_dl dd>input:nth-child(5) {
 	width: 755px; height: 30px;
 	margin-top: 5px;	
 }
-#join_address_dl dd>input:nth-child(4) {
+#modify_address_dl dd>input:nth-child(6) {
 	width: 755px; height: 30px;
 	margin-top: 5px;	
 }
-#join_address_dl input[type="button"] {
+#modify_address_dl input[type="button"] {
 	width: 80px; height: 30px;
 	background-color: #6f6f6f;
 	padding: 0px 10px;
@@ -544,68 +519,68 @@ input[type="checkbox"]:not(old):checked + label {
 }
 
 /*분양 회원 정보 입력*/
-#join_member_number_dl dt{
+#modify_member_number_dl dt{
 	height: 51px;
 }
-#join_member_number_dl dd{
+#modify_member_number_dl dd{
 	height: 51px;
 }
-#join_member_number_dl dt label {
+#modify_member_number_dl dt label {
 	padding-top: 16px;
 }
-#join_member_number_dl input {
+#modify_member_number_dl input {
 	width: 276px;
 }
 
-#join_verification_number_dl dt{
+#modify_verification_number_dl dt{
 	height: 51px;
 }
-#join_verification_number_dl dd{
+#modify_verification_number_dl dd{
 	height: 51px;
 }
-#join_verification_number_dl dt label {
+#modify_verification_number_dl dt label {
 	padding-top: 16px;
 }
-#join_verification_number_dl input {
+#modify_verification_number_dl input {
 	width: 276px;
 }
 
-#join_job_dl dt{
+#modify_job_dl dt{
 	height: 51px;
 }
-#join_job_dl dd{
+#modify_job_dl dd{
 	height: 51px;
 }
-#join_job_dl dt label {
+#modify_job_dl dt label {
 	padding-top: 16px;
 }
-#join_job_dl dd select {
+#modify_job_dl dd select {
 	width: 274px; height: 30px;
 }
 
-#join_marital_status_dl dt{
+#modify_marital_status_dl dt{
 	height: 40px;
 }
-#join_marital_status_dl dd {
+#modify_marital_status_dl dd {
 	height: 40px;
 }
-#join_marital_status_dl dt div {
+#modify_marital_status_dl dt div {
 	top: 10px;
 }
-#join_marital_status_dl dt label {
+#modify_marital_status_dl dt label {
 	padding-top: 12px;
 }
 
-#join_interests_dl dt{
+#modify_interests_dl dt{
 	height: 81px;
 }
-#join_interests_dl dd {
+#modify_interests_dl dd {
 	height: 81px;
 }
-#join_interests_dl dt label {
+#modify_interests_dl dt label {
 	padding-top: 30px;
 }
-#join_interests_dl dd li {
+#modify_interests_dl dd li {
 	float: left;
 	width: 126px;
 	margin: 5px 0px;

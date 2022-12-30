@@ -1,0 +1,374 @@
+@charset "UTF-8";
+
+* { margin: 0px; padding: 0px;}
+ul, ol{ list-style-type: none; }
+
+
+@charset "UTF-8";
+
+* { margin: 0px; padding: 0px;}
+ul, ol{ list-style-type: none; }
+
+/* header */
+#nav_up {
+	width: 100%; height: 35px;
+	background: #202020;
+	text-align: left;
+	color: #606060
+}
+#nav_up>ul {
+	width: 480px 23px;
+	float: right;
+	padding-right: 30px;
+}
+#nav_up>ul>li {
+	float: left;
+	margin-right: 15px;
+}
+#nav_up>ul>li>a{
+	text-decoration: none;
+	color: white;
+	font-size: 13px;
+	line-height: 33px;
+}
+/* 상단 메뉴 */
+nav {
+	box-sizing: border-box;
+	width: 100%; height: 81px;
+	position:relative;
+	border-bottom: 1px solid black;
+}
+nav>a {
+	width: 100px; height: 30px;
+	background: url("../images/ico_set.png") -320px -385px no-repeat;
+	background-size: 800px 800px;
+	position:absolute; left: 40px; top: 25px;
+}
+nav>ul:nth-child(2) {
+	width: 750px; height: 40px;
+	box-sizing: border-box;
+	margin: 0 auto;
+	position: relative; top:23px;
+}
+nav>ul:nth-child(2) li {
+	float: left;
+	margin-right: 60px;
+}
+nav>ul:nth-child(2) li a {
+	text-decoration: none;
+	color: #101010;
+	font-weight: 700;
+	font-size: 22px;
+	line-height: 32px;
+}
+/* 메뉴 우측 아이콘(장바구니, 메뉴찾기) */
+nav>ul:nth-child(3) {
+	width: 155px; height: 52px;
+	position: relative; top: -25px;
+	float: right;
+	
+}
+nav>ul:nth-child(3) li {
+	float: left;
+	color: #101010;
+	font-weight: 700;
+	font-size: 12px;
+	line-height: 32px;
+	margin-left: 20px;
+}
+nav>ul:nth-child(3) li:nth-child(1) a {
+	width: 32px; height: 32px;
+	text-decoration: none;
+	display: inline-block;
+	margin: 0 auto;
+	background: url("../images/ico_set.png") -584px -320px no-repeat;
+	background-size: 800px 800px;
+	letter-spacing: -2px;
+}
+nav>ul:nth-child(3)>li:nth-child(1)>a>span {
+	width: 50px; height: 20px;
+	display: block;
+	font-size: 12px;
+	color: #101010;
+	position: relative; top: 25px; left: -5px;
+}
+nav>ul:nth-child(3) li:nth-child(2) a {
+	width: 32px; height: 32px;
+	text-decoration: none;
+	display: inline-block;
+	margin: 0 auto;
+	background: url("../images/ico_set.png") -628px -320px no-repeat;
+	background-size: 800px 800px;
+	letter-spacing: -2px;
+}
+nav>ul:nth-child(3)>li:nth-child(2)>a>span {
+	width: 50px; height: 20px;
+	display: block;
+	font-size: 12px;
+	color: #101010;
+	position: relative; top: 25px; left: -5px;
+}
+
+
+
+
+
+/* section */
+section{
+	width: 100%; height: 1000px;
+}
+
+/* 서브 이미지 */
+#subBanner {
+	width: 100%; height: 320px;
+	background: url("../images/join/join_sub.jpg") no-repeat;
+	background-size: cover;
+}
+
+/* 상단 현재 진행 */
+#locationN {
+	width: 1000px;
+	box-sizing: border-box;
+	padding-top:38px;
+	margin: 0 auto;
+}
+#locationN>ul {
+	float: right;
+}
+#locationN>ul>li {
+	float: left;
+	font-size: 13px;
+	color:rgb(92, 92, 92);
+	font-weight: 700;
+	line-height: 1.2;
+	padding: 0px 13px 0px 10px;
+	background: url("../images/join/bg_location_li.png") right no-repeat;
+}
+#locationN>ul>li:nth-child(3) {
+	padding-right: 0px;
+	background: none;
+}
+
+/* 회원가입 title */
+#sub_top_area {
+	width: 1000px; height: 127px;
+	box-sizing: border-box;
+	padding: 40px 0px 20px;
+	margin: 0 auto;
+}
+#sub_top_area>h3 {
+	font-size: 40px;
+	font-weight: 700;
+	color: #333;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+/* 회원가입 진행 단계 */
+#join_step_div {
+	width: 1000px; height: 120px;
+	margin: 0 auto;
+}
+#join_step_div>ul {
+	width: 1000px; height: 100px;
+}
+#join_step_div>ul>li {
+	float: left;
+	width: 330px;
+	text-align: center;
+	box-sizing: border-box;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin: 0px 1px;
+}
+#join_step_div>ul>li>span {
+	font-size: 12px;
+	font-weight: 700;
+	display: block;
+	padding: 10px 0px 7px 0px;
+}
+#join_step_div>ul>li>p {
+	font-size: 20px;
+	font-weight: 700;	
+}
+#join_step_div>ul>li:nth-child(3) {
+	background-color: #8b8075;
+	color: #fff;
+}
+
+#join_success_div {
+	width: 1000px; height: 250px;
+	text-align: center;
+	box-sizing: border-box;
+	padding: 66px 0px;
+	margin: 0 auto;
+	border: 1px solid rgb(231, 231, 231);
+}
+#join_success_div p{
+	width: 998px; height: 90px;
+	color: rgb(102, 102, 102);
+	font-size: 32px;
+	margin_bottom: 25px;
+	line-height: 150%;
+}
+#join_success_div strong {
+	display: block;
+	width: 998px; height: 42px;
+	font-weight: 800%;
+	color: rgb(51, 51, 51);
+}
+
+
+
+
+
+/*footer*/
+#footer_wrap{
+	width: 100%; height: 213px;
+	font-size: 15px;
+	color: #606060;
+	background: #202020;
+}
+#footer_cont {
+	width: 1180px; height: 177px;
+	margin: 0 auto;
+}
+#fl_l{
+	width: 300px; height: 149px;
+	padding-top: 36px;
+	float:left;
+}
+#fl_l>a {
+	width: 160px; height: 48px;
+	box-sizing: border-box;
+	display: block;
+	background: url("../images/ico_set.png") no-repeat -320px -320px;
+	background-size: 800px 800px;
+}
+#fl_l>p {
+	color: #808080;
+	font-size: 12px;
+	line-height: 20px;
+	padding: 45px 0px 0px 1px;
+}
+#fl_c{
+	float: left;
+	width: 660px;
+	padding-top:32px;
+}
+#fl_c>ul {
+	width: 625px; height: 23px;
+}
+#fl_c>ul>li {
+	float: left;
+	padding: 0px 24px;
+	border-right: 1px solid rgba(255,255,255, 0.1);
+}
+#fl_c>ul>li:nth-child(1) {
+	padding-left: 0px;
+}
+#fl_c>ul>li:nth-child(4) {
+	border-right: 0px;
+}
+#fl_c>ul>li>a{
+	text-decoration: none;
+	color: #fff;
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 21px;
+	letter-spacing: -2px;
+}
+#fl_c>ul>li:nth-child(2)>a {
+	color: #bdd61a;
+}
+
+
+#fl_c_info {
+	box-sizing: border-box;
+	padding-top: 18px;
+}
+#fl_c_info>p {
+	float: left;
+	margin-top: 6px;
+	padding: 0px 8px;
+	color: #808080;
+	font-size: 12px;
+	line-height: 19px;
+	letter-spacing: -1px;
+	border-right: 1px solid rgba(255,255,255, 0.1);
+}
+#fl_c_info>p:nth-child(1) {
+	padding-left: 0px;
+}
+#fl_c_info>p:nth-child(4) {
+	padding-left: 0px;
+}
+#fl_c_info>p:nth-child(7) {
+	padding-left: 0px;
+}
+#fl_c_info>p:nth-child(9) {
+	padding-left: 0px;
+	border-right: 0px;
+}
+#fl_c_info>p:nth-child(3) {
+	border-right: 0px;
+}
+#fl_c_info>p:nth-child(6) {
+	border-right: 0px;
+}
+#fl_c_info>p:nth-child(8) {
+	border-right: 0px;
+}
+#fl_c_info>p:nth-child(9)>a {
+	text-decoration: underline;
+	font-weight: blod;
+	color: #fff;
+}
+#fl_r {
+	box-sizing: border-box;
+	width: 170px; height: 177px;
+	float: right;
+	padding-top: 31px;
+}
+#fl_r>span {
+	display: inline-block;
+	width: 168px;
+	color: #fff;
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 20px;
+	text-align: right;
+}
+#fl_r>dl>dt {
+	float: left;
+	padding-right: 6px;
+	color: #fff;
+	font-size: 17px;
+	line-height: 24px;
+	margin-top: 25px;
+	letter-spacing: -2px;
+}
+#fl_r>dl>dd{
+	float: left;
+	color: #fff;
+	font-weight: 700;
+	font-size: 17px;
+	line-height: 24px;
+	margin-top: 25px;
+	letter-spacing: -2px;
+}
+#fl_r>a {
+	display: inline-block;
+	width: 88px; height: 32px;
+	text-decoration: none;
+	color: #fff;
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 30px;
+	text-align: center;
+	margin-top: 40px; 
+	margin-left: 80px;
+	border: 1px solid #fff;
+}
+
+
