@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<script src="http://code.jquery.com/jquery-latest.min.js" ></script>
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/style_header.css">
 		<link rel="stylesheet" type="text/css" href="css/style_join02_info_input.css">
 		<link rel="stylesheet" type="text/css" href="css/style_footer.css">
@@ -122,10 +123,96 @@
 					</dl>
 					<script>
 					  $(function(){
+						 //--------------------------------------------------------
+						 // 페이지 로딩시 바로 실행
+						 var nameChk = /^[가-힣]{2,}$/;
 						 var idChk = /^[a-zA-Z]{1}[a-zA-Z0-9_]{3,15}$/;
 						 var pwChk = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()]).{5,}$/;
+						 var f_tellChk = /^[0-9]{3}$/;
+						 var m_tellChk = /^[0-9]{3,4}$/;
+						 var l_tellChk = /^[0-9]{4}$/;
 						 
-						 //정규표현식
+						 
+						 //생일 년
+						 var today = new Date();
+						 var year = today.getFullYear();
+						 // 월 배열
+						 var monthArr = [31,28,31,30,31,30,31,31,30,31,30,31];
+						 // 윤달 체크----------------------
+						 // 1. 년도가 4로 나눠지며, 100으로 나눌때 나머지 0이 아니어야 함.
+						 // 2. 400으로 나눌때 나머지가 0이어야 함.
+						 if((year%4==0 && year%100!=0)||year%400==0){
+							 alert("윤달입니다.");
+							 monthArr[1]=29;
+						 }else{
+							 alert("윤달이 아닙니다.");
+						 }
+						 //-----------------------------------
+						 var yearData="<option selected>선택</option>";
+						 for(var i=1900;i<=year;i++){
+						   yearData +="<option value='"+i+"'>"+i+"</option>";
+						 }
+						 $("#birth_year").html(yearData);
+						 
+						 //생일 월
+						 var monthData="<option selected>선택</option>";
+						 for(var i=1;i<=12;i++){
+							 monthData +="<option value='"+i+"'>"+i+"</option>";
+						 }
+						 $("#birth_month").html(monthData);
+						 
+						 //생일 일
+						 var dayData="<option selected>선택</option>";
+						 for(var i=1;i<=31;i++){
+							 dayData +="<option value='"+i+"'>"+i+"</option>";
+						 }
+						 $("#birth_day").html(dayData);
+						 
+						 
+						 
+						 
+						 // 가입하기 버튼 클릭시 name체크,전화번호체크
+						 $("#submitBtn").click(function(){
+							 /* var name = $("#name").val();
+							 if(!nameChk.test(name)){
+								 alert("한글만 가능합니다.");
+								 return false;
+							 }//if
+							 
+							 var f_tell = $("#f_tell").val();
+							 if(!f_tellChk.test(f_tell)){
+								 alert("숫자 3자리만 가능합니다.");
+								 return false;
+							 }//if
+							 var m_tell = $("#m_tell").val();
+							 if(!m_tellChk.test(m_tell)){
+								 alert("숫자 3에서 4자리만 가능합니다.");
+								 return false;
+							 }//if
+							 var l_tell = $("#l_tell").val();
+							 if(!l_tellChk.test(l_tell)){
+								 alert("숫자 4자리만 가능합니다.");
+								 return false;
+							 }//if */
+							
+							 
+							 //check가 3개 이상 체크를 해야 함
+							 if($("input:checkbox[name=hobbys]:checked").length<3){
+								 alert("취미를 3개 이상 체크를 하셔야 합니다.");
+								 return false;
+							 }else{
+								 alert("정상");
+							 }
+							 
+							 
+							 
+						 });//submitBtn
+						 
+						//실행시 --------------------------------------------------------
+						 
+						 //------------------------------------------------------------
+						 // 버튼 클릭시 실행됨
+						 //id체크 정규표현식
 						 $("#idChkBtn").click(function(){
 							 var id = $("#id").val();
 							 if(!idChk.test(id)){
@@ -159,6 +246,8 @@
 							 });
 						 });//click
 						 
+						 
+						 // pw체크
 						 $("#pw1").keyup(function(){
 							  var pw1 = $("#pw1").val();
 								 if(!pwChk.test(pw1)){
@@ -190,10 +279,43 @@
 							 }
 							 $("#main_tail").val($("#selectMail").val());
 							 $("#main_tail").prop("readonly",true);
-						 });					 
+						 });
 						 
+						 //다음주소찾기 연결
+						 $("daumZip").click(function(){
+							 new daum.Postcode({
+							        oncomplete: function(data) {
+							            $("#f_postal").val(data.zonecode);
+							            $("#address1").val(data.address);
+							        }
+							 }).open(); 
+						 });
+						 
+						 
+						 
+						//생일 월 변경시
+						// 윤달 체크----------------------
+						 var monthArr = [31,28,31,30,31,30,31,31,30,31,30,31];
+						 //-----------------------------------
+						 $("#birth_month").change(function(){
+							 var monthData=0;
+							 monthData = monthArr[$("#birth_month").val()-1];
+							 changeMonth(monthData);
+							 return false;
+						 });//change
 						 
 					  });//function
+					  
+					 //생일 일
+					 function changeMonth(monthData){
+						 var dayData="<option selected>선택</option>";
+						 for(var i=1;i<=monthData;i++){
+							 dayData +="<option value='"+i+"'>"+i+"</option>";
+						 }
+						 $("#birth_day").html(dayData);
+					 }//changeMonth
+					 
+					  
 					
 					</script>
 					<dl id="join_mail_dl">
@@ -222,7 +344,7 @@
 						</dt>
 						<dd>
 							<input type="text" id="f_postal" name="f_postal" required />
-							<input type="button" value="우편번호"/>
+							<input type="button" id="daumZip" value="우편번호"/>
 							<input type="text" id="address1" name="address1" required />
 							<input type="text" id="address2" name="address2" required />
 						</dd>
@@ -235,11 +357,11 @@
 							<label for="f_tell">휴대전화</label>
 						</dt>
 						<dd>
-							<input type="text" id="f_tell" name="f_tell" maxlength="3" required />
+							<input type="text" id="f_tell" name="f_tell" maxlength="3"  />
 							<span> - </span>
-							<input type="text" id="m_tell" name="m_tell" maxlength="4" required />
+							<input type="text" id="m_tell" name="m_tell" maxlength="4"  />
 							<span> - </span>
-							<input type="text" id="l_tell" name="l_tell" maxlength="4" required />
+							<input type="text" id="l_tell" name="l_tell" maxlength="4"  />
 						</dd>
 					</dl>
 					<dl id="join_birth_dl">
@@ -249,50 +371,16 @@
 						</dt>
 						<dd>
 							<select id="birth_year" name="birth_year" required>
-								<option selected>선택</option>
-								<option value="1988">1988</option>
-								<option value="1989">1989</option>
-								<option value="1990">1990</option>
-								<option value="1991">1991</option>
-								<option value="1992">1992</option>
-								<option value="1993">1993</option>
-								<option value="1994">1994</option>
-								<option value="1995">1995</option>
-								<option value="1996">1996</option>
-								<option value="1997">1997</option>
-								<option value="1998">1998</option>
-								<option value="1988">1999</option>
-								<option value="1920">2000</option>
+							    <!-- 1900년도 부터 현재년도 추가 -->
 							</select>
 							<span>년</span>
 							<select id="birth_month" name="birth_month" required>
-								<option selected>선택</option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-								<option value="6">6</option>
-								<option value="7">7</option>
-								<option value="8">8</option>
-								<option value="9">9</option>
-								<option value="10">10</option>
-								<option value="11">11</option>
-								<option value="12">12</option>
+								<!-- 1월 부터 12월 추가 -->
 							</select>
 							<span>월</span>
 							<select id="birth_day" name="birth_day" required>
 								<option selected>선택</option>
 								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-								<option value="6">6</option>
-								<option value="7">7</option>
-								<option value="8">8</option>
-								<option value="9">9</option>
-								<option value="10">10</option>
 							</select>
 							<span>일</span>
 							<div>
@@ -413,31 +501,31 @@
 						<dd>
 							<ul>
 								<li>
-									<input type="checkbox" name="computer" id="computer" value="computer" />
+									<input type="checkbox" name="hobbys" id="computer" value="computer" />
 									<label for="computer">컴퓨터/인터넷</label>
 								</li>
 								<li>
-									<input type="checkbox" name="movie" id="movie" value="movie" />
+									<input type="checkbox" name="hobbys" id="movie" value="movie" />
 									<label for="movie">영화/비디오</label>
 								</li>
 								<li>
-									<input type="checkbox" name="music" id="music" value="music" />
+									<input type="checkbox" name="hobbys" id="music" value="music" />
 									<label for="music">음악</label>
 								</li>
 								<li>
-									<input type="checkbox" name="shopping" id="shopping" value="shopping" />
+									<input type="checkbox" name="hobbys" id="shopping" value="shopping" />
 									<label for="shopping">쇼핑</label>
 								</li>
 								<li>
-									<input type="checkbox" name="game" id="game" value="game" />
+									<input type="checkbox" name="hobbys" id="game" value="game" />
 									<label for="game">게임</label>
 								</li>
 								<li>
-									<input type="checkbox" name="culture" id="culture" value="culture" />
+									<input type="checkbox" name="hobbys" id="culture" value="culture" />
 									<label for="culture">문화/예술</label>
 								</li>
 								<li>
-									<input type="checkbox" name="parenting" id="parenting" value="parenting" />
+									<input type="checkbox" name="hobbys" id="parenting" value="parenting" />
 									<label for="parenting">육아/아동</label>
 								</li>
 								<li>
@@ -445,19 +533,19 @@
 									<label for="parenting">요리</label>
 								</li>
 								<li>
-									<input type="checkbox" name="interier" id="interier" value="interier" />
+									<input type="checkbox" name="hobbys" id="interier" value="interier" />
 									<label for="interier">인테리어</label>
 								</li>
 								<li>
-									<input type="checkbox" name="leisure" id="leisure" value="leisure" />
+									<input type="checkbox" name="hobbys" id="leisure" value="leisure" />
 									<label for="leisure">레저/여가</label>
 								</li>
 								<li>
-									<input type="checkbox" name="health" id="health" value="health" />
+									<input type="checkbox" name="hobbys" id="health" value="health" />
 									<label for="health">건강/다이어트</label>
 								</li>
 								<li>
-									<input type="checkbox" name="fashion" id="fashion" value="fashion" />
+									<input type="checkbox" name="hobbys" id="fashion" value="fashion" />
 									<label for="fashion">패션/미용</label>
 								</li>
 							</ul>
@@ -466,7 +554,7 @@
 				</fieldset>
 				<div id="info_input_button">
 					<input type="reset" value="취소하기" />
-					<input type="submit" value="가입하기" />
+					<input type="button" id="submitBtn" value="가입하기" />
 				</div>
 				
 			</form>
