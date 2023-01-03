@@ -341,11 +341,15 @@
 						<dd>
 							<ul>
 								<li>
-									<input type="checkbox" name="hobby" id="computer" value="computer" />
+									<input type="checkbox" name="hobby" id="computer" value="computer"
+									<% if(member.getHobbys().contains("computer")) out.println("checked"); %>
+									 />
 									<label for="computer">컴퓨터/인터넷</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobby" id="movie" value="movie" />
+									<input type="checkbox" name="hobby" id="movie" value="movie" 
+									<% if(member.getHobbys().contains("movie")) out.println("checked"); %>
+									/>
 									<label for="movie">영화/비디오</label>
 								</li>
 								<li>
