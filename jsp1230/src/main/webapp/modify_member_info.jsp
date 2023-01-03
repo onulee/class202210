@@ -1,10 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %>
+<jsp:useBean id="member" class="com.java.ex.Member" scope="session" />
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<script src="http://code.jquery.com/jquery-latest.min.js" ></script>
 		<link rel="stylesheet" type="text/css" href="css/style_header.css">
 		<link rel="stylesheet" type="text/css" href="css/style_modifing_member_info.css">
 		<link rel="stylesheet" type="text/css" href="css/style_footer.css">
+		<% if(session.getAttribute("sessionId")==null){ %>
+		    <script>
+			    alert("로그인을 하셔야 접근이 가능합니다.");
+			    location.href="login.html";
+		    </script>
+		<%}else{ %>
+		    <script>
+			    alert("세션 : "<%= session.getAttribute("sessionId")%>);
+		    </script>
+		<%} %>
 		<title>개인정보수정</title>
 	</head>
 	<body>
@@ -68,7 +83,7 @@
 							<label for="name">이름</label>
 						</dt>
 						<dd>
-							홍길동
+							<%=member.getName() %>
 						</dd>
 					</dl>
 					<dl id="modify_id_dl">
@@ -77,7 +92,7 @@
 							<label for="id">아이디</label>
 						</dt>
 						<dd>
-							honghong
+							<%=member.getId() %>
 						</dd>
 					</dl>
 					<dl id="modify_pw1_dl">
@@ -107,9 +122,9 @@
 							<label for="mail_id">이메일</label>
 						</dt>
 						<dd>
-							<input type="text" id="mail_id" name="mail_id" value="aaaa" required />
+							<input type="text" id="mail_id" name="mail_id" value="<%=member.getMail_id() %>" required />
 							<span>@</span>
-							<input type="text" id="main_tail" name="mail_tail" value="gmain.com" required />
+							<input type="text" id="main_tail" name="mail_tail" required />
 							<select>
 								<option selected>직접입력</option>
 								<option>지메일</option>
@@ -131,12 +146,12 @@
 							<label for="">주소</label>
 						</dt>
 						<dd>
-							<input type="text" id="f_postal" name="f_postal" value="12345" required />
+							<input type="text" id="f_postal" name="f_postal" required />
 							<span>-</span>
 							<input type="text" id="l_postal" name="l_postal" required />
 							<input type="button" value="우편번호"/>
-							<input type="text" id="address1" name="address1" value="서울시 금천구 가산디지털1로 186." required />
-							<input type="text" id="address2" name="address2" value="(가산동. 제이플라츠 5F. 515,516호)" required />
+							<input type="text" id="address1" name="address1"  required />
+							<input type="text" id="address2" name="address2"  required />
 						</dd>
 						
 					</dl>
@@ -147,11 +162,11 @@
 							<label for="f_tell">휴대전화</label>
 						</dt>
 						<dd>
-							<input type="text" id="f_tell" name="f_tell" maxlength="3" value="010" required />
+							<input type="text" id="f_tell" name="f_tell" maxlength="3"  required />
 							<span> - </span>
-							<input type="text" id="m_tell" name="m_tell" maxlength="4" value="1234" required />
+							<input type="text" id="m_tell" name="m_tell" maxlength="4"  required />
 							<span> - </span>
-							<input type="text" id="l_tell" name="l_tell" maxlength="4" value="5678" required />
+							<input type="text" id="l_tell" name="l_tell" maxlength="4"  required />
 						</dd>
 					</dl>
 					<dl id="modify_birth_dl">
@@ -164,7 +179,7 @@
 								<option >선택</option>
 								<option value="1988">1988</option>
 								<option value="1989">1989</option>
-								<option selected value="1990">1990</option>
+								<option value="1990">1990</option>
 								<option value="1991">1991</option>
 								<option value="1992">1992</option>
 								<option value="1993">1993</option>
@@ -181,7 +196,7 @@
 								<option >선택</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
-								<option selected value="3">3</option>
+								<option value="3">3</option>
 								<option value="4">4</option>
 								<option value="5">5</option>
 								<option value="6">6</option>
@@ -198,7 +213,7 @@
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
-								<option selected value="4">4</option>
+								<option value="4">4</option>
 								<option value="5">5</option>
 								<option value="6">6</option>
 								<option value="7">7</option>
@@ -272,7 +287,7 @@
 							<label for="m_number">회원번호</label>
 						</dt>
 						<dd>
-							<input type="text" name="m_number" id="m_number" value="12341234" />
+							<input type="text" name="m_number" id="m_number"  />
 							<span>하이픈(-)이나 띄어쓰기 없이 입력해 주시기 바랍니다.</span>
 						</dd>
 					</dl>
@@ -281,7 +296,7 @@
 							<label for="v_number">회원인증번호</label>
 						</dt>
 						<dd>
-							<input type="text" name="v_number" id="v_number" value="a1b2c3d4"/>
+							<input type="text" name="v_number" id="v_number" />
 							<span>숫자 4자리 입력</span>
 						</dd>
 					</dl>
@@ -325,51 +340,51 @@
 						<dd>
 							<ul>
 								<li>
-									<input type="checkbox" name="computer" id="computer" value="computer" checked/>
+									<input type="checkbox" name="hobby" id="computer" value="computer" />
 									<label for="computer">컴퓨터/인터넷</label>
 								</li>
 								<li>
-									<input type="checkbox" name="movie" id="movie" value="movie" checked/>
+									<input type="checkbox" name="hobby" id="movie" value="movie" />
 									<label for="movie">영화/비디오</label>
 								</li>
 								<li>
-									<input type="checkbox" name="music" id="music" value="music" />
+									<input type="checkbox" name="hobby" id="music" value="music" />
 									<label for="music">음악</label>
 								</li>
 								<li>
-									<input type="checkbox" name="shopping" id="shopping" value="shopping" />
+									<input type="checkbox" name="hobby" id="shopping" value="shopping" />
 									<label for="shopping">쇼핑</label>
 								</li>
 								<li>
-									<input type="checkbox" name="game" id="game" value="game" checked/>
+									<input type="checkbox" name="hobby" id="game" value="game" />
 									<label for="game">게임</label>
 								</li>
 								<li>
-									<input type="checkbox" name="culture" id="culture" value="culture" />
+									<input type="checkbox" name="hobby" id="culture" value="culture" />
 									<label for="culture">문화/예술</label>
 								</li>
 								<li>
-									<input type="checkbox" name="parenting" id="parenting" value="parenting" />
+									<input type="checkbox" name="hobby" id="parenting" value="parenting" />
 									<label for="parenting">육아/아동</label>
 								</li>
 								<li>
-									<input type="checkbox" name="cooking" id="cooking" value="cooking" checked/>
-									<label for="parenting">요리</label>
+									<input type="checkbox" name="hobby" id="cooking" value="cooking" />
+									<label for="cooking">요리</label>
 								</li>
 								<li>
-									<input type="checkbox" name="interier" id="interier" value="interier" />
+									<input type="checkbox" name="hobby" id="interier" value="interier" />
 									<label for="interier">인테리어</label>
 								</li>
 								<li>
-									<input type="checkbox" name="leisure" id="leisure" value="leisure" />
+									<input type="checkbox" name="hobby" id="leisure" value="leisure" />
 									<label for="leisure">레저/여가</label>
 								</li>
 								<li>
-									<input type="checkbox" name="health" id="health" value="health" />
+									<input type="checkbox" name="hobby" id="health" value="health" />
 									<label for="health">건강/다이어트</label>
 								</li>
 								<li>
-									<input type="checkbox" name="fashion" id="fashion" value="fashion" checked/>
+									<input type="checkbox" name="hobby" id="fashion" value="fashion"/>
 									<label for="fashion">패션/미용</label>
 								</li>
 							</ul>

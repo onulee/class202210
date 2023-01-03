@@ -1,13 +1,52 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-latest.min.js" ></script>
   <title>Document</title>
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/read.css">
+  <% if(request.getParameter("no")==null || request.getParameter("no").equals("")){ %>  	
+   	<script>
+	   	alert("해당 번호가 없습니다. 다시 확인하세요.");
+	   	history.back();
+   	</script>
+  <%}%> 
+  <script>
+    $(function(){
+    	var no = <%=request.getParameter("no") %>;
+    	
+    	$.ajax({
+    		url:"js/board.json",
+    		type:"post",
+    		dataType:"json",
+    		data:{"id":"aaa"},
+    		success:function(data){
+    			for(var board of data){
+				  if(board.no==no){
+    				$("#btitle").text(board.title);
+    				$("#bcontent").text(board.content);
+    				$("#bdate").text(board.date);
+    				$("#bname").text(board.userId);
+    				
+				  }
+    			}
+    			
+    		},
+    		error:function(){
+    			alert("프로세스 실패");
+    		}
+    	});
+    });
+  
+  </script>
+  
 </head>
 
 <body>
@@ -49,21 +88,36 @@
     <h1>NOTICE</h1>
 
     <table>
+      <colgroup>
+        <col width="8%">
+        <col width="42%">
+        <col width="8%">
+        <col width="42%">
+      </colgroup>
       <tr>
-        <th>[키즈잼] 2020년 이용 시간 & 이용 요금 변경 안내</th>
+        <th>제목<span class="separator"> |</span></th>
+        <th colspan="3" id="btitle">[키즈잼] 2020년 이용 시간 & 이용 요금 변경 안내</th>
       </tr>
       <tr>
-        <td>2019-12-11</td>
+        <td>작성일<span class="separator"> |</span></td>
+        <td id="bdate">2019-12-11</td>
+        <td>작성자<span class="separator"> |</span></td>
+        <td id="bname">홍길동</td>
       </tr>
       <tr>
-        <td class="article">
-          <img src="https://www.midashotel.co.kr/Midas_uploads/2019-12-11%2017-13-142020%EB%85%84_%ED%82%A4%EC%A6%88%EC%9E%BC_%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD_%EC%95%88%EB%82%B4.jpg" alt="" width="80%"></td>
+        <td colspan="4" class="article" id="bcontent">
+          <img src="https://www.midashotel.co.kr/Midas_uploads/2019-12-11%2017-13-142020%EB%85%84_%ED%82%A4%EC%A6%88%EC%9E%BC_%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD_%EC%95%88%EB%82%B4.jpg" alt="" width="80%">
+        </td>
       </tr>
       <tr>
-        <td><strong>다음글</strong> <span class="separator">|</span> [키즈잼] 2월 프로그램 안내</td>
+        <td colspan="4" id="bnext">
+          <a href="#">
+            <strong>다음글</strong> <span class="separator">|</span> [키즈잼] 2월 프로그램 안내
+          </a>
+        </td>
       </tr>
       <tr>
-        <td><strong>이전글</strong> <span class="separator">|</span> [키즈잼] 2020년 1분기 정기 휴관일 안내</td>
+        <td colspan="4" id="bpre"><strong>이전글</strong> <span class="separator">|</span> [키즈잼] 2020년 1분기 정기 휴관일 안내</td>
       </tr>
     </table>
 

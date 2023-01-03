@@ -42,7 +42,7 @@
 		
 		
 		<section>
-			<form name="agree" method="get" action="join03_success.html">
+			<form name="agree" method="get" action="join03_success.jsp">
 				<div id="subBanner"></div>
 				<div id="locationN">
 					<ul>
@@ -197,15 +197,24 @@
 							
 							 
 							 //check가 3개 이상 체크를 해야 함
-							 if($("input:checkbox[name=hobbys]:checked").length<3){
+							 if($("input:checkbox[name=hobby]:checked").length<3){
 								 alert("취미를 3개 이상 체크를 하셔야 합니다.");
 								 return false;
 							 }else{
 								 alert("정상");
 							 }
 							 
+							 // hobby배열을 hobbys 문자열로 합치기
+							 var chkhobby ="";
+							 $("input:checkbox[name=hobby]:checked").each(function(idx,item){
+								 if(idx==0) chkhobby += item.value;
+								 else chkhobby += ","+item.value;
+								 
+								 alert(chkhobby);
+								 $("#hobbys").val(chkhobby);
+							 });
 							 
-							 
+							 agree.submit();
 						 });//submitBtn
 						 
 						//실행시 --------------------------------------------------------
@@ -501,53 +510,54 @@
 						<dd>
 							<ul>
 								<li>
-									<input type="checkbox" name="hobbys" id="computer" value="computer" />
+									<input type="checkbox" name="hobby" id="computer" value="computer" />
 									<label for="computer">컴퓨터/인터넷</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobbys" id="movie" value="movie" />
+									<input type="checkbox" name="hobby" id="movie" value="movie" />
 									<label for="movie">영화/비디오</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobbys" id="music" value="music" />
+									<input type="checkbox" name="hobby" id="music" value="music" />
 									<label for="music">음악</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobbys" id="shopping" value="shopping" />
+									<input type="checkbox" name="hobby" id="shopping" value="shopping" />
 									<label for="shopping">쇼핑</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobbys" id="game" value="game" />
+									<input type="checkbox" name="hobby" id="game" value="game" />
 									<label for="game">게임</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobbys" id="culture" value="culture" />
+									<input type="checkbox" name="hobby" id="culture" value="culture" />
 									<label for="culture">문화/예술</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobbys" id="parenting" value="parenting" />
+									<input type="checkbox" name="hobby" id="parenting" value="parenting" />
 									<label for="parenting">육아/아동</label>
 								</li>
 								<li>
-									<input type="checkbox" name="cooking" id="cooking" value="cooking" />
-									<label for="parenting">요리</label>
+									<input type="checkbox" name="hobby" id="cooking" value="cooking" />
+									<label for="cooking">요리</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobbys" id="interier" value="interier" />
+									<input type="checkbox" name="hobby" id="interier" value="interier" />
 									<label for="interier">인테리어</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobbys" id="leisure" value="leisure" />
+									<input type="checkbox" name="hobby" id="leisure" value="leisure" />
 									<label for="leisure">레저/여가</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobbys" id="health" value="health" />
+									<input type="checkbox" name="hobby" id="health" value="health" />
 									<label for="health">건강/다이어트</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobbys" id="fashion" value="fashion" />
+									<input type="checkbox" name="hobby" id="fashion" value="fashion" />
 									<label for="fashion">패션/미용</label>
 								</li>
+								<input type="hidden" name="hobbys" id="hobbys">
 							</ul>
 						</dd>
 					</dl>

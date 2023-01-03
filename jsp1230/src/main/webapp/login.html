@@ -4,9 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pages - Login</title>
+  <script src="http://code.jquery.com/jquery-latest.min.js" ></script>
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/login.css">
+  <script>
+    function chkBtn(){
+    	
+    	var id = $("#uid").val();
+    	var pw = $("#upw").val();
+    	
+    	// id,pw데이터 확인
+    	if(id.length<1 || pw.length<1){
+    		alert("아이디 또는 패스워드를 입력해주세요.");
+    		$("#uid").focus();
+    		return false;
+    	}//if
+    	
+    	$.ajax({
+    		url:"js/member.json",
+    		type:"post",
+    		dataType:"json",
+    		data:{"id":id,"pw":pw},
+    		success:function(data){
+    			for(var mem of data){
+    				check = 0;
+    				if(mem.id==id && mem.pw==pw){
+    					$("#nicName").val(mem.nicName);
+    					check=1;
+    					alert("로그인이 되었습니다.");
+    					login.submit();
+    				}
+    			}
+    		},
+    		error:function(){
+    			alert("프로세스 오류!");
+    		}
+    	});
+    	if(check==0){
+	    	alert("아이디 또는 패스워드가 일치하지 않습니다. 다시 로그인 해주세요.");
+	    	$("#uid").val("").focus();
+	    	return false;
+    	}
+    }
+  </script>
 </head>
 
 <body>
@@ -54,12 +95,13 @@
       </ul>  
     </article>
 
-    <form action="/login" name="login" method="post">
+    <form action="doLogin.jsp" name="login" method="post">
+      <input type="hidden" name="nicName" id="nicName">
       <div class="id">
-        <input type="text" name="id" size="30" placeholder="CJ ONE 통합아이디 6~20자">
+        <input type="text" name="id" id="uid" size="30" placeholder="CJ ONE 통합아이디 6~20자">
       </div>
       <div class="pw">
-        <input type="text" name="pw" size="45" placeholder="비밀번호 영문, 특수문자, 숫자혼합 8~12자">
+        <input type="text" name="pw" id="upw" size="45" placeholder="비밀번호 영문, 특수문자, 숫자혼합 8~12자">
       </div>
 
       <div id="save">
@@ -71,7 +113,7 @@
         <span>아이디 찾기</span> <span class="separator">|</span> <span>비밀번호 찾기</span>
       </div>
 
-      <button type="submit">로그인</button>
+      <button type="button" onclick="chkBtn()">로그인</button>
     </form>
 
     <ul class="login-icons">

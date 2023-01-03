@@ -1,11 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %>
+<jsp:useBean id="member" class="com.java.ex.Member" scope="session" />
+<jsp:setProperty name="member" property="*" />
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<script src="http://code.jquery.com/jquery-latest.min.js" ></script>
 		<link rel="stylesheet" type="text/css" href="css/style_header.css">
 		<link rel="stylesheet" type="text/css" href="css/style_join03_success.css">
 		<link rel="stylesheet" type="text/css" href="css/style_footer.css">
 		<title>회원가입 - 회원가입완료</title>
+		<script>
+		  alert("member객체 데이터 : <%= member.getId() %>");
+		</script>
 	</head>
 	<body>
 		<header>
@@ -78,6 +87,8 @@
 					감사합니다.
 					<strong>회원가입이 완료되었습니다.</strong>
 				</p>
+				<br>
+				<button onclick="location.href='main.jsp'">메인페이지 이동</button>
 			</div>	
 				
 				

@@ -12,9 +12,15 @@
 	 	<header>
 	 		<div id="nav_up">
 	 			<ul>
-	 				<li><a href="join01_terms.html">회원가입</a></li>
-	 				<li>로그인</li>
-	 				<li>고객행복센터</li>
+	 				<% if(session.getAttribute("sessionId")==null){ %>
+	 					<li><a href="join01_terms.html">회원가입</a></li>
+	 				    <li><a href="login.html">로그인</a></li>
+	 				<%}else{%>
+	 				    <li><%=session.getAttribute("sessionNname") %>님</li>
+	 					<li><a href="modify_member_info.jsp">회원정보수정</a></li>
+	 				    <li><a href="doLogout.jsp">로그아웃</a></li>
+	 				<%}%>
+	 				<li><a href="notice_list.jsp">고객행복센터</a></li>
 	 				<li>배송정보검색</li>
 	 				<li>기프트카드 등록</li>
 	 			</ul>
