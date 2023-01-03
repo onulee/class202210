@@ -336,6 +336,7 @@
 					<dl id="modify_interests_dl">
 						<dt>
 							<label for="">관심사</label>
+							<%=member.getHobbys() %>
 						</dt>
 						<dd>
 							<ul>
