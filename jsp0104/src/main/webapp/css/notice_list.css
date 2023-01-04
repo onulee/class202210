@@ -1,4 +1,7 @@
 /* Main Section */
+td a{text-decoration: none; font-weight:600;}
+td a:link,td a:visited,td a:hover,td a:active{ color:#000; }
+
 section {
   text-align: center;
 }

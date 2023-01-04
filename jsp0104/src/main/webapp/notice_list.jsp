@@ -13,10 +13,38 @@
   <% } %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>고객행복센터</title>
+  <script src="http://code.jquery.com/jquery-latest.min.js" ></script>
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/notice_list.css">
+  <script>
+    $(function(){
+    	
+    	$.ajax({
+    		url:"js/board.json",
+    		type:"post",
+    		dataType:"json",
+    		data:{"id":"aaa"},
+    		success:function(data){
+    			var htmlData="";
+    			for(var board of data){
+    				htmlData +="<tr>";
+    				htmlData +="<td>"+board.no+"</td>";
+    				htmlData +='<td class="table-title"><a href="notice_read.jsp?no='+board.no+'">'+board.title+'</a></td>';
+    				htmlData +="<td>"+board.userId+"</td>";
+    				htmlData +="<td>"+board.date+"</td>";
+    				htmlData +="</tr>";
+    			}
+    			
+    			$("#tbody").html(htmlData);
+    		},
+    		error:function(){
+    			alert("데이터 가져오기 실패");
+    		}
+    	});
+    });
+  </script>
 </head>
 <body>
 <!-- header 시작 -->
@@ -44,64 +72,24 @@
     <table>
       <colgroup>
         <col width="18%">
-        <col width="60%">
-        <col width="18%">
+        <col width="46%">
+        <col width="15%">
+        <col width="15%">
       </colgroup>
       <tr>
         <th>No.</th>
         <th>제목</th>
+        <th>작성자</th>
         <th>작성일</th>
       </tr>
-      <tr>
-        <td><span class="table-notice">NOTICE</span></td>
-        <td class="table-title">신종코로나바이러스 예방관련 운영 안내</td>
-        <td>2020-02-28</td>
-      </tr>
-      <tr>
-        <td><span class="table-notice">NOTICE</span></td>
-        <td class="table-title">[2020년3월] 시설 정비 공사 안내</td>
-        <td>2020-02-28</td>
-      </tr>
-      <tr>
-        <td><span class="table-notice">NOTICE</span></td>
-        <td class="table-title">[키즈잼] 2020년 이용 시간 & 이용 요금 변경 안내</td>
-        <td>2019-12-11</td>
-      </tr>
-      <tr>
-        <td><span class="table-notice">NOTICE</span></td>
-        <td class="table-title">[키즈잼] 2020년 1분기 정기 휴관일 안내</td>
-        <td>2019-12-11</td>
-      </tr>
-      <tr>
-        <td><span class="table-notice">NOTICE</span></td>
-        <td class="table-title">홈페이지 개인정보 보안 강화</td>
-        <td>2018-11-14</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td class="table-title">[키즈잼] 3월 프로그램 안내</td>
-        <td>2020-02-18</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td class="table-title">[키즈잼] 2월 프로그램 안내</td>
-        <td>2020-01-17</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td class="table-title">마이다스 멤버쉽 안내</td>
-        <td>2019-05-08</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td class="table-title">[마이다스 호텔&리조트] 제23회 경기건축문화 금상 수상</td>
-        <td>2018-10-10</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td class="table-title">카카오플러스 친구 오픈</td>
-        <td>2018-07-11</td>
-      </tr>
+      <tbody id="tbody">
+	      <tr>
+	        <td>1</td>
+	        <td class="table-title">카카오플러스 친구 오픈</td>
+	        <td>2018-07-11</td>
+	        <td>2018-07-11</td>
+	      </tr>
+      </tbody>
     </table>
 
     <ul class="page-num">

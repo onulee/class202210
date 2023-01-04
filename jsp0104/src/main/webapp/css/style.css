@@ -8,6 +8,7 @@ body {
 }
 a{text-decoration: none;}
 a:link, a:visited, a:hover, a:active{ color:#fff; }
+div a:link, div a:visited, div a:hover, div a:active{ color:#000; }
 
 /* Header Section */
 header {
