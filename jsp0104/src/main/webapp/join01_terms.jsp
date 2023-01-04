@@ -1,73 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %>  
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<script src="http://code.jquery.com/jquery-latest.min.js" ></script>
-		<link rel="stylesheet" type="text/css" href="css/style_header.css">
 		<link rel="stylesheet" type="text/css" href="css/style_join01_terms.css">
-		<link rel="stylesheet" type="text/css" href="css/style_footer.css">
 		<title>회원가입 - 약관동의</title>
-		<!-- 스크립트 -->
 		<script>
 		  function allCheck(){
-			  //alert($("input:radio[value=agree]").length);
-			  alert("전체 동의를 체크합니다.");
-			  $("input:radio[value=agree]").each(function(){
-				  if($(this).prop("checked")!=true){
-					  this.checked = true;
-				  }
-			  });
+			  $(".agree").each(function(){
+				  this.checked=true;
+			  }); 
+			  alert("전체 동의를 진행합니다.");
+			  
+			  /* for(var i=0;i<$(".agree").length;i++){
+				  console.log($(this));  
+			  } */
 		  }
 		  
 		  function submitBtn(){
 			  var check=0;
-			  $("input:radio[value=agree]").each(function(){
+			  $(".agree").each(function(){
 				  if($(this).prop("checked")!=true){
-					  //alert("모두 동의를 하지 않으면 회원가입을 할 수 없습니다.");
-					  if(confirm("모두 동의를 하셔야 회원가입이 가능합니다. 전체동의를 하시겠습니까?")){
-						  allCheck();
-						  check=1;
-					  }//if
-				  }//if
-			  });
-			  if(check==0) agree.submit();
-		  }//submitBtn
+					  alert("모두 동의를 하셔야 회원가입이 가능합니다.");
+					  $(this).focus();
+					  check=1;
+					  return false;
+				  }
+			  });//each
+			  if(check==0){
+				  agree.submit();
+			  }
+		  }
 		
 		</script>
 	</head>
 	<body>
-		<header>
-			<div id="nav_up">
-				<ul>
-					<li><a href="join01_terms.html">회원가입</a></li>
-					<li><a href="login.html">로그인</a></li>
-					<li><a href="notice_list.jsp">고객행복센터</a></li>
-					<li><a href="#">배송지역검색</a></li>
-					<li><a href="#">기프트카드 등록</a></li>
-				</ul>
-			</div>	
-			<nav>
-				<a href="#"></a>
-				<ul>
-					<li><a href="#">COOKIT소개</a></li>
-					<li><a href="#">COOKIT메뉴</a></li>
-					<li><a href="#">리뷰</a></li>
-					<li><a href="#">이벤트</a></li>
-					<li><a href="#">MY쿡킷</a></li>
-				</ul>
-				<ul>
-					<li>
-						<a href="#"><span>장바구니</span></a>
-					</li>
-					<li>
-						<a href="#"><span>메뉴찾기</span></a>
-					</li>
-				</ul>
-			</nav>
-		</header>
-		
+	<!-- header 시작 -->
+	<%@ include file="header_join.jsp" %>	
+	<!-- header 끝 -->
 		<section>
-			<form name="agree" method="get" action="join02_info_input.html">
+			<form action="join02_info_input.jsp" name="agree" method="get" >
 				<div id="subBanner"></div>
 				<div id="locationN">
 					<ul>
@@ -101,7 +76,7 @@
 				<h4>
 					이용약관 동의 
 					<span>(필수동의)</span>
-					<a onclick="allCheck()">전체동의</a>
+					<a onclick="allCheck()">전체동의</a><a href="#">전체보기</a>
 				</h4>
 				<div class="agreebox">
 					<article>
@@ -132,7 +107,7 @@
 					</article>
 				</div>
 				<div class="agreeRadio">
-					<input type="radio" name="f_agree" id="f_agree" value="agree" />
+					<input type="radio" name="f_agree" id="f_agree" class="agree" value="agree" />
 					<label for="f_agree">이용약관에 동의합니다.</label>
 					<input type="radio" name="f_agree" id="f_disagree" value="disagree" />
 					<label for="f_disagree">동의하지 않습니다.</label>
@@ -170,7 +145,7 @@
 					</article>
 				</div>
 				<div class="agreeRadio">
-					<input type="radio" name="s_agree" id="s_agree" value="agree" />
+					<input type="radio" name="s_agree" id="s_agree" class="agree" value="agree" />
 					<label for="s_agree">개인정보 보호를 위한 이용자 동의사항에 동의합니다.</label>
 					<input type="radio" name="s_agree" id="s_disagree" value="disagree" />
 					<label for="s_disagree">동의하지 않습니다.</label>
@@ -200,7 +175,7 @@
 					</article>
 				</div>
 				<div class="agreeRadio">
-					<input type="radio" name="t_agree" id="t_agree" value="agree" />
+					<input type="radio" name="t_agree" id="t_agree" class="agree" value="agree" />
 					<label for="t_agree">개인정보 취급위탁에 동의합니다.</label>
 					<input type="radio" name="t_agree" id="t_disagree" value="disagree" />
 					<label for="t_disagree">동의하지 않습니다.</label>
@@ -216,52 +191,8 @@
 				
 			</form>
 		</section>
-		
-		
-		
-		
-		
-		
-		
-		<footer>
-			<div id="footer_wrap">
-				<div id="footer_cont">
-					<div id="fl_l">
-						<a href="#"></a>
-						<p>© COOKIT ALL RIGHTS RESERVED</p>
-					</div>
-					<div id="fl_c">
-						<ul>
-							<li><a href="#">이용약관</a></li>
-							<li><a href="#">개인정보처리 방침</a></li>
-							<li><a href="#">법적고지</a></li>
-							<li><a href="#">사업자정보 확인</a></li>
-						</ul>
-						<div id="fl_c_info">
-							<p>씨제이제일제당(주)</p>
-							<p>대표이사 : 손경식,강신호,신현재</p>
-							<p>사업자등록번호 : 104-86-09535</p>
-							<p>주소 : 서울 중구 동호로 330 CJ제일제당 센터 (우) 04560</p>
-							<p>통신판매업신고 중구 제 07767호</p>
-							<p>개인정보보호책임자 : 조영민</p>
-							<p>이메일 : cjon@cj.net</p>
-							<p>호스팅제공자 : CJ올리브네트웍스㈜</p>
-							<p>고객님은 안전거래를 위해 현금등으로 결제시 LG U+ 전자 결제의 매매보호(에스크로) 서비스를 이용하실 수 있습니다. <a href="#">가입 사실 확인</a></p>
-						</div>
-					</div>
-					<div id="fl_r">
-						<span>cj그룹계열사 바로가기 ▼</span>
-						<dl>
-							<dt>고객행복센터</dt>
-								<dd>1688-1920</dd>
-						</dl>
-						<a href="#">1:1문의</a>						
-					</div>
-				</div>
-			</div>
-		
-		
-		
-		</footer>
+		<!-- footer 시작 -->
+		<%@ include file="footer_join.jsp" %>
+		<!-- footer 끝 -->
 	</body>
 </html>

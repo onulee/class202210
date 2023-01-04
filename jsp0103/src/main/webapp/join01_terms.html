@@ -7,41 +7,14 @@
 		<link rel="stylesheet" type="text/css" href="css/style_join01_terms.css">
 		<link rel="stylesheet" type="text/css" href="css/style_footer.css">
 		<title>회원가입 - 약관동의</title>
-		<!-- 스크립트 -->
-		<script>
-		  function allCheck(){
-			  //alert($("input:radio[value=agree]").length);
-			  alert("전체 동의를 체크합니다.");
-			  $("input:radio[value=agree]").each(function(){
-				  if($(this).prop("checked")!=true){
-					  this.checked = true;
-				  }
-			  });
-		  }
-		  
-		  function submitBtn(){
-			  var check=0;
-			  $("input:radio[value=agree]").each(function(){
-				  if($(this).prop("checked")!=true){
-					  //alert("모두 동의를 하지 않으면 회원가입을 할 수 없습니다.");
-					  if(confirm("모두 동의를 하셔야 회원가입이 가능합니다. 전체동의를 하시겠습니까?")){
-						  allCheck();
-						  check=1;
-					  }//if
-				  }//if
-			  });
-			  if(check==0) agree.submit();
-		  }//submitBtn
-		
-		</script>
 	</head>
 	<body>
 		<header>
 			<div id="nav_up">
 				<ul>
-					<li><a href="join01_terms.html">회원가입</a></li>
-					<li><a href="login.html">로그인</a></li>
-					<li><a href="notice_list.jsp">고객행복센터</a></li>
+					<li><a href="#">회원가입</a></li>
+					<li><a href="#">로그인</a></li>
+					<li><a href="#">고객행복센터</a></li>
 					<li><a href="#">배송지역검색</a></li>
 					<li><a href="#">기프트카드 등록</a></li>
 				</ul>
@@ -65,6 +38,10 @@
 				</ul>
 			</nav>
 		</header>
+		
+		
+		
+		
 		
 		<section>
 			<form name="agree" method="get" action="join02_info_input.html">
@@ -97,7 +74,11 @@
 						</li>
 					</ul>
 				</div>
-				
+				<script>
+				  function allCheck(){
+					  alert("test");
+				  }
+				</script>
 				<h4>
 					이용약관 동의 
 					<span>(필수동의)</span>
@@ -211,7 +192,7 @@
 				
 				<div id="terms_button">
 					<input type="reset" value="취소하기" />
-					<input type="button" onclick="submitBtn()" value="가입하기" />
+					<input type="submit" value="가입하기" />
 				</div>
 				
 			</form>

@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %>    
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>main</title>
 		<script src="http://code.jquery.com/jquery-latest.min.js" ></script>
 		<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/style_main.css">
@@ -13,17 +14,17 @@
 	 	<header>
 	 		<div id="nav_up">
 	 			<ul>
-	 				<% if(session.getAttribute("sessionId")==null){ %>
-	 					<li><a href="join01_terms.html">회원가입</a></li>
-	 				    <li><a href="login.html">로그인</a></li>
-	 				<%}else{%>
-	 				    <li><%=session.getAttribute("sessionNname") %>님</li>
-	 					<li><a href="modify_member_info.jsp">회원정보수정</a></li>
-	 				    <li><a href="doLogout.jsp">로그아웃</a></li>
-	 				<%}%>
-	 				<li><a href="notice_list.jsp">고객행복센터</a></li>
-	 				<li>배송정보검색</li>
-	 				<li>기프트카드 등록</li>
+	 			    <% if(session.getAttribute("sessionId")==null){ %>
+		 				<li><a href="join01_terms.jsp">회원가입</a></li>
+		 				<li><a href="login.jsp">로그인</a></li>
+	 				<% }else{ %>
+		 				<li><%= session.getAttribute("snicName") %>님</li>
+		 				<li>회원정보수정</li>
+		 				<li><a href="logout.jsp">로그아웃</a></li>
+	 				<% } %>
+		 				<li><a href="notice_list.jsp">고객행복센터</a></li>
+		 				<li>배송정보검색</li>
+		 				<li>기프트카드 등록</li>
 	 			</ul>
 	 		</div>
 	 		<nav>
