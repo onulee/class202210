@@ -8,7 +8,7 @@
 	</head>
 	<body>
 	  <h2>게시글 작성</h2>
-	  <form action="jsp0110_04_doinsert.jsp" name="frm">
+	  <form action="jsp0110_04_doinsert.jsp" name="frm" method="post">
 	    <label>제목</label>
 	    <input type="text" name="title" id="title"><br>
 	    <label>내용</label>

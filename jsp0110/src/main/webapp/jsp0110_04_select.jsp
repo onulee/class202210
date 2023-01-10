@@ -27,6 +27,21 @@
 		  th:nth-child(4){width:250px;}
 		  .del,.update{cursor: pointer;}
 		</style>
+		<script>
+	        function delBtn(no){
+	        	alert(no);
+	        	if(confirm("정말 삭제하시겠습니까?")){
+	        		location.href="jsp0110_04_del.jsp?no="+no;
+	        	}else{
+	        		return false;
+	        	}
+	        }
+	        
+	        function updateBtn(no){
+	        	alert(no);
+	        	location.href="jsp0110_04_update.jsp?no="+no;
+	        }
+		</script> 
 	</head>
 	<body>
 	  <h2>게시판</h2>
@@ -53,16 +68,6 @@
 		      content = rs.getString("content");
 		      bdate = rs.getTimestamp("bdate");
 	   %>	      
-		   <script>
-	        function delBtn(no){
-	        	alert(no);
-	        	if(confirm("정말 삭제하시겠습니까?")){
-	        		location.href="jsp0110_04_del.jsp?no="+no;
-	        	}else{
-	        		return false;
-	        	}
-	        }
-		    </script> 
 		    <tr>
 		      <td><%=no %></td>
 		      <td><%=title %></td>
@@ -70,7 +75,9 @@
 		      <td><%=bdate %></td>
 		      <td class="update" onclick="updateBtn(<%=no %>)">수정</td>
 		      <td class="del" onclick="delBtn(<%=no %>)">삭제</td>
-		    </tr>   
+		    </tr> 
+		    
+		    
 	  <%	      
 		    }  
 	    }catch(Exception e){
@@ -86,5 +93,7 @@
 	    }
 	   %> 
 	  </table>
+	  <br>
+	  <button><a href="jsp0110_04_insert.jsp">글쓰기</a></button>
 	</body>
 </html>

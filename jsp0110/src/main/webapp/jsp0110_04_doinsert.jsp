@@ -8,12 +8,12 @@
 <%!
     Connection conn;
     Statement stmt;
-    ResultSet rs;
     int no,result;
     String title,content,query;
     Timestamp bdate;
 %> 
 <%
+  request.setCharacterEncoding("utf-8");
   title = request.getParameter("title");
   content = request.getParameter("content");
 %>
@@ -35,9 +35,8 @@
 	    	e.printStackTrace();
 	    }finally{
 	    	try{
-	    		if(rs!=null) rs.close();
-	    		if(stmt!=null) rs.close();
-	    		if(conn!=null) rs.close();
+	    		if(stmt!=null) stmt.close();
+	    		if(conn!=null) conn.close();
 	    	}catch(Exception e2){
 	    		e2.printStackTrace();
 	    	}
@@ -45,7 +44,7 @@
 	%>
 	<script>
 	  alert("저장이 완료되었습니다.");
-	  location.href="jsp0110_04_insert.jsp";
+	  location.href="jsp0110_04_select.jsp";
 	</script>
 	</body>
 </html>
