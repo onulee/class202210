@@ -17,7 +17,7 @@
 	   ResultSet rs;
 	   
 	   String driver = "oracle.jdbc.driver.OracleDriver";
-	   String url = "jdbc:oracle:thin@localhost:1521:xe";
+	   String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	   String uid = "orauser";
 	   String upw = "1111";
 	   String query = "select * from member";
@@ -35,17 +35,19 @@
 			 String name = rs.getString("name");
 			 String phone = rs.getString("phone");
 			 
-			 out.println("아이디 : "+id+",패스워드 : "+pw+",이름 : "+name+", 전화번호 : "+phone);
+			 out.println("아이디 : "+id+",패스워드 : "+pw+",이름 : "+name+", 전화번호 : "+phone+"<br>");
 			 
 		   }
 	   }catch(Exception e){
-		  try{
-			  if(rs != null) rs.close();
-			  if(stmt != null) stmt.close();
-			  if(conn != null) conn.close();
-		  }catch(Exception e2){
-			  
-		  }
+		   e.printStackTrace();
+	   }finally{
+		   try{
+				  if(rs != null) rs.close();
+				  if(stmt != null) stmt.close();
+				  if(conn != null) conn.close();
+			  }catch(Exception e2){
+				  e2.printStackTrace();
+			} 
 	   }
 	 
 	 %>
