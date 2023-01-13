@@ -5,7 +5,16 @@
 <%
     String id,pw,name,phone,gender,hobby="";
     String[] hobbys=null;
+    
+    // 페이지관련
     id = (String)session.getAttribute("sessionId");
+    int tempPage=0; //index페이지로 이동
+    
+    if(request.getParameter("id")!=null){
+    	id = request.getParameter("id");
+    	tempPage=1; //전체페이지로 이동
+    }
+    
     MemberDao mdao = new MemberDao();
     MemberDto mdto = mdao.selectMemberOne(id);
 %>    
@@ -39,6 +48,7 @@
 	<body>
 	  <h2>회원정보수정</h2>
 	  <form action="DoModify" method="post" name="modifyFrm">
+	  <input type="hidden" name="tempPage" value="<%=tempPage %>">
 	  <table>
 	    <tr>
 	      <th>아이디</th>

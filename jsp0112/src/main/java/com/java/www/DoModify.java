@@ -18,7 +18,8 @@ public class DoModify extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String id,pw,name,phone,gender,hobby="";
 		String[] hobbys=null;
-		int result=0;
+		int result=0,tempPage=0;
+		tempPage = Integer.parseInt(request.getParameter("tempPage"));
 		id = request.getParameter("id");
 		pw = request.getParameter("pw");
 		name = request.getParameter("name");
@@ -38,8 +39,13 @@ public class DoModify extends HttpServlet {
 			PrintWriter writer = response.getWriter();
 			writer.println("<html><head></head><body>");
 			writer.println("<script>");
-			writer.println("alert('회원정보가 수정되었습니다.');");
-			writer.println("location.href='index.jsp';");
+			if(tempPage==0) {
+				writer.println("alert('회원정보가 수정되었습니다.');");
+				writer.println("location.href='index.jsp';");
+			}else {
+				writer.println("alert('회원정보가 수정되었습니다.');");
+				writer.println("location.href='memberAll.jsp';");
+			}
 			writer.println("</script>");
 			writer.println("</body></html>");
 		}else {

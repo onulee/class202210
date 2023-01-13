@@ -20,7 +20,15 @@
 	    회원가입이 완료되었습니다.<br>
 	    감사합니다.
 	  </div>
-	  <button onclick="location.href='index.jsp'">메인페이지 이동</button>
+	  <%
+	    int tempPage=0;
+	    tempPage = Integer.parseInt(request.getParameter("tempPage"));
+	    if(tempPage==0){
+	  %>
+    	<button onclick="location.href='index.jsp'">페이지 이동</button>
+      <%}else{ %>	
+    	<button onclick="location.href='memberAll.jsp'">페이지 이동</button>
+      <%}%>
 	
 	</body>
 </html>

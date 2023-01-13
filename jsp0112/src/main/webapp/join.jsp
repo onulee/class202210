@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+    // 페이지관련
+    String id="";
+    int tempPage=0; //index페이지로 이동
+    
+    if(session.getAttribute("sessionId")!=null){
+    	tempPage=1; //전체페이지로 이동
+    }
+%>      
 <!DOCTYPE html>
 <html>
 	<head>
@@ -29,6 +38,7 @@
 	<body>
 	  <h2>회원가입</h2>
 	  <form action="DoJoin" method="post" name="joinFrm">
+	  <input type="hidden" name="tempPage" id="tempPage" value="<%=tempPage %>">
 	  <table>
 	    <tr>
 	      <th>아이디</th>

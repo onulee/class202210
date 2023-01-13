@@ -19,6 +19,29 @@ public class MemberDao {
 	String[] hobbys=null;
 	int result=0;
 	
+	//회원삭제 메소드
+	public int deleteMember(String id2) {
+		try {
+			conn = getConnection();
+			String query = "delete from member where id=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, id2);
+			result = pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			}catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return result;
+	}//deleteMember
+	
+	
 	//회원정보수정 메소드
 	public int updateMember(String id2, String pw2, String name2, String phone2, String gender2, String hobby2) {
 		
@@ -190,6 +213,9 @@ public class MemberDao {
 		
 		return connnection;
 	}//getConnection
+
+
+	
 	
 	
 }//MemberDao

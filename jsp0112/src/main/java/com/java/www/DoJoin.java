@@ -18,7 +18,8 @@ public class DoJoin extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String id,pw,name,phone,gender,hobby="";
 		String[] hobbys=null;
-		int result=0;
+		int result=0,tempPage=0;
+		tempPage = Integer.parseInt(request.getParameter("tempPage"));
 		id = request.getParameter("id");
 		pw = request.getParameter("pw");
 		name = request.getParameter("name");
@@ -33,7 +34,7 @@ public class DoJoin extends HttpServlet {
 		MemberDao mDao = new MemberDao();
 		result = mDao.insertMember(id,pw,name,phone,gender,hobby);
 		if(result==1) {
-			response.sendRedirect("joinResult.jsp");
+			response.sendRedirect("joinResult.jsp?tempPage="+tempPage);
 		}else {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter writer = response.getWriter();
