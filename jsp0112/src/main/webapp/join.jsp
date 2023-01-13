@@ -30,8 +30,25 @@
 				  $("#id").focus();
 				  return false;
 			  }
-			  
 			  joinFrm.submit();
+		  }
+		  
+		  function checkBtn(){
+			  alert("test");
+			  $.ajax({
+				  url:"CheckIdMember",//servlet
+				  type:"post",
+				  data:{id:$("#id").val() },
+				  dataType:"text", //json,html,text,xml
+				  success:function(data){
+					  alert("성공");
+					  alert(data);
+					  
+				  },
+				  error:function(){
+					  alert("실패");
+				  }
+			  });//
 		  }
 		</script>
 	</head>
@@ -42,7 +59,10 @@
 	  <table>
 	    <tr>
 	      <th>아이디</th>
-	      <td><input type="text" name="id" id="id"></td>
+	      <td>
+	        <input type="text" name="id" id="id"> 
+	        <button type="button" onclick="checkBtn()">중복체크</button>
+	      </td>
 	    </tr>
 	    <tr>
 	      <th>패스워드</th>
