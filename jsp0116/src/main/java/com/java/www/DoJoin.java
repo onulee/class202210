@@ -8,41 +8,49 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 
-@WebServlet("/DoLogin")
-public class DoLogin extends HttpServlet {
+@WebServlet("/DoJoin")
+public class DoJoin extends HttpServlet {
 	
 	protected void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doAction");
 		request.setCharacterEncoding("utf-8");
 		MemberDao mdao = new MemberDao();
-		String id="",pw="";
+		String id,pw,name,phone,gender,hobby="";
+		String[] hobbys=null;
+		int result=0;
 		id = request.getParameter("id");
 		pw = request.getParameter("pw");
-		MemberDto mdto = mdao.memberSelectOne(id,pw);
-		if(mdto!=null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("sessionId", id);
-			session.setAttribute("sessionName", mdto.getName());
+		name = request.getParameter("name");
+		phone = request.getParameter("phone");
+		gender = request.getParameter("gender");
+		hobbys = request.getParameterValues("hobby");
+		for(int i=0;i<hobbys.length;i++) {
+			if(i==0) hobby += hobbys[i];
+			else hobby += ","+hobbys[i];
+		}
+		
+		MemberDto mdto = new MemberDto(id,pw,name,phone,gender,hobby);
+		result = mdao.insertMember(mdto);
+		
+		if(result==1) {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter writer = response.getWriter();
 			writer.println("<html><head></head><body>");
 			writer.println("<script>");
-			writer.println("alert('로그인이 되었습니다.');");
+			writer.println("alert('회원가입이 완료되었습니다.!!');");
 			writer.println("location.href='index.jsp';");
 			writer.println("</script>");
 			writer.println("</body></html>");
 			writer.close();
-			
 		}else {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter writer = response.getWriter();
 			writer.println("<html><head></head><body>");
 			writer.println("<script>");
-			writer.println("alert('아이디 또는 패스워드가 일치하지 않습니다.');");
-			writer.println("location.href='login.jsp';");
+			writer.println("alert('시스템의 오류가 있어 가입이 되지 않았습니다. 다시 입력바랍니다.');");
+			writer.println("location.href='index.jsp';");
 			writer.println("</script>");
 			writer.println("</body></html>");
 			writer.close();

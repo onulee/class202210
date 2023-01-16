@@ -44,6 +44,7 @@ public class DoJoin extends HttpServlet {
 			writer.println("history.back();");
 			writer.println("</script>");
 			writer.println("</body></html>");
+			writer.close();
 		}
 	}//
 	
