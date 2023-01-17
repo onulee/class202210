@@ -6,7 +6,8 @@
 <%
     BoardDao bdao = new BoardDao();
     ArrayList<BoardDto> list = bdao.boardSelectAll();
-%>    
+%> 
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,6 +22,12 @@
 		  div{width: 250px; height:60px; margin:12px auto 0;  }
 		  button{display: inline-block; width:120px; height:40px; }
 		</style>
+		<% if(session.getAttribute("sessionId")==null){ %>
+		    <script>
+		      alert("로그인을 하셔야 접근이 가능합니다.");
+		      location.href="login.jsp";
+		    </script>
+		<%} %>    
 	</head>
 	<body>
 		<h2>자유게시판</h2>
@@ -44,7 +51,7 @@
 			%>
 				<tr>
 				  <td><%=list.get(i).getBno() %></td>
-				  <td><%=list.get(i).getBtitle() %></td>
+				  <td><a href="fboardView.jsp?bno=<%=list.get(i).getBno() %>"><%=list.get(i).getBtitle() %></a></td>
 				  <td><%=list.get(i).getBname() %></td>
 				  <td><%=list.get(i).getBdate() %></td>
 				  <td><%=list.get(i).getBhit() %></td>
@@ -57,7 +64,7 @@
 			<%} %>
 		</table>
 		<div>
-		  <button type="button">글쓰기</button>
+		  <a href="fboardWrite.jsp"><button type="button">글쓰기</button></a>
 		  <button type="button" onclick="location.href='index.jsp'">메인페이지</button>
 		</div>
 	

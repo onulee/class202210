@@ -18,7 +18,7 @@
 	  <h3><%=session.getAttribute("sessionName") %>님 환영합니다.</h3>
 	  <ul>
 	    <li><a href="logout.jsp">로그아웃</a></li>
-	    <li><a href="freeboard.jsp">게시판</a></li>
+	    <li><a href="freeboard.jsp">자유게시판</a></li>
 	    <li>회원정보수정</li>
 	    <li><a href="memberAll.jsp">전체회원보기</a></li>
 	  </ul>

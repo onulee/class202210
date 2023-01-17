@@ -6,7 +6,7 @@ import java.util.Date;
 public class BoardDto {
 	public BoardDto() {}
 	public BoardDto(int bno, String bname, String btitle, String bcontent, Timestamp bdate, int bstep, 
-			int bhit, int bgroup, int bindent) {
+			int bhit, int bgroup, int bindent,String bfile) {
 		this.bno = bno;
 		this.bname = bname;
 		this.btitle = btitle;
@@ -16,9 +16,10 @@ public class BoardDto {
 		this.bhit = bhit;
 		this.bgroup = bgroup;
 		this.bindent = bindent;
+		this.bfile = bfile;
 	}
 
-	private String bname,btitle,bcontent;
+	private String bname,btitle,bcontent,bfile;
 	private int bno,bstep,bhit,bgroup,bindent;
 	private Timestamp bdate;
 	
@@ -75,6 +76,12 @@ public class BoardDto {
 	}
 	public void setBdate(Timestamp bdate) {
 		this.bdate = bdate;
+	}
+	public String getBfile() {
+		return bfile;
+	}
+	public void setBfile(String bfile) {
+		this.bfile = bfile;
 	}
 	
 
