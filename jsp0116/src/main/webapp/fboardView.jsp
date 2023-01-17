@@ -28,8 +28,9 @@
 		</style>
 		<script>
 		   function deleteBtn(){
-			   var bno = <%=bdto.getBno() %>;
-			   location.href="DoBoardDelete?bno="+bno;
+			   if(confirm("게시글을 삭제하시겠습니까?")){
+				   location.href="DoBoardDelete?bno=<%=bno %>";
+			   }
 		   }
 		</script>
 	</head>

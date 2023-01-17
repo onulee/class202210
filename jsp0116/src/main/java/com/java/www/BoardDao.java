@@ -22,6 +22,29 @@ public class BoardDao {
 	private String query="";
 	private int result=0;
 	
+	//게시글 삭제 메소드
+	public int boardDelete(int bno2) {
+		try {
+			conn = getConnection();
+			query="delete freeboard where bno=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, bno2);
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}//
+		return result;
+	}
+	
+	
 	//게시글 수정 메소드
 	public int boardUpdate(int bno2, String btitle2, String bcontent2, String bfile2) {
 		try {
@@ -74,15 +97,38 @@ public class BoardDao {
 		return result;
 	}//boardInsert
 	
+	//조회수 1증가 메소드
+	public void boardBhitPlus(int bno2) {
+		try {
+			conn = getConnection();
+			query = "update freeboard set bhit=bhit+1 where bno=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, bno2);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}//boardBhitPlus
+	
+	
 	// 게시글 1개 가져오기 메소드
 	public BoardDto boardSelectOne(int bno) {
 		BoardDto bdto=null;
 		try {
+			boardBhitPlus(bno); //조회수 1증가
 			conn = getConnection();
 			query = "select * from freeboard where bno=?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, bno);
 			rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
 				bno = rs.getInt("bno");
 				bname = rs.getString("bname");
@@ -96,6 +142,7 @@ public class BoardDao {
 				bfile = rs.getString("bfile");
 				bdto = new BoardDto(bno,bname,btitle,bcontent,bdate,bstep,bhit,bgroup,bindent,bfile);
 			}//
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -163,6 +210,9 @@ public class BoardDao {
 		}
 		return connection;
 	}
+
+
+	
 
 	
 
