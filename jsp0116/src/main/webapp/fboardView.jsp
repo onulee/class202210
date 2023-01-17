@@ -20,11 +20,18 @@
 		  h2{text-align: center;}
 		  table{width:920px; margin: 0 auto; text-align: center; }
 		  th,td{height:40px;}
+		  td{ text-align: left; padding-left:30px; }
 		  div{width: 400px; height:60px; margin:12px auto 0;  }
 		  button{display: inline-block; width:120px; height:40px; }
 		  #content{height:500px;}
 		  img{width:500px;}
 		</style>
+		<script>
+		   function deleteBtn(){
+			   var bno = <%=bdto.getBno() %>;
+			   location.href="DoBoardDelete?bno="+bno;
+		   }
+		</script>
 	</head>
 	<body>
 		<h2>자유게시판 뷰페이지</h2>
@@ -54,14 +61,18 @@
 			  <td><%=bdto.getBcontent() %></td>
 			</tr>
 			<tr>
+			  <th>파일명</th>
+			  <td><a href="./upload/<%=bdto.getBfile() %>" download><%=bdto.getBfile() %></a></td>
+			</tr>
+			<tr>
 			  <th>첨부파일</th>
 			  <td><img src="./upload/<%=bdto.getBfile() %>"></td>
 			</tr>
 		</table>
 		<div>
 		  <a href="freeboard.jsp"><button type="button">목록</button></a>
-		  <a href=""><button type="button">수정</button></a>
-		  <a href=""><button type="button">삭제</button></a>
+		  <a href="fboardUpdate.jsp?bno=<%=bno %>"><button type="button">수정</button></a>
+		  <button type="button" onclick="deleteBtn()">삭제</button>
 		</div>
 	
 	</body>

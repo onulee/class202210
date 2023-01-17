@@ -22,6 +22,32 @@ public class BoardDao {
 	private String query="";
 	private int result=0;
 	
+	//게시글 수정 메소드
+	public int boardUpdate(int bno2, String btitle2, String bcontent2, String bfile2) {
+		try {
+			conn = getConnection();
+			query="update freeboard set btitle=?,bcontent=?,bfile=? where bno=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, btitle2);
+			pstmt.setString(2, bcontent2);
+			pstmt.setString(3, bfile2);
+			pstmt.setInt(4, bno2);
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}//
+		return result;
+	}
+	
+	
 	// 게시글 저장하기 메소드
 	public int boardInsert(String bname2,String btitle2,String bcontent2,String bfile2) {
 		
@@ -137,6 +163,8 @@ public class BoardDao {
 		}
 		return connection;
 	}
+
+	
 
 
 	
