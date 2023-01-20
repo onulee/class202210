@@ -22,6 +22,29 @@ public class FreeboardDao {
 	String bfile,name;
 	int result=0;
 	
+	//1개 게시글 저장 메소드
+	public int fboardInsert(FreeboardDto boarddto) {
+		try {
+			conn = getConnection();
+			query="";
+			pstmt = conn.prepareStatement(query);
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}//
+		return result;
+	}//
+	
+	
+	
 	//1개 게시글 가져오기 메소드
 	public FreeboardDto fboardSelectOne(int bno2) {
 		FreeboardDto fdto=null;
@@ -62,6 +85,47 @@ public class FreeboardDao {
 		return fdto;
 	}//fboardSelectOne
 	
+	//검색게시글 가져오기 메소드
+	public ArrayList<FreeboardDto> fboardSelectSearch(String search, String searchWord) {
+		ArrayList<FreeboardDto> list = new ArrayList<>();
+		try {
+			conn = getConnection();
+			query="select * from (select row_number() over(order by bno desc) rnum,a.*,b.name from freeboard a, member b where a.id=b.id and (btitle like '%'||?||'%' or bcontent like '%'||?||'%')) where  rnum between 1 and 5";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, searchWord);
+			pstmt.setString(2, searchWord);
+			rs = pstmt.executeQuery();
+			System.out.println("query : "+query);
+			while(rs.next()) {
+				bno = rs.getInt("bno");
+				id = rs.getString("id");
+				btitle = rs.getString("btitle");
+				bcontent = rs.getString("bcontent");
+				bdate = rs.getTimestamp("bdate");
+				bstep = rs.getInt("bstep");
+				bhit = rs.getInt("bhit");
+				bgroup = rs.getInt("bgroup");
+				bindent = rs.getInt("bindent");
+				bfile = rs.getString("bfile");
+				name = rs.getString("name");
+				
+				list.add(new FreeboardDto(bno,id,btitle,bcontent,bdate,bstep,bhit,bgroup,bindent,bfile,name));
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}//
+		
+		return list;
+	}
 	
 	//전체게시글 가져오기 메소드
 	public ArrayList<FreeboardDto> fboardSelectAll(){
@@ -119,4 +183,9 @@ public class FreeboardDao {
 		}
 		return connection;
 	}//getConnection
+
+	
+
+
+	
 }//class

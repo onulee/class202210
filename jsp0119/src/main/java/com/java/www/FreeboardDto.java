@@ -5,6 +5,12 @@ import java.sql.Timestamp;
 public class FreeboardDto {
 	
 	public FreeboardDto(){}
+	public FreeboardDto(String id, String btitle, String bcontent,String bfile) {
+		this.id = id;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.bfile = bfile;
+	}
 	public FreeboardDto(int bno, String id, String btitle, String bcontent, Timestamp bdate, int bstep, int bhit,
 			int bgroup, int bindent, String bfile) {
 		this.bno = bno;

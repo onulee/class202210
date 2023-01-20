@@ -71,7 +71,7 @@
 			</tr>
 		</table>
 		<div>
-		  <a href="freeboard.jsp"><button type="button">목록</button></a>
+		  <a href="fboardList.jsp"><button type="button">목록</button></a>
 		  <a href="fboardUpdate.jsp?bno="><button type="button">수정</button></a>
 		  <button type="button" onclick="deleteBtn()">삭제</button>
 		</div>
