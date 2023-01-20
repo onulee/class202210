@@ -19,15 +19,60 @@ public class FreeboardDao {
 	String id,btitle,bcontent,query;
 	Timestamp bdate;
 	int bstep,bhit,bgroup,bindent;
-	String bfile;
+	String bfile,name;
 	int result=0;
+	
+	//1개 게시글 가져오기 메소드
+	public FreeboardDto fboardSelectOne(int bno2) {
+		FreeboardDto fdto=null;
+		try {
+			conn = getConnection();
+			query="select * from freeboard a, member b where a.id=b.id and bno=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, bno2);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				bno = rs.getInt("bno");
+				id = rs.getString("id");
+				btitle = rs.getString("btitle");
+				bcontent = rs.getString("bcontent");
+				bdate = rs.getTimestamp("bdate");
+				bstep = rs.getInt("bstep");
+				bhit = rs.getInt("bhit");
+				bgroup = rs.getInt("bgroup");
+				bindent = rs.getInt("bindent");
+				bfile = rs.getString("bfile");
+				name = rs.getString("name");
+				
+				fdto = new FreeboardDto(bno,id,btitle,bcontent,bdate,bstep,bhit,bgroup,bindent,bfile,name);
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}//
+		
+		return fdto;
+	}//fboardSelectOne
+	
 	
 	//전체게시글 가져오기 메소드
 	public ArrayList<FreeboardDto> fboardSelectAll(){
 		ArrayList<FreeboardDto> list = new ArrayList<>();
 		try {
 			conn = getConnection();
-			query="select * from freeboard order by bno";
+			query="select c.* from "
+					+ "(select a.*, row_number() over (order by bno desc) rnum ,name "
+					+ "from freeboard a,member b where a.id=b.id) c "
+					+ "where rnum between 1 and 20";
+			//query="select b.* from (select rownum rnum,a.* from freeboard a) b where rnum between 21 and 30";
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -41,13 +86,11 @@ public class FreeboardDao {
 				bgroup = rs.getInt("bgroup");
 				bindent = rs.getInt("bindent");
 				bfile = rs.getString("bfile");
+				name = rs.getString("name");
 				
-				list.add(new FreeboardDto(bno,id,btitle,bcontent,bdate,bstep,bhit,bgroup,bindent,bfile));
+				list.add(new FreeboardDto(bno,id,btitle,bcontent,bdate,bstep,bhit,bgroup,bindent,bfile,name));
 				
 			}
-			
-			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

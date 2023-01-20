@@ -40,12 +40,12 @@
 			  <th>날짜</th>
 			  <th>조회수</th>
 			</tr>
-			  <%if(list.size()==0){ 
+			  <%if(list.size()!=0){ 
 			       for(int i=0;i<list.size();i++){ %>
 				<tr>
 				  <td><%=list.get(i).getBno() %></td>
-				  <td><%=list.get(i).getBtitle() %></td>
-				  <td><%=list.get(i).getBcontent() %></td>
+				  <td><a href="fboardView.jsp?bno=<%=list.get(i).getBno()%>"><%=list.get(i).getBtitle() %></a></td>
+				  <td><%=list.get(i).getName() %></td>
 				  <td><%=list.get(i).getBdate() %></td>
 				  <td><%=list.get(i).getBhit() %></td>
 				</tr>

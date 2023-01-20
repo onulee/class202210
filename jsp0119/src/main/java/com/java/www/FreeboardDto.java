@@ -18,13 +18,34 @@ public class FreeboardDto {
 		this.bindent = bindent;
 		this.bfile = bfile;
 	}
+	public FreeboardDto(int bno, String id, String btitle, String bcontent, Timestamp bdate, int bstep, int bhit,
+			int bgroup, int bindent, String bfile,String name) {
+		this.bno = bno;
+		this.id = id;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.bdate = bdate;
+		this.bstep = bstep;
+		this.bhit = bhit;
+		this.bgroup = bgroup;
+		this.bindent = bindent;
+		this.bfile = bfile;
+		this.name = name;
+	}
 
 	private int bno;
 	private String id,btitle,bcontent;
 	private Timestamp bdate;
 	private int bstep,bhit,bgroup,bindent;
 	private String bfile;
+	private String name;
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getBno() {
 		return bno;
 	}

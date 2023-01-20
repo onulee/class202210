@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/DoLogin")
@@ -29,6 +30,9 @@ public class DoLogin extends HttpServlet {
 		writer.println("<html><body>");
 		writer.println("<script>");
 		if(mdto!=null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("sessionId",mdto.getId());
+			session.setAttribute("sessionName",mdto.getName());
 			writer.println("alert('로그인이 되었습니다.!');");
 			writer.println("location.href='index.jsp';");
 		}else {
