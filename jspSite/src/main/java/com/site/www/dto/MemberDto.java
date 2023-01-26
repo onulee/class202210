@@ -1,7 +1,11 @@
-package com.java.www;
+package com.site.www.dto;
 
 public class MemberDto {
+	
 	public MemberDto() {}
+	public MemberDto(String id) {
+		this.id = id;
+	}
 	public MemberDto(String id, String pw) {
 		this.id = id;
 		this.pw = pw;
@@ -21,7 +25,6 @@ public class MemberDto {
 	}
 
 	private String id,pw,name,phone,gender,hobby;
-	int hour; //hour=25;
 
 	public String getId() {
 		return id;
@@ -70,7 +73,8 @@ public class MemberDto {
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
 	}
-
+	
+	
 	
 
 }
