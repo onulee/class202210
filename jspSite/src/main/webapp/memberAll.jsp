@@ -29,7 +29,10 @@
 		</script>
 	</head>
 	<body>
-	    <c:if test="${delete == 'delete' && result == 1 }">
+		<c:if test="${update=='update' && result==1}">
+		   <script>alert("회원정보수정이 완료되었습니다.")</script>
+		</c:if>
+	    <c:if test="${delete=='delete' && result==1}">
 	      <script>
 	        alert("삭제처리가 되었습니다.");
 	      </script>

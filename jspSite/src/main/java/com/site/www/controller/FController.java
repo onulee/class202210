@@ -36,10 +36,13 @@ public class FController extends HttpServlet {
 		MService mservice=null;
 		
 		switch (fName) {
+		case "index.do": //메인페이지
+			url="index.jsp";
+			break;
 		case "login.do": //로그인페이지
 			url="login.jsp";
 			break;
-		case "doLogin.do": //로그인체크
+		case "doLogin.do": //로그인체크실행
 			mservice = new MDoLoginService();
 			mservice.execute(request, response);
 			System.out.println("결과 : "+request.getAttribute("result"));
@@ -51,18 +54,21 @@ public class FController extends HttpServlet {
 		case "join.do": //회원가입페이지
 			url="join.jsp";
 			break;
-		case "doJoin.do": //회원가입페이지
+		case "success.do": //회원가입성공페이지
+			url="success.jsp";
+			break;
+		case "doJoin.do": //회원가입실행
 			mservice = new MMemberInsert();
 			mservice.execute(request, response);
-			if((int)request.getAttribute("result")==0) url="join.jsp";
-			else url="success.jsp";
+			if((int)request.getAttribute("result")==0) url="join.do";
+			else url="success.do";
 			break;
 		case "memberAll.do": //전체회원보기
 			if(session.getAttribute("sessionId").equals("admin")) {
 				mservice = new MMemberAll();
 				mservice.execute(request, response);
 				url="memberAll.jsp";
-			}else url="index.jsp";
+			}else url="index.do";
 			break;
 		case "memberModify.do": //회원정보수정페이지
 			mservice = new MMemberOne();
@@ -72,6 +78,8 @@ public class FController extends HttpServlet {
 		case "memberDoModify.do": //회원정보수정
 			mservice = new MMemberUpdate();
 			mservice.execute(request, response); //delete,result
+			System.out.println("request update : "+request.getAttribute("update"));
+			System.out.println("request result : "+request.getAttribute("result"));
 			if((int)request.getAttribute("result")==1) url="memberAll.do";
 			else url="memberModify.do";
 			break;
@@ -80,7 +88,7 @@ public class FController extends HttpServlet {
 				mservice = new MMemberDelete();
 				mservice.execute(request, response); //delete,result
 				url="memberAll.do";
-			}else url="index.jsp";
+			}else url="index.do";
 			break;
 		case "checkId.do": //아이디체크
 			mservice = new MMemberCheckId();

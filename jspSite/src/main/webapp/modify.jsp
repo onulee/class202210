@@ -33,12 +33,11 @@
 		</script>
 	</head>
 	<body>
+	
 	<c:if test="${update=='update' && result==0}">
 	   <script>alert("비밀번호가 맞지 않아 회원정보수정이 되지 않았습니다. 다시 수정바랍니다.")</script>
 	</c:if>
-	<c:if test="${update=='update' && result==1}">
-	   <script>alert("회원정보수정이 완료되었습니다.")</script>
-	</c:if>
+	
 	  <h2>회원정보수정</h2>
 	  <form action="memberDoModify.do" name="modifyFrm" method="post">
 	  <table>
