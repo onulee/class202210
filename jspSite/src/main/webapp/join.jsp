@@ -21,6 +21,46 @@
 		  span{color:red; font-weight: 600;}
 		</style>
 		<script>
+		   $(function(){
+			  $("#id").focusout(function(){
+				  var id = $("#id").val();
+				   /* if(id.length<1){
+					   alert("id를 입력하셔야 합니다.");
+					   $("#id").focus();
+					   return;
+				   } */
+				   
+				   $.ajax({
+					  url:"checkId.do",
+					  type:"post",
+					  data:{"id":id},
+					  dataType:"text",
+					  success:function(data){
+						  //alert("성공");
+						  console.log(data);
+						  if(data==0){
+							  alert("ID가 존재합니다. 다른 ID로 변경바랍니다.");
+							  //$("#id").val("").focus();
+							  $(".useTxt").removeClass("on");
+							  $(".useTxt").text("ID를 사용할수 없습니다.");
+							  checkFlag=false;
+							  return;
+						  }else{
+							  alert("ID를 사용할 수 있습니다.");
+							  $(".useTxt").addClass("on");
+							  $(".useTxt").text("ID를 사용할수 있습니다.");
+							  checkFlag=true;
+						  }
+					  },
+					  error:function(){
+						  alert("실패");
+					  }
+				   });
+			  });
+			   
+			   
+		   });
+		
 		   var checkFlag=false;
 		   function checkBtn(){
 			   var id = $("#id").val();
@@ -93,7 +133,7 @@
 	      <th>아이디</th>
 	      <td>
 	        <input type="text" name="id" id="id">
-	        <button type="button" id="checkId" onclick="checkBtn()">중복확인</button>
+	        <button type="button" id="checkId" >중복확인</button>
 	        <br>
 	        <span class="useTxt"></span>
 	      </td>

@@ -20,8 +20,11 @@
 		  <h3>${sessionName}님 환영합니다.</h3>
 		  <ul>
 		    <li><a href="logout.do">로그아웃</a></li>
+		    <li><a href="memberModify.do?id=${sessionId}">회원정보수정</a></li>
 		    <li><a href="fboardList.do">게시판</a></li>
-		    <li><a href="memberAll.do">전체회원보기</a></li>
+		    <c:if test="${sessionId == 'admin' }">
+		    	<li><a href="memberAll.do">전체회원보기</a></li>
+		    </c:if>
 		  </ul>
 	  </c:if>
 	

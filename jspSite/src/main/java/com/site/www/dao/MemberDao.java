@@ -17,8 +17,7 @@ public class MemberDao {
 	ResultSet rs = null;
 	MemberDto mdto = null;
 	ArrayList<MemberDto> list = null;
-	String id,pw,name,phone,gender,hobby="";
-	String[] hobbys = null;
+	String id,pw,name,phone,gender,hobby;
 	int result=0;
 	String query="";
 	
@@ -52,7 +51,38 @@ public class MemberDao {
 		}//
 		
 		return list;
-	}
+	}//memberSelectAll
+	
+	//회원1명 정보 가져오기
+	public MemberDto memberSelectOne(String id2) {
+		try {
+			conn = getConnection();
+			query="select * from member where id=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, id2);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				pw = rs.getString("pw");
+				name = rs.getString("name");
+				phone = rs.getString("phone");
+				gender = rs.getString("gender");
+				hobby = rs.getString("hobby");
+				mdto = new MemberDto(id2, pw, name, phone, gender, hobby);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}//
+		return mdto;
+	}//memberSelectOne
 	
 	//회원가입
 	public int memberInsert(MemberDto memberDto) {
@@ -79,6 +109,54 @@ public class MemberDao {
 		}//
 		return result;
 	}//memberInsert
+	
+	//회원정보수정
+	public int memberUpdate(String id2, String pw2, String name2, String phone2, String gender2, String hobby2) {
+		try {
+			conn=getConnection();
+			query = "update member set name=?,phone=?,gender=?,hobby=? where id=? and pw=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, name2);
+			pstmt.setString(2, phone2);
+			pstmt.setString(3, gender2);
+			pstmt.setString(4, hobby2);
+			pstmt.setString(5, id2);
+			pstmt.setString(6, pw2);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}//
+		return result;
+	}//memberUpdate
+	
+	
+	//회원정보삭제
+	public int memberDelete(String id) {
+		try {
+			conn=getConnection();
+			query = "delete member where id=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, id);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}//
+		return result;
+	}//memberDelete
 	
 	//로그인 체크
 	public MemberDto memberLogin(String id2, String pw2) {
@@ -146,6 +224,12 @@ public class MemberDao {
 		}//
 		return connection;
 	}//getConnection
+
+	
+
+	
+
+	
 
 	
 

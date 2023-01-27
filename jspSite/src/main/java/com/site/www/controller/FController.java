@@ -9,11 +9,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.site.www.service.MDoLoginService;
 import com.site.www.service.MMemberAll;
 import com.site.www.service.MMemberCheckId;
+import com.site.www.service.MMemberDelete;
 import com.site.www.service.MMemberInsert;
+import com.site.www.service.MMemberOne;
+import com.site.www.service.MMemberUpdate;
 import com.site.www.service.MService;
 
 
@@ -23,6 +27,7 @@ public class FController extends HttpServlet {
 	protected void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doAction");
 		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String fName = uri.substring(conPath.length()+1);
@@ -49,15 +54,33 @@ public class FController extends HttpServlet {
 		case "doJoin.do": //회원가입페이지
 			mservice = new MMemberInsert();
 			mservice.execute(request, response);
-			if((int)request.getAttribute("result")==0)
-				url="join.jsp";
-			else
-				url="success.jsp";
+			if((int)request.getAttribute("result")==0) url="join.jsp";
+			else url="success.jsp";
 			break;
 		case "memberAll.do": //전체회원보기
-			mservice = new MMemberAll();
-			mservice.execute(request, response);
-			url="memberAll.jsp";
+			if(session.getAttribute("sessionId").equals("admin")) {
+				mservice = new MMemberAll();
+				mservice.execute(request, response);
+				url="memberAll.jsp";
+			}else url="index.jsp";
+			break;
+		case "memberModify.do": //회원정보수정페이지
+			mservice = new MMemberOne();
+			mservice.execute(request, response); //delete,result
+			url="modify.jsp";
+			break;
+		case "memberDoModify.do": //회원정보수정
+			mservice = new MMemberUpdate();
+			mservice.execute(request, response); //delete,result
+			if((int)request.getAttribute("result")==1) url="memberAll.do";
+			else url="memberModify.do";
+			break;
+		case "memberDelete.do": //회원정보삭제
+			if(session.getAttribute("sessionId").equals("admin")) {
+				mservice = new MMemberDelete();
+				mservice.execute(request, response); //delete,result
+				url="memberAll.do";
+			}else url="index.jsp";
 			break;
 		case "checkId.do": //아이디체크
 			mservice = new MMemberCheckId();
@@ -73,7 +96,7 @@ public class FController extends HttpServlet {
 
 		}//switch
 		
-		if(url!=null) {
+		if(url != null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);
 		}
