@@ -13,7 +13,7 @@
 		  table{width:920px; margin: 0 auto; text-align: center; }
 		  th,td{height:40px;}
 		  td{ text-align: left; padding-left:30px; }
-		  div{width: 400px; height:60px; margin:12px auto 0;  }
+		  div{width: 500px; height:60px; margin:12px auto 0;  }
 		  button{display: inline-block; width:120px; height:40px; }
 		  #content{height:500px;}
 		  img{width:500px;}
@@ -75,6 +75,7 @@
 		</table>
 		<div>
 		  <a href="fboardList.do"><button type="button">목록</button></a>
+		  <a href="fboardReply.do?bno=${bBean.bno}"><button type="button">답변달기</button></a>
 		  <button type="button" onclick="updateBtn()">수정</button>
 		  <button type="button" onclick="deleteBtn()">삭제</button>
 		</div>

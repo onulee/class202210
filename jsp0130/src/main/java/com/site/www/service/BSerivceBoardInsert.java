@@ -18,8 +18,6 @@ public class BSerivceBoardInsert implements BService {
 		BoardDao bdao = new BoardDao();
 		String id,btitle,bcontent,bfile="",fileName="";
 		int result=0;
-		String[] bfiles = new String[2];
-		String[] fileNames = new String[2];
 		
 		
 		//String uploadPath = request.getRealPath("upload");
@@ -42,8 +40,8 @@ public class BSerivceBoardInsert implements BService {
 			}
 			bfile = multi.getFilesystemName(fileName);
 			System.out.println("파일이름 : "+bfile);
-			result = bdao.boardInsert(new BoardBean(id,btitle,bcontent,bfile));
 			
+			result = bdao.boardInsert(new BoardBean(id,btitle,bcontent,bfile));
 			if(result==1) request.setAttribute("result", "s-w");
 			else request.setAttribute("result", "f-w");
 			

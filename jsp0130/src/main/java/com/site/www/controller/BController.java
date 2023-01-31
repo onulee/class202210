@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.site.www.service.BSerivceBoardDelete;
 import com.site.www.service.BSerivceBoardInsert;
+import com.site.www.service.BSerivceBoardReplyInsert;
 import com.site.www.service.BService;
 import com.site.www.service.BServiceSelectAll;
 import com.site.www.service.BServiceSelectOne;
@@ -28,6 +29,7 @@ public class BController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath(); //프로젝트명
 		String fName = uri.substring(conPath.length()+1); //파일명
+		System.out.println("파일이름 : "+fName);
 		String url = "";
 		
 		switch (fName) {
@@ -67,6 +69,21 @@ public class BController extends HttpServlet {
 			bservice.execute(request, response);
 			url="doFboard.jsp";
 			break;
+		case "fboardReply.do":  //reply 페이지
+			bservice = new BServiceSelectOne();
+			bservice.execute(request, response);
+			url="fboardReply.jsp";
+			break;	
+		case "doFboardReply.do":  //reply 페이지
+			bservice = new BSerivceBoardReplyInsert();
+			bservice.execute(request, response);
+			url="doFboard.jsp";
+			break;	
+		case "doBoardSearch.do":  //reply 페이지
+			bservice = new BServiceSelectAll();
+			bservice.execute(request, response);
+			url="fboardList.jsp";
+			break;	
 			
 
 		}//switch

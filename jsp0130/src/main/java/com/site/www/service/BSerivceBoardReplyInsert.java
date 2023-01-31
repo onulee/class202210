@@ -10,42 +10,40 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.site.www.bean.BoardBean;
 import com.site.www.dao.BoardDao;
 
-public class BServiceUpdate implements BService {
+public class BSerivceBoardReplyInsert implements BService {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		BoardDao bdao = new BoardDao();
-		int bno,bhit,bstep,bgroup,bindent;
-		String id,btitle,bcontent,bOldFile,bfile="",fileName="";
+		String id,btitle,bcontent,bfile="",fileName="";
+		int bgroup,bstep,bindent;
 		int result=0;
 		
-		String uploadPath = "C:/upload";
-		int size = 10*1024*1024;
+		String uploadPath="C:/upload";
+		int size=10*1024*1024;
 		try {
 			MultipartRequest multi = new MultipartRequest(request, uploadPath, size,"utf-8",new DefaultFileRenamePolicy());
-			bno = Integer.parseInt(multi.getParameter("bno"));
+			id = multi.getParameter("id");
 			btitle = multi.getParameter("btitle");
 			bcontent = multi.getParameter("bcontent");
-			bOldFile = multi.getParameter("bOldFile");
-			
-			//파일
+			bgroup = Integer.parseInt(multi.getParameter("bgroup"));
+			bstep = Integer.parseInt(multi.getParameter("bstep"));
+			bindent = Integer.parseInt(multi.getParameter("bindent"));
+			//파일이름가져오기
 			Enumeration<String> files = multi.getFileNames();
 			if(files.hasMoreElements()) {
-				System.out.println("확인");
-			   	fileName = files.nextElement();
-			   	bfile = multi.getFilesystemName(fileName);
+				fileName = files.nextElement();
+				bfile = multi.getFilesystemName(fileName);
 			}
-			System.out.println("service bfile : "+bfile);
-			if(bfile==null) bfile=bOldFile; //파일첨부가 없으면, 기존파일을 사용함.
 			
-			result = bdao.boardUpdate(new BoardBean(bno, btitle, bcontent, bfile));
-			if(result==1) request.setAttribute("result", "s-u");
-			else request.setAttribute("result", "f-u");
-			
+			result = bdao.boardReplyInsert(new BoardBean(id,btitle,bcontent,bstep,bgroup,bindent,bfile));
+			if(result==1) request.setAttribute("result", "s-r");
+			else request.setAttribute("result", "f-r");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 
 	}
 

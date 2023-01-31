@@ -33,6 +33,30 @@
 	       location.href="fboardList.do";
 	     </script>
 	    </c:when>
+	    <c:when test="${result=='s-r'}">
+	     <script>
+	       alert("답글이 등록되었습니다.");
+	       location.href="fboardList.do";
+	     </script>
+	    </c:when>
+	    <c:when test="${result=='f-r'}">
+	     <script>
+	       alert("시스템 오류로 답글이 등록되지 않았습니다.");
+	       location.href="fboardList.do";
+	     </script>
+	    </c:when>
+	    <c:when test="${result=='s-u'}">
+	     <script>
+	       alert("게시글이 수정되었습니다.");
+	       location.href="fboardList.do";
+	     </script>
+	    </c:when>
+	    <c:when test="${result=='f-u'}">
+	     <script>
+	       alert("시스템 오류로 게시글이 수정되지 않았습니다.");
+	       location.href="fboardList.do";
+	     </script>
+	    </c:when>
 	    
 	    
 	  </c:choose>

@@ -14,8 +14,10 @@
 		  h2{text-align: center;}
 		  table{width:920px; margin: 0 auto; text-align: center; }
 		  th,td{height:40px;}
+		  tr td:nth-of-type(2){text-align: left; padding-left:40px; box-sizing: border-box;}
 		  div{width: 250px; height:60px; margin:12px auto 0;   }
 		  button{display: inline-block; width:120px; height:40px; }
+		  .img{width:10px;}
 		  .material-symbols-outlined {
 			  font-variation-settings:
 			  'FILL' 0,
@@ -23,10 +25,39 @@
 			  'GRAD' 0,
 			  'opsz' 22
 			}
+			.searchDiv{width:470px; height:40px; margin:50px auto 20px; }
+			.searchDiv select{width: 80px; height:40px; font-size: 15px;}
+			.searchDiv input{width: 250px; height:35px; font-size: 15px;}
+			.numbering{width:460px; height:40px; margin:20px auto 40px; text-align: center;}
+			.numbering span{width:40px; height:40px; display: inline-block; border:1px solid black; 
+			box-sizing: border-box; text-align: center; font-size:15px; padding-top:9px;}
+			#on{background: #e56e00; color:#fff; }
 		</style>
+		<script>
+		  function searchBtn(){
+			  if($("#searchWord").val().length<1){
+				  alert("검색어를 입력하셔야 검색이 가능합니다.");
+				  $("#searchWord").focus();
+				  return;
+			  }
+			  searchFrm.submit();
+		  }
+		</script>
 	</head>
 	<body>
 		<h2>자유게시판</h2>
+		<div class="searchDiv">
+		  <form action="doBoardSearch.do" method="get" name="searchFrm">
+		    <select name="searchTitle" id="searchTitle">
+		       <option value="all">전체</option>
+		       <option value="title">제목</option>
+		       <option value="content">내용</option>
+		       <option value="id">작성자</option>
+		    </select>
+		    <input type="text" name="searchWord" id="searchWord">
+		    <button type="button" onclick="searchBtn()">검색</button>
+		  </form>
+		</div>
 		<table>
 		   <colgroup>
 		     <col width="8%">
@@ -47,6 +78,9 @@
 					<tr>
 					  <td>${bBean.bno}</td>
 					  <td>
+					  <c:forEach begin="1" end="${bBean.bindent}" step="1">
+					    <img class="img" src="images/icon_reply.png">
+					  </c:forEach>
 						  <a href="fboardView.do?bno=${bBean.bno}">
 						  	${bBean.btitle}</a> <c:if test="${bBean.bfile!=null }">
 						  	<span class="material-symbols-outlined">folder_open</span></c:if>
@@ -60,12 +94,23 @@
 					</tr>
 				</c:forEach>
 			</c:if>
-			<c:if test="${result=='fail'}">
+			<c:if test="${result=='fail' or list.size()==0}">
 				<tr>
 				  <td colspan="5">데이터가 없습니다.</td>
 				</tr>
 			</c:if>
 		</table>
+		<div class="numbering">
+		  <c:forEach begin="${startpage }" end="${endpage}" step="1" var="num">
+			  <c:if test="${page==num}">
+			    <span id="on">${num}</span>
+			  </c:if>
+			  <c:if test="${page!=num}">
+			    <a href="fboardList.do?page=${num}"><span>${num}</span></a>
+			  </c:if>
+		  </c:forEach>
+		</div>
+		
 		<div>
 		  <a href="fboardWrite.do"><button type="button">글쓰기</button></a>
 		  <a href="index.do"><button type="button">메인페이지</button></a>

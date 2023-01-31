@@ -35,7 +35,7 @@
 	</head>
 	<body>
 		<h2>자유게시판 수정</h2>
-		<form action="DoFboardUpdate" method="post" name="fboardFrm" enctype="multipart/form-data">
+		<form action="doFboardUpdate.do" method="post" name="fboardFrm" enctype="multipart/form-data">
 		<table>
 		   <colgroup>
 		     <col width="30%">
@@ -43,7 +43,6 @@
 		   </colgroup>
 		    <input type="hidden" name="bno" value="${bBean.bno}">
 		    <input type="hidden" name="bOldFile" value="${bBean.bfile}">
-		    <input type="hidden" name="id" value="${bBean.id}">
 			<tr>
 			  <th>제목</th>
 			  <td><input type="text" name="btitle" id="btitle" value="${bBean.btitle}"></td>

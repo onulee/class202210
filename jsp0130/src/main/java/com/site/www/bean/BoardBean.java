@@ -11,6 +11,12 @@ public class BoardBean {
 		this.bcontent = bcontent;
 		this.bfile = bfile;
 	}
+	public BoardBean(int bno, String btitle, String bcontent, String bfile) {
+		this.bno = bno;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.bfile = bfile;
+	}
 	public BoardBean(int bno, String id, String btitle, String bcontent, String bfile) {
 		this.bno = bno;
 		this.id = id;
@@ -18,6 +24,16 @@ public class BoardBean {
 		this.bcontent = bcontent;
 		this.bfile = bfile;
 	}
+	public BoardBean(String id, String btitle, String bcontent, int bstep, int bgroup, int bindent, String bfile) {
+		this.id = id;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.bstep = bstep;
+		this.bgroup = bgroup;
+		this.bindent = bindent;
+		this.bfile = bfile;
+	}
+	
 	public BoardBean(int bno, String id, String btitle, String bcontent, Timestamp bdate, int bstep, int bhit,
 			int bgroup, int bindent, String bfile) {
 		this.bno = bno;
