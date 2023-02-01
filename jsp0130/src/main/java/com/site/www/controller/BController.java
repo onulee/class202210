@@ -47,7 +47,7 @@ public class BController extends HttpServlet {
 			url="fboardView.jsp";
 			break;
 		case "fboardWrite.do":  //글쓰기페이지
-			url="fboardWrite.jsp";
+			url="fboardWrite.jsp?page="+request.getParameter("page");
 			break;
 		case "doFboardWrite.do": //글쓰기저장 실행
 			bservice = new BSerivceBoardInsert();
@@ -64,7 +64,7 @@ public class BController extends HttpServlet {
 			bservice.execute(request, response);
 			url="doFboard.jsp";
 			break;
-		case "doFboardDelete.do": //삭제처리 실행
+		case "doFboardDelete.do": //삭제 실행
 			bservice = new BSerivceBoardDelete();
 			bservice.execute(request, response);
 			url="doFboard.jsp";
@@ -74,12 +74,12 @@ public class BController extends HttpServlet {
 			bservice.execute(request, response);
 			url="fboardReply.jsp";
 			break;	
-		case "doFboardReply.do":  //reply 페이지
+		case "doFboardReply.do":  //reply 실행
 			bservice = new BSerivceBoardReplyInsert();
 			bservice.execute(request, response);
 			url="doFboard.jsp";
 			break;	
-		case "doBoardSearch.do":  //reply 페이지
+		case "doBoardSearch.do":  //검색 실행
 			bservice = new BServiceSelectAll();
 			bservice.execute(request, response);
 			url="fboardList.jsp";

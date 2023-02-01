@@ -14,6 +14,14 @@ public class BServiceSelectOne implements BService {
 		int bno = Integer.parseInt(request.getParameter("bno"));
 		BoardBean bBean = bdao.boardSelectOne(bno);
 		request.setAttribute("bBean", bBean);
+		
+		int page = Integer.parseInt(request.getParameter("page"));
+		String searchTitle = request.getParameter("searchTitle");
+		String searchWord = request.getParameter("searchWord");
+		
+		request.setAttribute("page", page);
+		request.setAttribute("searchTitle", searchTitle);
+		request.setAttribute("searchWord", searchWord);
 
 	}
 

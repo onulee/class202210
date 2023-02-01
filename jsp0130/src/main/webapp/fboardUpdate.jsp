@@ -21,7 +21,7 @@
 		</style>
 		<script>
 		    function cancelBtn(){
-		    	if(confirm("수정을 취소하시겠습니까?")) location.href="fboardList.do";
+		    	if(confirm("수정을 취소하시겠습니까?")) location.href="fboardList.do?page=${page}&searchTitle=${searchTitle}&searchWord=${searchWord}";
 		    }
 		    function fboardBtn(){
 		    	if($("#btitle").val().length<2){
@@ -43,6 +43,9 @@
 		   </colgroup>
 		    <input type="hidden" name="bno" value="${bBean.bno}">
 		    <input type="hidden" name="bOldFile" value="${bBean.bfile}">
+		    <input type="hidden" name="page" value="${page}">
+		    <input type="hidden" name="searchTitle" value="${searchTitle}">
+		    <input type="hidden" name="searchWord" value="${searchWord}">
 			<tr>
 			  <th>제목</th>
 			  <td><input type="text" name="btitle" id="btitle" value="${bBean.btitle}"></td>
@@ -72,7 +75,7 @@
 		</table>
 		<div>
 		  <button type="button" onclick="fboardBtn()">수정</button>
-		  <button type="button" onclick="cancelBtn()" >취소</button>
+		  <button type="button" onclick="cancelBtn()">취소</button>
 		</div>
 		</form>
 	

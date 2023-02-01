@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<style>
+		  a{text-decoration: none;}
 		  table,th,td{border:1px solid black; border-collapse: collapse; }
 		  h2{text-align: center;}
 		  table{width:920px; margin: 0 auto; text-align: center; }
@@ -50,8 +51,8 @@
 		  <form action="doBoardSearch.do" method="get" name="searchFrm">
 		    <select name="searchTitle" id="searchTitle">
 		       <option value="all">전체</option>
-		       <option value="title">제목</option>
-		       <option value="content">내용</option>
+		       <option value="btitle">제목</option>
+		       <option value="bcontent">내용</option>
 		       <option value="id">작성자</option>
 		    </select>
 		    <input type="text" name="searchWord" id="searchWord">
@@ -81,7 +82,7 @@
 					  <c:forEach begin="1" end="${bBean.bindent}" step="1">
 					    <img class="img" src="images/icon_reply.png">
 					  </c:forEach>
-						  <a href="fboardView.do?bno=${bBean.bno}">
+						  <a href="fboardView.do?bno=${bBean.bno}&page=${page}&searchTitle=${searchTitle}&searchWord=${searchWord}">
 						  	${bBean.btitle}</a> <c:if test="${bBean.bfile!=null }">
 						  	<span class="material-symbols-outlined">folder_open</span></c:if>
 						  
@@ -101,18 +102,47 @@
 			</c:if>
 		</table>
 		<div class="numbering">
-		  <c:forEach begin="${startpage }" end="${endpage}" step="1" var="num">
-			  <c:if test="${page==num}">
+		<!-- 첫페이지 이동  -->
+		<c:if test="${page==1}"><span>&#171;</span></c:if>
+		<c:if test="${page!=1}">
+		  <a href="fboardList.do?page=1&searchTitle=${searchTitle}&searchWord=${searchWord}"><span>&#171;</span></a>
+		</c:if>
+		<!-- 이전페이지 이동 -->
+		<c:if test="${page>1}">
+   		  <a href="fboardList.do?page=${page-1}&searchTitle=${searchTitle}&searchWord=${searchWord}"><span>&#60;</span></a>
+		</c:if>
+		<c:if test="${page==1}">
+		  <span>&#60;</span>
+		</c:if>
+		<!-- 하단넘버링부분 -->
+		<c:forEach begin="${startpage }" end="${endpage}" step="1" var="num">
+		      <c:if test="${page==num}">
 			    <span id="on">${num}</span>
 			  </c:if>
 			  <c:if test="${page!=num}">
-			    <a href="fboardList.do?page=${num}"><span>${num}</span></a>
+			    <a href="fboardList.do?page=${num}&searchTitle=${searchTitle}&searchWord=${searchWord}">
+			      <span>${num}</span>
+			    </a>
 			  </c:if>
-		  </c:forEach>
+		</c:forEach>
+		<!-- 다음페이지 이동 -->
+		<c:if test="${page==maxpage}"><span>&#62;</span></c:if>
+		<c:if test="${page<maxpage}">
+  		  <a href="fboardList.do?page=${page+1}&searchTitle=${searchTitle}&searchWord=${searchWord}">
+  		    <span>&#62;</span>
+  		  </a>
+		</c:if>
+		<!-- 끝페이지 이동 -->
+		<c:if test="${page!=maxpage}">
+		    <a href="fboardList.do?page=${maxpage}&searchTitle=${searchTitle}&searchWord=${searchWord}">
+		      <span>&#187;</span>
+		    </a>
+		</c:if>
+		<c:if test="${page==maxpage }"><span>&#187;</span></c:if>
 		</div>
 		
 		<div>
-		  <a href="fboardWrite.do"><button type="button">글쓰기</button></a>
+		  <a href="fboardWrite.do?page=${page}&searchTitle=${searchTitle}&searchWord=${searchWord}"><button type="button">글쓰기</button></a>
 		  <a href="index.do"><button type="button">메인페이지</button></a>
 		</div>
 	</body>

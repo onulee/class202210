@@ -33,7 +33,7 @@
 		  }
 		
 		  function cancelBtn(){
-			  if(confirm("글쓰기를 취소하시겠습니까?")) location.href="fboardList.do";
+			  if(confirm("글쓰기를 취소하시겠습니까?")) location.href="fboardList.do?page=${param.page}&searchTitle=${searchTitle}&searchWord=${searchWord}";
 		  }
 		</script>
 	</head>
@@ -45,6 +45,9 @@
 		     <col width="30%">
 		     <col width="70%">
 		   </colgroup>
+		    <input type="hidden" name="page" value="${param.page}">
+		    <input type="hidden" name="searchTitle" value="${searchTitle}">
+		    <input type="hidden" name="searchWord" value="${searchWord}">
 			<tr>
 			  <th>제목</th>
 			  <td><input type="text" name="btitle" id="btitle"></td>

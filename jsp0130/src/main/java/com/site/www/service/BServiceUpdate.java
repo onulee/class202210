@@ -18,6 +18,8 @@ public class BServiceUpdate implements BService {
 		int bno,bhit,bstep,bgroup,bindent;
 		String id,btitle,bcontent,bOldFile,bfile="",fileName="";
 		int result=0;
+		int page=1;
+		String searchTitle=null, searchWord=null;
 		
 		String uploadPath = "C:/upload";
 		int size = 10*1024*1024;
@@ -27,6 +29,9 @@ public class BServiceUpdate implements BService {
 			btitle = multi.getParameter("btitle");
 			bcontent = multi.getParameter("bcontent");
 			bOldFile = multi.getParameter("bOldFile");
+			page = Integer.parseInt(multi.getParameter("page"));
+			searchTitle = multi.getParameter("searchTitle");
+			searchWord = multi.getParameter("searchWord");
 			
 			//파일
 			Enumeration<String> files = multi.getFileNames();
@@ -42,6 +47,9 @@ public class BServiceUpdate implements BService {
 			if(result==1) request.setAttribute("result", "s-u");
 			else request.setAttribute("result", "f-u");
 			
+			request.setAttribute("page", page);
+			request.setAttribute("searchTitle", searchTitle);
+			request.setAttribute("searchWord", searchWord);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

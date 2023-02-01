@@ -33,7 +33,7 @@
 		  }
 		
 		  function cancelBtn(){
-			  if(confirm("글쓰기를 취소하시겠습니까?")) location.href="fboardList.do";
+			  if(confirm("글쓰기를 취소하시겠습니까?")) location.href="fboardList.do?page=${page}&searchTitle=${searchTitle}&searchWord=${searchWord}";
 		  }
 		</script>
 	</head>
@@ -44,6 +44,9 @@
 		<input type="hidden" name="id" value="${bBean.id }">
 		<input type="hidden" name="bstep" value="${bBean.bstep }">
 		<input type="hidden" name="bindent" value="${bBean.bindent }">
+		<input type="hidden" name="page" value="${page}">
+	    <input type="hidden" name="searchTitle" value="${searchTitle}">
+	    <input type="hidden" name="searchWord" value="${searchWord}">
 		<table>
 		   <colgroup>
 		     <col width="30%">

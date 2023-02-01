@@ -20,10 +20,10 @@
 		</style>
 		<script>
 		   function deleteBtn(){
-			   if(confirm("게시글을 삭제하시겠습니까?")) location.href="doFboardDelete.do?bno="+${bBean.bno};
+			   if(confirm("게시글을 삭제하시겠습니까?")) location.href="doFboardDelete.do?bno=${bBean.bno}&page=${page}&searchTitle=${searchTitle}&searchWord=${searchWord}";
 		   }
 		   function updateBtn(){
-			   if(confirm("게시글을 수정하시겠습니까?")) location.href="fboardUpdate.do?bno="+${bBean.bno};
+			   if(confirm("게시글을 수정하시겠습니까?")) location.href="fboardUpdate.do?bno=${bBean.bno}&page=${page}&searchTitle=${searchTitle}&searchWord=${searchWord}";
 		   }
 		</script>
 	</head>
@@ -74,8 +74,8 @@
 			</tr>
 		</table>
 		<div>
-		  <a href="fboardList.do"><button type="button">목록</button></a>
-		  <a href="fboardReply.do?bno=${bBean.bno}"><button type="button">답변달기</button></a>
+		  <a href="fboardList.do?page=${page}&searchTitle=${searchTitle}&searchWord=${searchWord}"><button type="button">목록</button></a>
+		  <a href="fboardReply.do?bno=${bBean.bno}&page=${page}&searchTitle=${searchTitle}&searchWord=${searchWord}"><button type="button">답변달기</button></a>
 		  <button type="button" onclick="updateBtn()">수정</button>
 		  <button type="button" onclick="deleteBtn()">삭제</button>
 		</div>

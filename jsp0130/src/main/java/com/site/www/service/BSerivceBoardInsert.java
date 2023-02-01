@@ -18,7 +18,8 @@ public class BSerivceBoardInsert implements BService {
 		BoardDao bdao = new BoardDao();
 		String id,btitle,bcontent,bfile="",fileName="";
 		int result=0;
-		
+		int page=1;
+		String searchTitle="",searchWord="";
 		
 		//String uploadPath = request.getRealPath("upload");
 		String uploadPath="C:/upload";
@@ -28,6 +29,11 @@ public class BSerivceBoardInsert implements BService {
 			id = multi.getParameter("id");
 			btitle = multi.getParameter("btitle");
 			bcontent = multi.getParameter("bcontent");
+			page = Integer.parseInt(multi.getParameter("page"));
+			System.out.println("service write : "+page);
+			searchTitle = multi.getParameter("searchTitle");
+			searchWord = multi.getParameter("searchWord");
+			System.out.println("page title word : "+page+","+searchTitle+","+searchWord);
 			//파일이름가져오기
 			Enumeration files = multi.getFileNames(); //모든파일의 이름을 가져옴.	le01.jpg,le02.jpg
 			int i=0;
@@ -44,6 +50,10 @@ public class BSerivceBoardInsert implements BService {
 			result = bdao.boardInsert(new BoardBean(id,btitle,bcontent,bfile));
 			if(result==1) request.setAttribute("result", "s-w");
 			else request.setAttribute("result", "f-w");
+			
+			request.setAttribute("page", page);
+			request.setAttribute("searchTitle", searchTitle);
+			request.setAttribute("searchWord", searchWord);
 			
 			//파일 2개이상일때
 //			while(files.hasMoreElements()) {

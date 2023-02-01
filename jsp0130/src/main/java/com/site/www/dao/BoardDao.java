@@ -48,6 +48,38 @@ public class BoardDao {
 		return countAll;
 	}//boardCountAll
 	
+	//검색게시글 수
+	public int boardSearchCount(String searchTitle, String searchWord) {
+		try {
+			conn = getConn();
+			if(searchTitle.equals("all")) {
+				query="select count(*) count from freeboard where btitle like ? or bcontent like ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, "%"+searchWord+"%");
+				pstmt.setString(2, "%"+searchWord+"%");
+			}else {
+				query="select count(*) count from freeboard where "+searchTitle+" like ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, "%"+searchWord+"%");
+			}
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				countAll = rs.getInt("count");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return countAll;
+	}//boardSearchCount
+	
 	//전체게시글 가져오기
 	public ArrayList<BoardBean> boardSelectAll(int startrow, int endrow){
 		list = new ArrayList<>();
@@ -90,35 +122,31 @@ public class BoardDao {
 	}//boardSelectAll
 	
 	//게시글 검색
-	public ArrayList<BoardBean> boardSearch(String searchTitle, String searchWord) {
+	public ArrayList<BoardBean> boardSearch(String searchTitle, String searchWord, int startrow, int endrow) {
 		list = new ArrayList<>();
 		System.out.println("searchTitle : "+searchTitle);
 		System.out.println("searchWord : "+searchWord);
 		try {
 			conn = getConn();
 			if(searchTitle.equals("all")) {
-				query="select * from\r\n"
+				query="select * from"
 						+ "(select rownum rnum,a.* from"
-						+ "( select * from freeboard where btitle like '%'||?||'%' or bcontent like '%'||?||'%' order by bgroup desc, bstep asc  ) a"
-						+ ") where rnum between 1 and 10";
+						+ "( select * from freeboard where btitle like ? or bcontent like ? order by bgroup desc, bstep asc  ) a"
+						+ ") where rnum between ? and ?";
 				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1, searchWord);
-				pstmt.setString(2, searchWord);
-			}else if(searchTitle.equals("title")) {
-				query="select * from freeboard where btitle like '%'||?||'%' order by bgroup desc, bstep asc";
-				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1, searchWord);
-				
-			}else if(searchTitle.equals("content")) {
-				query="select * from freeboard where bcontent like '%'||?||'%' order by bgroup desc, bstep asc";
-				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1, searchWord);
-				
+				pstmt.setString(1, "%"+searchWord+"%");
+				pstmt.setString(2, "%"+searchWord+"%");
+				pstmt.setInt(3, startrow);
+				pstmt.setInt(4, endrow);
 			}else {
-				query="select * from freeboard where id like '%'||?||'%' order by bgroup desc, bstep asc";
+				query="select * from"
+						+ "(select rownum rnum,a.* from"
+						+ "( select * from freeboard where "+searchTitle+" like ? order by bgroup desc, bstep asc ) a"
+						+ ") where rnum between ? and ?";
 				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1, searchWord);
-				
+				pstmt.setString(1, "%"+searchWord+"%");
+				pstmt.setInt(2, startrow);
+				pstmt.setInt(3, endrow);
 			}
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -317,6 +345,8 @@ public class BoardDao {
 		
 		return connection;
 	}
+
+	
 
 	
 
