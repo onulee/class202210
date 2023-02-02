@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,40 +10,9 @@
 		<title>회원가입 - 회원가입완료</title>
 	</head>
 	<body>
-		<header>
-			<div id="nav_up">
-				<ul>
-					<li><a href="#">회원가입</a></li>
-					<li><a href="#">로그인</a></li>
-					<li><a href="#">고객행복센터</a></li>
-					<li><a href="#">배송지역검색</a></li>
-					<li><a href="#">기프트카드 등록</a></li>
-				</ul>
-			</div>	
-			<nav>
-				<a href="#"></a>
-				<ul>
-					<li><a href="#">COOKIT소개</a></li>
-					<li><a href="#">COOKIT메뉴</a></li>
-					<li><a href="#">리뷰</a></li>
-					<li><a href="#">이벤트</a></li>
-					<li><a href="#">MY쿡킷</a></li>
-				</ul>
-				<ul>
-					<li>
-						<a href="#"><span>장바구니</span></a>
-					</li>
-					<li>
-						<a href="#"><span>메뉴찾기</span></a>
-					</li>
-				</ul>
-			</nav>
-		</header>
-		
-		
-		
-		
-		
+		<!-- top부분 시작 -->
+	    <%@ include file="top.jsp" %>
+	    <!-- top부분 끝 -->
 		<section>
 			<div id="subBanner"></div>
 			<div id="locationN">
@@ -77,17 +48,10 @@
 				<p>
 					감사합니다.
 					<strong>회원가입이 완료되었습니다.</strong>
+					<a href="index.do"><button>HOME</button></a>
 				</p>
 			</div>	
-				
-				
 		</section>
-		
-		
-		
-		
-		
-		
 		
 		<footer>
 			<div id="footer_wrap">

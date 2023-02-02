@@ -20,12 +20,12 @@ public class BServiceSelectAll implements BService {
 		if(request.getParameter("page")!=null) page=Integer.parseInt(request.getParameter("page")); 
 		int PageList=5;    //하단넘버링 개수
 		int rowPerPage=4; //1페이지당 게시글 개수
-		int countAll=1;    //전체게시글 개수
+		int countAll=0;    //전체게시글 개수
 		
 		
 		//한페이지내 가져올 글번호(rownum)
-		int startrow = (page-1)*rowPerPage+1; //1,11
-		int endrow = startrow+rowPerPage-1; //10,20
+		int startrow = (page-1)*rowPerPage+1; //1,11 1-1
+		int endrow = startrow+rowPerPage-1; //10,20 1+4-1=5
 		System.out.println("page : "+page);
 		System.out.println("startrow : "+startrow+",endrow : "+endrow);
 		

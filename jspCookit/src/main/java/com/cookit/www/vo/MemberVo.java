@@ -1,4 +1,4 @@
-package com.jspCookit.www.vo;
+package com.cookit.www.vo;
 
 public class MemberVo {
 	
@@ -10,7 +10,7 @@ public class MemberVo {
 		this.id = id;
 		this.pw = pw;
 	}
-	public MemberVo(String id, String pw,String name) {
+	public MemberVo(String id, String pw, String name) {
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
@@ -73,6 +73,7 @@ public class MemberVo {
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
 	}
+	
 	
 
 }

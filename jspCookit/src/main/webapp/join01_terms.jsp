@@ -1,49 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="css/style_header.css">
-		<link rel="stylesheet" type="text/css" href="css/style_join01_terms.css">
-		<link rel="stylesheet" type="text/css" href="css/style_footer.css">
 		<title>회원가입 - 약관동의</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style_join01_terms.css">
 	</head>
 	<body>
-		<header>
-			<div id="nav_up">
-				<ul>
-					<li><a href="#">회원가입</a></li>
-					<li><a href="#">로그인</a></li>
-					<li><a href="#">고객행복센터</a></li>
-					<li><a href="#">배송지역검색</a></li>
-					<li><a href="#">기프트카드 등록</a></li>
-				</ul>
-			</div>	
-			<nav>
-				<a href="#"></a>
-				<ul>
-					<li><a href="#">COOKIT소개</a></li>
-					<li><a href="#">COOKIT메뉴</a></li>
-					<li><a href="#">리뷰</a></li>
-					<li><a href="#">이벤트</a></li>
-					<li><a href="#">MY쿡킷</a></li>
-				</ul>
-				<ul>
-					<li>
-						<a href="#"><span>장바구니</span></a>
-					</li>
-					<li>
-						<a href="#"><span>메뉴찾기</span></a>
-					</li>
-				</ul>
-			</nav>
-		</header>
-		
-		
-		
-		
-		
+	    <!-- top부분 시작 -->
+	    <%@ include file="top.jsp" %>
+	    <!-- top부분 끝 -->
+	    <script>
+	      function cancelBtn(){
+	    	  if(confirm("회원가입을 취소하시겠습니까?"))
+	    		  location.href="index.do";
+	      }
+	      function termsBtn(){
+	    	  //모두 체크 안되어 있으면 모두체크를 물어볼수 있도록 하고, 예스 모두 체크가 되도록 해보세요.
+	    	  if($("input:radio[value='agree']:checked").length==3){
+	    		  agree.submit();
+	    	  }else{
+	    		  if(confirm("모두 동의하셔야 회원가입이 가능합니다. 모두 동의체크를 할까요?")){
+	    			  //모두체크 
+	    			  $("input:radio[value='agree']").each(function(){
+	    				 this.checked = true;
+	    			  });
+	    			  $("#terms").focus();
+	    		  }
+	    	  }
+	      }
+	    </script>
+	    
 		<section>
-			<form name="agree" method="get" action="join02_info_input.html">
+			<form action="join02_info_input.do" name="agree" method="get" >
 				<div id="subBanner"></div>
 				<div id="locationN">
 					<ul>
@@ -186,18 +177,12 @@
 				</div>
 				
 				<div id="terms_button">
-					<input type="reset" value="취소하기" />
-					<input type="submit" value="가입하기" />
+					<input type="button" onclick="cancelBtn()" value="취소하기" />
+					<input type="button" id="terms" onclick="termsBtn()" value="가입하기" />
 				</div>
 				
 			</form>
 		</section>
-		
-		
-		
-		
-		
-		
 		
 		<footer>
 			<div id="footer_wrap">

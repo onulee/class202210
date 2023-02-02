@@ -4,53 +4,108 @@
 
 ul,ol{ list-style-type: none; }
 
+/* top부분 복사 */
+/* Header Section */
 a{ text-decoration: none; }
+header {
+  height: 35px;
+  background: black;
+  color: white;
+}
 
-#nav_up{ width:100%; height: 35px; background: #202020; 
-	text-align: left;}
+header ul {
+  margin: 8px 15px 0px 0;
+  float: right;
+  list-style-type: none;
+}
+header li {
+  display: inline-block;
+  padding-right: 5px;
+  font-size: 13px;
+}
+header li a{color:#fff;}
 
-#nav_up>ul{ float: right;
-	width: 480px; height: 25px; color: white; }
-#nav_up>ul a{color:#fff;}	
-#nav_up>ul>li{ float: left; margin-left:15px; line-height: 32px; 
-	font-size: 13px; }
-	
-nav{ width:100%; height: 81px; border-bottom: 1px solid black; 
-	position: relative;}
 
-nav>h1{ width: 100px; height: 30px; 
-	background: url('../images/ico_set.png')-320px -385px no-repeat;
-	background-size: 800px 800px; position: absolute; 
-	left:40px; top:25px; }
-	
-nav>ul:nth-child(2){ width: 750px; height: 40px; 
-	margin:0 auto; position: relative; top:23px;}
+header span {
+  padding-right: 5px;
+  color: gray;
+}
 
-nav>ul:nth-child(2) li{ float:left; margin-right: 60px; color: #101010; font-weight: 700; 
-	font-size: 22px; line-height: 32px;}
-	
-nav>ul:nth-child(3){ width:130px; height: 52px; position: relative; 
-	float: right; top:-25px;}
+/* Nav Section */
+nav {
+  width: 100%;
+  border-bottom: 1px #ccc solid;
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
 
-nav>ul:nth-child(3) li{ float:left; margin-left: 20px; color: #101010; font-weight: 700; 
-	font-size: 12px; }
-	
-nav>ul:nth-child(3)>li:nth-child(1)>a{ width:32px; height: 32px; display: inline-block;
-	background: url('../images/ico_set.png') -584px -320px no-repeat; 
-	background-size: 800px 800px; letter-spacing: -2px;}
-	
-nav>ul:nth-child(3)>li>a:link{ color:black;}
+.nav-menu {
+  text-align: center;
+  width: 80%;
+}
 
-nav>ul:nth-child(3)>li:nth-child(1)>a>span{ display: block; width: 50px; height: 20px; 
-	 position: relative; top:30px; left:-5px; }
-	 
-nav>ul:nth-child(3)>li:nth-child(2)>a{ width:32px; height: 32px; display: inline-block;
-	background: url('../images/ico_set.png') -628px -320px no-repeat; 
-	background-size: 800px 800px; letter-spacing: -2px;}
+nav ul {
+  display: inline-block;
+  position: relative;
+  top: -8px;
+  margin: auto;
+}
 
-nav>ul:nth-child(3)>li:nth-child(2)>a>span{ display: block; width: 50px; height: 20px; 
-	 position: relative; top:30px; left:-5px; }
-	
+nav li {
+  margin-top: 0;
+  display: inline-block;
+  padding: 0 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+nav div {
+  display: inline-block;
+}
+
+.logo {
+  background: url(https://www.cjcookit.com/cjkit/web/images/common/ico_set.png) no-repeat -310px -375px;
+  background-size: 800px 800px;
+
+  width: 110px;
+  height: 40px;
+  margin-left: 5px;
+}
+
+#cart,
+#search {
+  float: right;
+  margin-right: 20px;
+}
+
+.cart {
+  position: relative;
+  left: 10px;
+  width: 45px;
+  height: 30px;
+
+  background: url(https://www.cjcookit.com/cjkit/web/images/common/ico_set.png) no-repeat -584px -320px;
+  background-size: 800px 800px;
+}
+
+.search {
+  position: relative;
+  left: 10px;
+  width: 45px;
+  height: 30px;
+
+  background: url(https://www.cjcookit.com/cjkit/web/images/common/ico_set.png) no-repeat -624px -320px;
+  background-size: 800px 800px;
+}
+
+nav span {
+  position: relative;
+  top: -6px;
+  font-size: 15px;
+}
+
+/* top부분 복사 끝 */
+
 section{ width: 100%; height:6800px; position: relative; }
 
 #top_img{ width: 100%; height: 640px; background: url("../images/main_top.jpg") no-repeat;

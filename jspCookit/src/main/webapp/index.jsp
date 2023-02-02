@@ -10,9 +10,9 @@
 		<link rel="stylesheet" type="text/css" href="css/style_main.css">
 	</head>
 	<body>
-	    <!-- 메뉴부분 시작 -->
-	 	<%@ include file="top1.jsp" %>
-	    <!-- 메뉴부분 끝 -->
+	    <!-- top부분 시작 -->
+	    <%@ include file="top.jsp" %>
+	    <!-- top부분 끝 -->
 	 	<section>
 	 		<div id="top_img">
 	 			<div>
@@ -389,7 +389,8 @@
 			</div>	 		
 	 	</section>
 	 	<!-- footer 시작 -->
-	 	<%@ include file="bottom1.jsp" %>
+	 	<%@ include file="bottom.jsp" %>
 	 	<!-- footer 끝 -->
+		
 	</body>
 </html>

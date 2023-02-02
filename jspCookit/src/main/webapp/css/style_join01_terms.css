@@ -3,63 +3,110 @@
 * { margin: 0px; padding: 0px;}
 ul, ol{ list-style-type: none; }
 
-@charset "UTF-8";
+/* top부분 복사 */
+/* Header Section */
+a{ text-decoration: none; }
+header {
+  height: 35px;
+  background: black;
+  color: white;
+}
 
-* { margin: 0px; padding: 0px;}
-ul, ol{ list-style-type: none; }
+header ul {
+  margin: 8px 15px 0px 0;
+  float: right;
+  list-style-type: none;
+}
+header li {
+  display: inline-block;
+  padding-right: 5px;
+  font-size: 13px;
+}
+header li a{color:#fff;}
 
-/* header */
-#nav_up {
-	width: 100%; height: 35px;
-	background: #202020;
-	text-align: left;
-	color: #606060
+
+header span {
+  padding-right: 5px;
+  color: gray;
 }
-#nav_up>ul {
-	width: 480px 23px;
-	float: right;
-	padding-right: 30px;
-}
-#nav_up>ul>li {
-	float: left;
-	margin-right: 15px;
-}
-#nav_up>ul>li>a{
-	text-decoration: none;
-	color: white;
-	font-size: 13px;
-	line-height: 33px;
-}
-/* 상단 메뉴 */
+
+/* Nav Section */
 nav {
-	box-sizing: border-box;
-	width: 100%; height: 81px;
-	position:relative;
-	border-bottom: 1px solid black;
+  width: 100%;
+  border-bottom: 1px #ccc solid;
+  padding-top: 15px;
+  padding-bottom: 20px;
 }
-nav>a {
-	width: 100px; height: 30px;
-	background: url("../images/ico_set.png") -320px -385px no-repeat;
-	background-size: 800px 800px;
-	position:absolute; left: 40px; top: 25px;
+
+.nav-menu {
+  text-align: center;
+  width: 80%;
 }
-nav>ul:nth-child(2) {
-	width: 750px; height: 40px;
-	box-sizing: border-box;
-	margin: 0 auto;
-	position: relative; top:23px;
+
+nav ul {
+  display: inline-block;
+  position: relative;
+  top: -8px;
+  margin: auto;
 }
-nav>ul:nth-child(2) li {
-	float: left;
-	margin-right: 60px;
+
+nav li {
+  margin-top: 0;
+  display: inline-block;
+  padding: 0 20px;
+  font-size: 22px;
+  font-weight: bold;
 }
-nav>ul:nth-child(2) li a {
-	text-decoration: none;
-	color: #101010;
-	font-weight: 700;
-	font-size: 22px;
-	line-height: 32px;
+
+nav div {
+  display: inline-block;
 }
+
+.logo {
+  background: url(https://www.cjcookit.com/cjkit/web/images/common/ico_set.png) no-repeat -310px -375px;
+  background-size: 800px 800px;
+
+  width: 110px;
+  height: 40px;
+  margin-left: 5px;
+}
+
+#cart,
+#search {
+  float: right;
+  margin-right: 20px;
+}
+
+.cart {
+  position: relative;
+  left: 10px;
+  width: 45px;
+  height: 30px;
+
+  background: url(https://www.cjcookit.com/cjkit/web/images/common/ico_set.png) no-repeat -584px -320px;
+  background-size: 800px 800px;
+}
+
+.search {
+  position: relative;
+  left: 10px;
+  width: 45px;
+  height: 30px;
+
+  background: url(https://www.cjcookit.com/cjkit/web/images/common/ico_set.png) no-repeat -624px -320px;
+  background-size: 800px 800px;
+}
+
+nav span {
+  position: relative;
+  top: -6px;
+  font-size: 15px;
+}
+
+/* top부분 복사 끝 */
+
+
+
 /* 메뉴 우측 아이콘(장바구니, 메뉴찾기) */
 nav>ul:nth-child(3) {
 	width: 155px; height: 52px;
