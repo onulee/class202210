@@ -11,7 +11,7 @@
 	<body>
 	  <c:choose>
 	    <c:when test="${result=='s-login'}">
-	      <script>
+	      <script> //로그인페이지 
 	        alert("로그인 되었습니다."); 
 	        location.href="index.do";
 	      </script>
@@ -20,6 +20,30 @@
 	      <script>
 	        alert("아이디 또는 패스워드가 일치하지 않습니다."); 
 	        location.href="login.do";
+	      </script>
+	    </c:when>
+	    <c:when test="${result=='s-memberInsert'}">
+	      <script> //회원가입페이지
+	        //alert("회원가입이 완료되었습니다."); 
+	        location.href="join03_success.jsp";
+	      </script>
+	    </c:when>
+	    <c:when test="${result=='f-memberInsert'}">
+	      <script>
+	        alert("시스템 오류로 인한 회원가입이 되지 않았습니다."); 
+	        location.href="index.do";
+	      </script>
+	    </c:when>
+	    <c:when test="${result=='s-boardInsert'}">
+	      <script> //게시글페이지
+	        //alert("게시글이 등록되었습니다."); 
+	        location.href="notice_list.do";
+	      </script>
+	    </c:when>
+	    <c:when test="${result=='f-boardInsert'}">
+	      <script>
+	        alert("시스템 오류로 인한 게시글 등록이 되지 않았습니다."); 
+	        location.href="notice_list.do";
 	      </script>
 	    </c:when>
 	  </c:choose>

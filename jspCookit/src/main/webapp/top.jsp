@@ -11,7 +11,7 @@
 	      <li>${sessionName}님</li> <span>|</span>
 	      <li><a href="logout.do">로그아웃</a></li> <span>|</span>
       </c:if>
-      <li>고객행복센터</li> <span>|</span>
+      <li><a href="notice_list.do">고객행복센터</a></li> <span>|</span>
       <li>배송지역검색</li> <span>|</span>
       <li>기프트카드 등록</li>
     </ul>

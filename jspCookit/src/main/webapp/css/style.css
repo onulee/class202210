@@ -7,9 +7,11 @@ body {
   font-size: 16px;
 }
 
-a{text-decoration: none;}
-
+/* top부분 복사 */
 /* Header Section */
+a{ text-decoration: none; }
+
+
 header {
   height: 35px;
   background: black;
@@ -21,14 +23,19 @@ header ul {
   float: right;
   list-style-type: none;
 }
-
-header li a{color:#fff; font-size:13px; }
+header li {
+  display: inline-block;
+  padding-right: 5px;
+  font-size: 13px;
+}
 
 li {
   display: inline-block;
   padding-right: 5px;
   font-size: 13px;
 }
+header li a{color:#fff;}
+
 
 header span {
   padding-right: 5px;
@@ -57,6 +64,7 @@ nav ul {
 
 nav li {
   margin-top: 0;
+  display: inline-block;
   padding: 0 20px;
   font-size: 22px;
   font-weight: bold;
@@ -106,6 +114,8 @@ nav span {
   top: -6px;
   font-size: 15px;
 }
+
+/* top부분 복사 끝 */
 
 /* Footer Section */
 footer {

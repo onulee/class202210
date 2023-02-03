@@ -3,36 +3,57 @@ package com.cookit.www.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.cookit.www.vo.BoardVo;
 import com.cookit.www.vo.MemberVo;
 
-public class MemberDao {
-	
+public class BoardDao {
 	Connection conn=null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
-	MemberVo mvo = null;
-	String id,pw,name,phone,gender,hobby;
-	int result=0;
+	List<BoardVo> list=null;
+	BoardVo bvo = null;
+	int bno;
+	String id,btitle,bcontent;
+	Timestamp bdate;
+	int bstep,bhit,bgroup,bindent;
+	String bfile;
+	int topchk;
+	int result=0,listCount=0;
 	String query="";
 	
-	//select one 가져오기
-	public MemberVo selectOne(String id2) {
+	// 모든 게시글 가져오기
+	public List<BoardVo> selectAll(int startrow, int endrow) {
+		list = new ArrayList<BoardVo>(); 
 		try {
 			conn = getConnection();
-			query = "select * from member where id=?";
+			query = "select * from"
+					+ "( select rownum rnum,a.* from ( select * from board order by topchk desc,bgroup desc,bstep asc) a )"
+					+ "where rnum between ? and ?";
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, id2);
+			pstmt.setInt(1, startrow);
+			pstmt.setInt(2, endrow);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
+				bno = rs.getInt("bno");
 				id = rs.getString("id");
-				pw = rs.getString("pw");
-				name = rs.getString("name");
-				mvo = new MemberVo(id, pw, name);
+				btitle = rs.getString("btitle");
+				bcontent = rs.getString("bcontent");
+				bdate = rs.getTimestamp("bdate");
+				bhit = rs.getInt("bhit");
+				bstep = rs.getInt("bstep");
+				bgroup = rs.getInt("bgroup");
+				bindent = rs.getInt("bindent");
+				bfile = rs.getString("bfile");
+				topchk = rs.getInt("topchk");
+				list.add(new BoardVo(bno, id, btitle, bcontent, bdate, bstep, bhit, bgroup, bindent, bfile, topchk));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -45,25 +66,19 @@ public class MemberDao {
 				e2.printStackTrace();
 			}
 		}
-		return mvo;
-	}
+		return list;
+	}//selectAll
 	
-	//로그인 실행
-	public MemberVo selectLogin(String id2, String pw2) {
+	// 게시글 총개수
+	public int listCount() {
 		try {
 			conn = getConnection();
-			query = "select * from member where id=? and pw=?";
+			query = "select count(*) listCount from board";
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, id2);
-			pstmt.setString(2, pw2);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				id = rs.getString("id");
-				pw = rs.getString("pw");
-				name = rs.getString("name");
-				mvo = new MemberVo(id, pw, name);
+				listCount = rs.getInt("listCount");
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -75,21 +90,21 @@ public class MemberDao {
 				e2.printStackTrace();
 			}
 		}
-		return mvo;
-	}//selectLogin
+		return listCount;
+	}//listCount
 	
-	//insert member 저장
-	public int MemberInsert(MemberVo memberVo) {
+	
+	//게시글 등록 insert
+	public int boardInsert(BoardVo bvo2) {
 		try {
 			conn = getConnection();
-			query="insert into member values(?,?,?,?,?,?)";
+			query = "insert into board values(board_seq.nextval,?,?,?,sysdate,1,1,board_seq.currval,0,?,?)";
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, memberVo.getId());
-			pstmt.setString(2, memberVo.getPw());
-			pstmt.setString(3, memberVo.getName());
-			pstmt.setString(4, memberVo.getPhone());
-			pstmt.setString(5, memberVo.getGender());
-			pstmt.setString(6, memberVo.getHobby());
+			pstmt.setString(1, bvo2.getId());
+			pstmt.setString(2, bvo2.getBtitle());
+			pstmt.setString(3, bvo2.getBcontent());
+			pstmt.setString(4, bvo2.getBfile());
+			pstmt.setInt(5, bvo2.getTopchk());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -103,6 +118,7 @@ public class MemberDao {
 		}
 		return result;
 	}
+	
 	
 	//connection연결
 	public Connection getConnection() {
@@ -119,12 +135,12 @@ public class MemberDao {
 
 	
 
+
 	
 
 
 
-	
-	
+
 	
 
-}//class
+}

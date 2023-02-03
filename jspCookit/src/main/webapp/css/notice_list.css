@@ -138,14 +138,14 @@ td {
   position: relative;
   top: -15px;
   height: 33px !important;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 2px;
+  margin-right: 2px;
   border: 1px #989898 solid;
 }
 
-.num > div {
+.num div {
   position: relative;
-  top: 2px;
+  top: 3px;
 }
 
 .next {

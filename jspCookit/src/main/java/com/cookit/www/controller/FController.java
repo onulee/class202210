@@ -13,7 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.cookit.www.service.BService;
+import com.cookit.www.service.BserviceBoardInsert;
+import com.cookit.www.service.BserviceBoardSelectAll;
 import com.cookit.www.service.MService;
+import com.cookit.www.service.MServiceMemberInsert;
 import com.cookit.www.service.MServiceSelectLogin;
 import com.cookit.www.service.MServiceSelectOne;
 
@@ -27,7 +31,9 @@ public class FController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String fName = uri.substring(conPath.length()+1);
+		System.out.println("파일 이름 : "+fName);
 		MService mservice=null;
+		BService bservice=null;
 		String url = "";
 		int flag=0;
 		
@@ -61,17 +67,27 @@ public class FController extends HttpServlet {
 			System.out.println("json : "+jarray.toJSONString());
 			writer.close();
 			return;
-		}else if(fName.equals("join03_success.do")) {
+		}else if(fName.equals("join03_success.do")) { //회원가입완료 실행
 			//데이터 저장
-			//mservice = new MServiceMemberInsert();
-			//mservice.execute(request, response);
-			url="join03_success.jsp";
+			mservice = new MServiceMemberInsert();
+			mservice.execute(request, response);
+			url="doPage.jsp";
+		}else if(fName.equals("notice_list.do")) {    //공지게시판 페이지
+			bservice = new BserviceBoardSelectAll();
+			bservice.execute(request, response);
+			url="notice_list.jsp";
+		}else if(fName.equals("notice_write.do")) {   //글쓰기 페이지    
+			url="notice_write.jsp?page="+request.getParameter("page");
+		}else if(fName.equals("doNotice_write.do")) {   //글쓰기저장 실행
+			bservice = new BserviceBoardInsert();
+			bservice.execute(request, response);
+			url="doPage.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 		
-	}//
+	}//execute
 	
 	
 	
