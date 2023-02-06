@@ -61,7 +61,12 @@
           <c:if test="${bvo.topchk==0}">
 	        <td>${bvo.bno}</td>
           </c:if>
-	        <td class="table-title">${bvo.btitle}</td>
+	        <td class="table-title">
+	          <c:forEach begin="1" end="${bvo.bindent}" step="1">
+	            <img src="images/icon_reply.png">
+	          </c:forEach>
+	          <a href="notice_view.do?bno=${bvo.bno}&page=${page}">${bvo.btitle}</a>
+	        </td>
 	        <td>${bvo.id}</td>
 	        <td><fmt:formatDate value="${bvo.bdate}" pattern="yyyy-MM-dd"/></td>
 	        <td>${bvo.bhit}</td>
@@ -92,8 +97,9 @@
       <c:if test="${page==maxpage }"><li class="last"></li></c:if>
     
     </ul>
-
-    <a href="notice_write.do?page=${page}"><div class="write">쓰기</div></a>
+    <c:if test="${sessionId!=null}">
+      <a href="notice_write.do?page=${page}"><div class="write">쓰기</div></a>
+    </c:if>
   </section>
 
   <footer>

@@ -19,6 +19,13 @@ public class BoardVo {
 		this.bfile = bfile;
 		this.topchk = topchk;
 	}
+	public BoardVo(int bno, String btitle, String bcontent, String bfile, int topchk) {
+		this.bno = bno;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.bfile = bfile;
+		this.topchk = topchk;
+	}
 	public BoardVo(int bno, String id, String btitle, String bcontent, Timestamp bdate, int bstep, int bhit, int bgroup,
 			int bindent, String bfile, int topchk) {
 		this.bno = bno;

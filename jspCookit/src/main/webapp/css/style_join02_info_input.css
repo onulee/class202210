@@ -319,6 +319,9 @@ dd span {
 #join_name_dl dd{
 	height: 51px;
 }
+#join_name_dl_dd{
+	padding-top:15px;
+}
 #join_name_dl dt div {
 	top: 14px;
 }
@@ -332,9 +335,17 @@ dd span {
 #join_id_dl dt{
 	height: 93px;
 }
+#join_id_dl_dt{
+	height: 51px;
+}
+
 #join_id_dl dd{
 	height: 93px;
 }
+#join_id_dl_dd{
+	height: 51px;
+}
+
 #join_id_dl dt div {
 	top: 33px;
 }

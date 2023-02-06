@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -20,6 +22,7 @@ public class BoardDao {
 	ResultSet rs=null;
 	List<BoardVo> list=null;
 	BoardVo bvo = null;
+	int rnum;
 	int bno;
 	String id,btitle,bcontent;
 	Timestamp bdate;
@@ -69,6 +72,79 @@ public class BoardDao {
 		return list;
 	}//selectAll
 	
+	// 조회수 1증가 하기
+	public void selectOneCount(int bno2) {
+		try {
+			conn = getConnection();
+			query = "update board set bhit=bhit+1 where bno=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, bno2);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}//selectOneCount
+	
+	//1개 게시글 가져오기
+	public Map<String, Object> boardSelectOne(int bno2, int chk) {
+		Map<String, Object> map = new HashMap<>();
+		try {
+			conn = getConnection();
+			if(chk==0) query = "select rownum rnum,a.* from board a where bno=?";
+			else if(chk==1) query = "select * from (select rownum rnum,a.* from "
+					+ "(select * from board order by topchk desc,bgroup desc,bstep asc)a)"
+					+ "where rnum = (select rnum from (select rownum rnum, a.* from"
+					+ "(select * from board order by topchk desc,bgroup desc,bstep asc) a)"
+					+ "where bno=?)+1";
+			else query = "select * from (select rownum rnum,a.* from "
+					+ "(select * from board order by topchk desc,bgroup desc,bstep asc)a)"
+					+ "where rnum = (select rnum from (select rownum rnum, a.* from"
+					+ "(select * from board order by topchk desc,bgroup desc,bstep asc) a)"
+					+ "where bno=?)-1";	
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, bno2);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				rnum = rs.getInt("rnum");
+				System.out.println("rnum dao : "+rnum);
+				bno = rs.getInt("bno");
+				id = rs.getString("id");
+				btitle = rs.getString("btitle");
+				bcontent = rs.getString("bcontent");
+				bdate = rs.getTimestamp("bdate");
+				bhit = rs.getInt("bhit");
+				bstep = rs.getInt("bstep");
+				bgroup = rs.getInt("bgroup");
+				bindent = rs.getInt("bindent");
+				bfile = rs.getString("bfile");
+				topchk = rs.getInt("topchk");
+				bvo = new BoardVo(bno, id, btitle, bcontent, bdate, bstep, bhit, bgroup, bindent, bfile, topchk);
+				map.put("rnum", rnum);
+				map.put("bvo", bvo);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return map;
+	}//boardSelectOne
+	
 	// 게시글 총개수
 	public int listCount() {
 		try {
@@ -117,7 +193,52 @@ public class BoardDao {
 			}
 		}
 		return result;
+	}//boardInsert
+	
+	//1개 게시글 수정하기
+	public int boardUpdate(BoardVo bvo2) {
+		try {
+			conn = getConnection();
+			query = "update board set btitle=?,bcontent=?,bfile=?,topchk=? where bno=? ";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, bvo2.getBtitle());
+			pstmt.setString(2, bvo2.getBcontent());
+			pstmt.setString(3, bvo2.getBfile());
+			pstmt.setInt(4, bvo2.getTopchk());
+			pstmt.setInt(5, bvo2.getBno());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return result;
 	}
+	
+	public int boardDelete(int bno2) {
+		try {
+			conn = getConnection();
+			query = "delete board where bno=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, bno2);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return result;
+	}//boardDelete
 	
 	
 	//connection연결
@@ -132,6 +253,14 @@ public class BoardDao {
 		}
 		return connection;
 	}//getConnection
+
+	
+
+	
+
+	
+
+	
 
 	
 

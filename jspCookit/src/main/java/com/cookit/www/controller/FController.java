@@ -14,10 +14,14 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.cookit.www.service.BService;
+import com.cookit.www.service.BserviceBoardDel;
 import com.cookit.www.service.BserviceBoardInsert;
 import com.cookit.www.service.BserviceBoardSelectAll;
+import com.cookit.www.service.BserviceBoardUpdate;
+import com.cookit.www.service.BserviceBoardView;
 import com.cookit.www.service.MService;
 import com.cookit.www.service.MServiceMemberInsert;
+import com.cookit.www.service.MServiceMemberSelectOne;
 import com.cookit.www.service.MServiceSelectLogin;
 import com.cookit.www.service.MServiceSelectOne;
 
@@ -72,6 +76,10 @@ public class FController extends HttpServlet {
 			mservice = new MServiceMemberInsert();
 			mservice.execute(request, response);
 			url="doPage.jsp";
+		}else if(fName.equals("member_info_update.do")) { //회원정보수정 페이지
+			mservice = new MServiceMemberSelectOne();
+			mservice.execute(request, response);
+			url="member_info_update.jsp";
 		}else if(fName.equals("notice_list.do")) {    //공지게시판 페이지
 			bservice = new BserviceBoardSelectAll();
 			bservice.execute(request, response);
@@ -81,6 +89,22 @@ public class FController extends HttpServlet {
 		}else if(fName.equals("doNotice_write.do")) {   //글쓰기저장 실행
 			bservice = new BserviceBoardInsert();
 			bservice.execute(request, response);
+			url="doPage.jsp";
+		}else if(fName.equals("notice_view.do")) {   //뷰페이지 
+			bservice = new BserviceBoardView();
+			bservice.execute(request, response);
+			url="notice_view.jsp";
+		}else if(fName.equals("notice_del.do")) {   //삭제 실행 
+			bservice = new BserviceBoardDel();
+			bservice.execute(request, response);
+			url="doPage.jsp";
+		}else if(fName.equals("notice_update.do")) {   //수정 페이지 
+			bservice = new BserviceBoardView();
+			bservice.execute(request, response); 
+			url="notice_update.jsp";
+		}else if(fName.equals("doNotice_update.do")) {   //수정 실행 
+			bservice = new BserviceBoardUpdate();
+			bservice.execute(request, response); 
 			url="doPage.jsp";
 		}
 		

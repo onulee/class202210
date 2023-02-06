@@ -8,7 +8,7 @@
 	      <li><a href="login.do">로그인</a></li> <span>|</span>
       </c:if>
       <c:if test="${sessionId!=null}">
-	      <li>${sessionName}님</li> <span>|</span>
+	      <li><a href="member_info_update.do">${sessionName}님</a></li> <span>|</span>
 	      <li><a href="logout.do">로그아웃</a></li> <span>|</span>
       </c:if>
       <li><a href="notice_list.do">고객행복센터</a></li> <span>|</span>

@@ -32,7 +32,10 @@ public class MemberDao {
 				id = rs.getString("id");
 				pw = rs.getString("pw");
 				name = rs.getString("name");
-				mvo = new MemberVo(id, pw, name);
+				phone = rs.getString("phone");
+				gender = rs.getString("gender");
+				hobby = rs.getString("hobby");
+				mvo = new MemberVo(id, pw, name,phone,gender,hobby);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -46,7 +49,7 @@ public class MemberDao {
 			}
 		}
 		return mvo;
-	}
+	}//selectOne
 	
 	//로그인 실행
 	public MemberVo selectLogin(String id2, String pw2) {

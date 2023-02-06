@@ -37,13 +37,37 @@
 	    <c:when test="${result=='s-boardInsert'}">
 	      <script> //게시글페이지
 	        //alert("게시글이 등록되었습니다."); 
-	        location.href="notice_list.do";
+	        location.href="notice_list.do?page=${page}";
 	      </script>
 	    </c:when>
 	    <c:when test="${result=='f-boardInsert'}">
 	      <script>
 	        alert("시스템 오류로 인한 게시글 등록이 되지 않았습니다."); 
-	        location.href="notice_list.do";
+	        location.href="notice_list.do?page=${page}";
+	      </script>
+	    </c:when>
+	    <c:when test="${result=='s-boardDelete'}">
+	      <script> //게시글페이지
+	        alert("게시글이 삭제되었습니다."); 
+	        location.href="notice_list.do?page=${page}";
+	      </script>
+	    </c:when>
+	    <c:when test="${result=='f-boardDelete'}">
+	      <script>
+	        alert("시스템 오류로 인한 게시글 삭제가 되지 않았습니다."); 
+	        location.href="notice_list.do?page=${page}";
+	      </script>
+	    </c:when>
+	    <c:when test="${result=='s-boardUpdate'}">
+	      <script> //게시글페이지
+	        alert("게시글이 수정되었습니다."); 
+	        location.href="notice_view.do?page=${page}&bno=${bno}";
+	      </script>
+	    </c:when>
+	    <c:when test="${result=='f-boardUpdate'}">
+	      <script>
+	        alert("시스템 오류로 인한 게시글 수정이 되지 않았습니다."); 
+	        location.href="notice_list.do?page=${page}";
 	      </script>
 	    </c:when>
 	  </c:choose>
