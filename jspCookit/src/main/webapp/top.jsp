@@ -35,7 +35,7 @@
         <li>COOKIT소개</li>
         <li>COOKIT 메뉴</li>
         <li>리뷰</li>
-        <li>이벤트</li>
+        <li><a href="event.do">이벤트</a></li>
         <li>MY쿡킷</li>
       </ul>  
     </div>

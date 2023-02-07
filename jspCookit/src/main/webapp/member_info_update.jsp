@@ -71,9 +71,20 @@
 			   }
 			   
 			   // 영문자1개이상,숫자1개이상,특수문자1개이상
+			   var pw = $("#pw").val();
+			   var pw2 = $("#pw2").val();
+			   if(pw!=pw2){
+				   alert("비밀번호와 비밀번호확인이 같아야 합니다.");
+				   $("#pw2").focus();
+				   return;
+			   }
+			   
 			   var pwPattern = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*<>?]).{3,10}$/;
 			   var namePattern = /^[가-힣]{1,10}$/;
-			   
+			   /* if(!pwPattern.test(pw)){
+				   alert("패스워드는 는 3자리 이상 10자리이하 영문,숫자,특수문자 1개이상 가능합니다.");
+				   return;
+			   } */
 			   agree.submit();
 		   }//
 		   
@@ -181,6 +192,7 @@
 							</div>
 						</dd>
 					</dl>
+								    
 					<dl id="join_interests_dl">
 						<dt>
 						    <div></div>
@@ -189,51 +201,51 @@
 						<dd>
 							<ul>
 								<li>
-									<input type="checkbox" name="hobby" id="game" value="game" />
+									<input type="checkbox" name="hobby" id="game" value="game" <c:if test="${fn:contains(mvo.hobby,'game') }">checked</c:if> />
 									<label for="game">게임</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobby" id="golf" value="golf" />
+									<input type="checkbox" name="hobby" id="golf" value="golf" <c:if test="${fn:contains(mvo.hobby,'golf') }">checked</c:if> />
 									<label for="golf">골프</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobby" id="run" value="run" />
+									<input type="checkbox" name="hobby" id="run" value="run" <c:if test="${fn:contains(mvo.hobby,'run') }">checked</c:if> />
 									<label for="run">조깅</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobby" id="swim" value="swim" />
+									<input type="checkbox" name="hobby" id="swim" value="swim" <c:if test="${fn:contains(mvo.hobby,'swim') }">checked</c:if> />
 									<label for="swim">수영</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobby" id="book" value="book" />
+									<input type="checkbox" name="hobby" id="book" value="book" <c:if test="${fn:contains(mvo.hobby,'book') }">checked</c:if> />
 									<label for="book">독서</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobby" id="culture" value="culture" />
+									<input type="checkbox" name="hobby" id="culture" value="culture" <c:if test="${fn:contains(mvo.hobby,'culture') }">checked</c:if>/>
 									<label for="culture">문화/예술</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobby" id="parenting" value="parenting" />
+									<input type="checkbox" name="hobby" id="parenting" value="parenting" <c:if test="${fn:contains(mvo.hobby,'parenting') }">checked</c:if> />
 									<label for="parenting">육아/아동</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobby" id="cooking" value="cooking" />
+									<input type="checkbox" name="hobby" id="cooking" value="cooking" <c:if test="${fn:contains(mvo.hobby,'cooking') }">checked</c:if> />
 									<label for="cooking">요리</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobby" id="interier" value="interier" />
+									<input type="checkbox" name="hobby" id="interier" value="interier" <c:if test="${fn:contains(mvo.hobby,'interier') }">checked</c:if> />
 									<label for="interier">인테리어</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobby" id="leisure" value="leisure" />
+									<input type="checkbox" name="hobby" id="leisure" value="leisure" <c:if test="${fn:contains(mvo.hobby,'leisure') }">checked</c:if> />
 									<label for="leisure">레저/여가</label>
 								</li>
 								<li>
-									<input type="checkbox" name="health" id="health" value="health" />
+									<input type="checkbox" name="health" id="health" value="health" <c:if test="${fn:contains(mvo.hobby,'health') }">checked</c:if> />
 									<label for="health">건강/다이어트</label>
 								</li>
 								<li>
-									<input type="checkbox" name="hobby" id="fashion" value="fashion" />
+									<input type="checkbox" name="hobby" id="fashion" value="fashion" <c:if test="${fn:contains(mvo.hobby,'fashion') }">checked</c:if> />
 									<label for="fashion">패션/미용</label>
 								</li>
 							</ul>
@@ -373,7 +385,7 @@
 				</fieldset>
 				<div id="info_input_button">
 					<input type="button" onclick="cancelBtn()" value="취소하기" />
-					<input type="button" onclick="joinBtn()" value="가입하기" />
+					<input type="button" onclick="updateBtn()" value="회원정보수정" />
 				</div>
 				
 			</form>

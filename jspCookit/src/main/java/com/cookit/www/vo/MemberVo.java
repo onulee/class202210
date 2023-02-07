@@ -15,6 +15,13 @@ public class MemberVo {
 		this.pw = pw;
 		this.name = name;
 	}
+	public MemberVo(String id, String pw, String phone, String gender, String hobby) {
+		this.id = id;
+		this.pw = pw;
+		this.phone = phone;
+		this.gender = gender;
+		this.hobby = hobby;
+	}
 	public MemberVo(String id, String pw, String name, String phone, String gender, String hobby) {
 		this.id = id;
 		this.pw = pw;

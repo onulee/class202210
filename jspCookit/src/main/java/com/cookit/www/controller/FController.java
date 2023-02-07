@@ -2,6 +2,8 @@ package com.cookit.www.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,11 +21,15 @@ import com.cookit.www.service.BserviceBoardInsert;
 import com.cookit.www.service.BserviceBoardSelectAll;
 import com.cookit.www.service.BserviceBoardUpdate;
 import com.cookit.www.service.BserviceBoardView;
+import com.cookit.www.service.CService;
+import com.cookit.www.service.CserviceCommentSelectAll;
 import com.cookit.www.service.MService;
 import com.cookit.www.service.MServiceMemberInsert;
 import com.cookit.www.service.MServiceMemberSelectOne;
+import com.cookit.www.service.MServiceMemberUpdate;
 import com.cookit.www.service.MServiceSelectLogin;
 import com.cookit.www.service.MServiceSelectOne;
+import com.cookit.www.vo.CommentVo;
 
 
 @WebServlet("*.do")
@@ -38,6 +44,7 @@ public class FController extends HttpServlet {
 		System.out.println("파일 이름 : "+fName);
 		MService mservice=null;
 		BService bservice=null;
+		CService cservice=null;
 		String url = "";
 		int flag=0;
 		
@@ -80,7 +87,12 @@ public class FController extends HttpServlet {
 			mservice = new MServiceMemberSelectOne();
 			mservice.execute(request, response);
 			url="member_info_update.jsp";
-		}else if(fName.equals("notice_list.do")) {    //공지게시판 페이지
+		}else if(fName.equals("doMember_info_update.do")) { //회원정보수정 실행
+			mservice = new MServiceMemberUpdate();
+			mservice.execute(request, response);
+			url="doPage.jsp";
+		}
+		else if(fName.equals("notice_list.do")) {    //공지게시판 페이지
 			bservice = new BserviceBoardSelectAll();
 			bservice.execute(request, response);
 			url="notice_list.jsp";
@@ -106,6 +118,43 @@ public class FController extends HttpServlet {
 			bservice = new BserviceBoardUpdate();
 			bservice.execute(request, response); 
 			url="doPage.jsp";
+		}else if(fName.equals("event.do")) {   //수정 실행 
+			bservice = new BserviceBoardSelectAll();
+			bservice.execute(request, response); 
+			url="event/event.jsp";
+		}else if(fName.equals("event_view.do")) {   //수정 실행 
+			bservice = new BserviceBoardView();
+			bservice.execute(request, response); 
+			url="event/event_view.jsp";
+		}else if(fName.equals("event_commentSelectAll.do")) {   //수정 실행 
+			cservice = new CserviceCommentSelectAll();
+			cservice.execute(request, response); 
+			//json
+			List<CommentVo> list = (List<CommentVo>) request.getAttribute("list");
+			JSONArray jarray = new JSONArray(); //[  ]
+			JSONObject json=null;
+			for(int i=0;i<list.size();i++) {
+				json = new JSONObject(); // {0:cvo},{1:cvo}
+				json.put("cno",list.get(i).getCno()); //{"cno":value,
+				json.put("bno",list.get(i).getBno()); //{"cno":value,"bno":value..}
+				json.put("id",list.get(i).getId()); 
+				json.put("cpw",list.get(i).getCpw()); 
+				json.put("ccontent",list.get(i).getCcontent()); 
+				String cdate = list.get(i).getCdate()+"";  //날짜데이터는 String으로 해서 보내야 함
+				json.put("cdate",cdate); 
+				
+				jarray.add(json);    //
+				
+			}
+			response.setContentType("application/json; charset=utf-8;");
+			PrintWriter writer = response.getWriter();
+			writer.println(jarray.toJSONString());
+			System.out.println("json : "+jarray.toJSONString());
+			writer.close();
+			return;
+			
+			
+			
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

@@ -107,6 +107,31 @@ public class MemberDao {
 		return result;
 	}
 	
+	//회원정보수정
+	public int MemberUpdate(MemberVo memberVo) {
+		try {
+			conn = getConnection();
+			query="update member set pw=?,phone=?,gender=?,hobby=? where id=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, memberVo.getPw());
+			pstmt.setString(2, memberVo.getPhone());
+			pstmt.setString(3, memberVo.getGender());
+			pstmt.setString(4, memberVo.getHobby());
+			pstmt.setString(5, memberVo.getId());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return result;
+	}//MemberUpdate
+	
 	//connection연결
 	public Connection getConnection() {
 		Connection connection=null;
@@ -119,6 +144,8 @@ public class MemberDao {
 		}
 		return connection;
 	}//getConnection
+
+	
 
 	
 

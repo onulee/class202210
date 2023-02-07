@@ -58,6 +58,9 @@ nav li {
   font-size: 22px;
   font-weight: bold;
 }
+nav li a:link,nav li a:visited,nav li a:hover,nav li a:active{
+	color:#000;
+}
 
 nav div {
   display: inline-block;

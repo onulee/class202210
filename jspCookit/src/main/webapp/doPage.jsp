@@ -10,6 +10,8 @@
 	</head>
 	<body>
 	  <c:choose>
+	  
+	    <%-- Member관련정보 시작 --%> 
 	    <c:when test="${result=='s-login'}">
 	      <script> //로그인페이지 
 	        alert("로그인 되었습니다."); 
@@ -32,6 +34,34 @@
 	      <script>
 	        alert("시스템 오류로 인한 회원가입이 되지 않았습니다."); 
 	        location.href="index.do";
+	      </script>
+	    </c:when>
+	    <c:when test="${result=='s-memberUpdate'}">
+	      <script> //회원정보수정
+	        alert("회원수정이 완료되었습니다."); 
+	        location.href="index.do";
+	      </script>
+	    </c:when>
+	    <c:when test="${result=='f-memberUpdate'}">
+	      <script>
+	        alert("시스템 오류로 인한 회원정보수정이 되지 않았습니다."); 
+	        location.href="index.do";
+	      </script>
+	    </c:when>
+	    <%-- Member관련정보 끝 --%>
+	    
+	    
+	    <%-- Notice Board 관련정보 시작 --%>
+	    <c:when test="${result=='s-boardUpdate'}">
+	      <script> //게시글페이지
+	        alert("게시글이 수정되었습니다."); 
+	        location.href="notice_view.do?page=${page}&bno=${bno}";
+	      </script>
+	    </c:when>
+	    <c:when test="${result=='f-boardUpdate'}">
+	      <script>
+	        alert("시스템 오류로 인한 게시글 수정이 되지 않았습니다."); 
+	        location.href="notice_list.do?page=${page}";
 	      </script>
 	    </c:when>
 	    <c:when test="${result=='s-boardInsert'}">
@@ -70,6 +100,8 @@
 	        location.href="notice_list.do?page=${page}";
 	      </script>
 	    </c:when>
+	    <%-- Notice Board 관련정보 끝 --%>
+	    
 	  </c:choose>
 	  
 	  
