@@ -30,7 +30,7 @@ public class CommentDao {
 		list = new ArrayList<>();
 		try {
 			conn = getConnection();
-			query="select * from c_comment where bno=?";
+			query="select * from c_comment where bno=? order by cno desc";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, bno2);
 			rs = pstmt.executeQuery();
@@ -55,7 +55,62 @@ public class CommentDao {
 			}
 		}
 		return list;
-	}
+	}//commentSelectAll
+	
+	//1개 댓글 가져오기
+	public CommentVo commentSelectOne(int cno2) {
+		// TODO Auto-generated method stub
+		return null;
+	}//commentSelectOne
+	
+	
+	//댓글 1개 저장
+	public CommentVo commentInsert(CommentVo cvo2) {
+		try {
+			conn = getConnection();
+			int cno2=0;
+			query="select c_comment_seq.nextval cno2 from dual";
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				cno2 = rs.getInt("cno2");
+			}
+			query="";
+			query="insert into c_comment values(c_comment_seq.currval,?,?,?,?,sysdate)";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, cvo2.getBno());
+			pstmt.setString(2, cvo2.getId());
+			pstmt.setString(3, cvo2.getCpw());
+			pstmt.setString(4, cvo2.getCcontent());
+			result = pstmt.executeUpdate();
+			
+			query="select * from c_comment where cno=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, cno2);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				cno = rs.getInt("cno");
+				bno = rs.getInt("bno");
+				id = rs.getString("id");
+				cpw = rs.getString("cpw");
+				ccontent = rs.getString("ccontent");
+				cdate = rs.getTimestamp("cdate");
+				cvo = new CommentVo(cno, bno, id, cpw, ccontent, cdate);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cvo;
+	}//commentInsert
 	
 	
 
@@ -71,6 +126,15 @@ public class CommentDao {
 		}
 		return connection;
 	}// getConnection
+
+
+
+
+	
+
+
+
+	
 
 
 

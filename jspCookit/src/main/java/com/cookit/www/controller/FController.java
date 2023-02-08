@@ -22,6 +22,7 @@ import com.cookit.www.service.BserviceBoardSelectAll;
 import com.cookit.www.service.BserviceBoardUpdate;
 import com.cookit.www.service.BserviceBoardView;
 import com.cookit.www.service.CService;
+import com.cookit.www.service.CserviceCommentInsert;
 import com.cookit.www.service.CserviceCommentSelectAll;
 import com.cookit.www.service.MService;
 import com.cookit.www.service.MServiceMemberInsert;
@@ -126,35 +127,26 @@ public class FController extends HttpServlet {
 			bservice = new BserviceBoardView();
 			bservice.execute(request, response); 
 			url="event/event_view.jsp";
-		}else if(fName.equals("event_commentSelectAll.do")) {   //수정 실행 
+		}else if(fName.equals("event_commentSelectAll.do")) {   //댓글 전체가져오기 
 			cservice = new CserviceCommentSelectAll();
 			cservice.execute(request, response); 
 			//json
-			List<CommentVo> list = (List<CommentVo>) request.getAttribute("list");
-			JSONArray jarray = new JSONArray(); //[  ]
-			JSONObject json=null;
-			for(int i=0;i<list.size();i++) {
-				json = new JSONObject(); // {0:cvo},{1:cvo}
-				json.put("cno",list.get(i).getCno()); //{"cno":value,
-				json.put("bno",list.get(i).getBno()); //{"cno":value,"bno":value..}
-				json.put("id",list.get(i).getId()); 
-				json.put("cpw",list.get(i).getCpw()); 
-				json.put("ccontent",list.get(i).getCcontent()); 
-				String cdate = list.get(i).getCdate()+"";  //날짜데이터는 String으로 해서 보내야 함
-				json.put("cdate",cdate); 
-				
-				jarray.add(json);    //
-				
-			}
+			String jarrayStr = (String) request.getAttribute("jarrayStr");
 			response.setContentType("application/json; charset=utf-8;");
 			PrintWriter writer = response.getWriter();
-			writer.println(jarray.toJSONString());
-			System.out.println("json : "+jarray.toJSONString());
+			writer.println(jarrayStr);
 			writer.close();
 			return;
-			
-			
-			
+		}else if(fName.equals("event_commentInsert.do")) {   //댓글 입력 
+			cservice = new CserviceCommentInsert();
+			cservice.execute(request, response); 
+			//json
+			//String jarrayStr = "[{\"result\":\"success\"}]";
+			response.setContentType("application/json; charset=utf-8;");
+			PrintWriter writer = response.getWriter();
+			writer.println(request.getAttribute("jsonStr"));
+			writer.close();
+			return;
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

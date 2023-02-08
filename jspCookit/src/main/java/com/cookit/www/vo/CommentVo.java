@@ -5,6 +5,14 @@ import java.sql.Timestamp;
 public class CommentVo {
 
 	public CommentVo() {}
+	
+	public CommentVo(int bno, String id, String cpw, String ccontent) {
+		this.bno = bno;
+		this.id = id;
+		this.cpw = cpw;
+		this.ccontent = ccontent;
+	}
+
 	public CommentVo(int cno, int bno, String id, String cpw, String ccontent, Timestamp cdate) {
 		this.cno = cno;
 		this.bno = bno;

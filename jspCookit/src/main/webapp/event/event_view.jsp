@@ -25,14 +25,13 @@
 <script type="text/javascript" src="js/jquery.anchor.js"></script>
 </head>
 <body>
-
 <div id="allwrap">
 <div id="wrap">
 
 	<div id="header">
 		
 		<div id="snbBox">
-			<h1><img src="images/txt/logo.gif" alt="JARDIN SHOP" /></h1>
+			<a href="index.do"><h1><img src="images/txt/logo.gif" alt="JARDIN SHOP" /></h1></a>
 			<div id="quickmenu">
 				<div id="mnaviOpen"><img src="images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
 				<div id="mnaviClose"><img src="images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
@@ -198,53 +197,102 @@
 					<!-- //이전다음글 -->
 					<script>
 					  $(function(){
+						  
 						  $.ajax({
 							  type:"post",
 							  url:"event_commentSelectAll.do",
 							  data:{"bno":"${bvo.bno}"},
 							  dataType:"json",
 							  success:function(data){
-								  alert("성공");
+								  //alert("성공");
 								  console.log(data);
-								  
-								  
-								  
-								  
-								  
-								  
-								  
+								  var htmlData="";
+								  for(var i of data){ //cno,bno,id,cpw,ccontent,cdate
+									  
+									  htmlData += "<ul id="+i.cno+">";
+									  htmlData += '<li class="name">'+i.id+'&nbsp;<span>['+i.cdate+']</span></li>';
+									  htmlData += '<li class="txt">'+ i.ccontent +'</li>';
+									  htmlData += '<li class="btn">';
+									  htmlData += '<a href="#" class="rebtn">수정</a>&nbsp;';
+									  htmlData += '<a href="#" class="rebtn">삭제</a>';
+									  htmlData += '</li>';
+									  htmlData += '</ul>';
+								  }
+								  $(".replyBox").html(htmlData);
+								  $(".orange").text(data.length);
 							  },
 							  error:function(){
 								  alert("실패");
 							  }
-							  
-						  });
-					  });
+						  });//ajax
+						  
+						  
+						  
+					  });//jquery
+					  
+					  //댓글추가-자바스크립트
+					  function replyBtn(){
+						  if("${sessionId}"==""){
+							    alert("로그인을 하셔야 댓글입력이 가능합니다.");
+							    //입력창 지우기
+								$(".replynum").val("");
+								$(".replyType").val("");
+								location.href="login.do";
+							    return;
+						  }
+						  
+						  $.ajax({
+							  type:"post",
+							  url:"event_commentInsert.do",
+							  data:{"bno":"${bvo.bno}","id":"${sessionId}","cpw":$(".replynum").val(),"ccontent":$(".replyType").val() },
+							  dataType:"json",
+							  success:function(data){
+								  //alert("성공");
+								  console.log(data);
+								  alert("댓글이 등록되었습니다.");
+								  var htmlData="";
+								  htmlData += "<ul id="+data.cno+">";
+								  htmlData += '<li class="name">'+data.id+'&nbsp;<span>['+data.cdate+']</span></li>';
+								  htmlData += '<li class="txt">'+ data.ccontent +'</li>';
+								  htmlData += '<li class="btn">';
+								  htmlData += '<a href="#" class="rebtn">수정</a>&nbsp;';
+								  htmlData += '<a href="#" class="rebtn">삭제</a>';
+								  htmlData += '</li>';
+								  htmlData += '</ul>';
+								  
+								  //입력창 지우기
+								  $(".replynum").val("");
+								  $(".replyType").val("");
+								  
+								  $(".replyBox").prepend(htmlData);
+								  $(".orange").text(Number($(".orange").text())+1);
+									  
+							  },
+							  error:function(){
+								  alert("실패");
+							  }
+						  });//ajax
+					  }//replyBtn
+					  
 					</script>
 
 
-					<!-- 댓글-->
+					<!-- 댓글입력부분 -->
 					<div class="replyWrite">
 						<ul>
 							<li class="in">
 								<p class="txt">총 <span class="orange">3</span> 개의 댓글이 달려있습니다.</p>
-								<p class="password">비밀번호&nbsp;&nbsp;<input type="password" class="replynum" /></p>
-								<textarea class="replyType"></textarea>
+								<p class="password">비밀번호&nbsp;&nbsp;<input type="password" name="cpw" class="replynum" /></p>
+								<textarea name="ccontent" class="replyType"></textarea>
 							</li>
-							<li class="btn"><a href="#" class="replyBtn">등록</a></li>
+							<li class="btn"><a class="replyBtn" onclick="replyBtn()">등록</a></li>
 						</ul>
 						<p class="ntic">※ 비밀번호를 입력하시면 댓글이 비밀글로 등록 됩니다.</p>
 					</div>
 
+                    <!-- 댓글부분 -->
 					<div class="replyBox">
-					    <ul>
-							<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
-							<li class="txt">대박!!! 이거 저한테 완전 필요한 이벤트였어요!!</li>
-							<li class="btn">
-								<a href="#" class="rebtn">수정</a>
-								<a href="#" class="rebtn">삭제</a>
-							</li>
-						</ul>
+					   
 					
 						<!-- 하단댓글 수정폼
 						<ul>
