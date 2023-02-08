@@ -64,7 +64,7 @@ public class CommentDao {
 	}//commentSelectOne
 	
 	
-	//댓글 1개 저장
+	//1개댓글 저장후 1개댓글 가져오기
 	public CommentVo commentInsert(CommentVo cvo2) {
 		try {
 			conn = getConnection();
@@ -112,7 +112,64 @@ public class CommentDao {
 		return cvo;
 	}//commentInsert
 	
+	//댓글수정후 1개댓글 가져오기
+	public CommentVo commentUpdate(CommentVo cvo2) {
+		try {
+			conn = getConnection();
+			query="update c_comment set ccontent=?,cdate=sysdate where cno=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, cvo2.getCcontent());
+			pstmt.setInt(2, cvo2.getCno());
+			result = pstmt.executeUpdate();
+			
+			query="select * from c_comment where cno=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, cvo2.getCno());
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				cno = rs.getInt("cno");
+				bno = rs.getInt("bno");
+				id = rs.getString("id");
+				cpw = rs.getString("cpw");
+				ccontent = rs.getString("ccontent");
+				cdate = rs.getTimestamp("cdate");
+				cvo = new CommentVo(cno, bno, id, cpw, ccontent, cdate);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cvo;
+	}//commentUpdate
 	
+	//댓글삭제
+	public int commentDelete(int cno2) {
+		try {
+			conn = getConnection();
+			query="delete c_comment where cno=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, cno2);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return result;
+	}//commentDelete
 
 	// connection연결
 	public Connection getConnection() {
@@ -126,6 +183,10 @@ public class CommentDao {
 		}
 		return connection;
 	}// getConnection
+
+	
+
+	
 
 
 

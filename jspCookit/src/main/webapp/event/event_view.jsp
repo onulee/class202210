@@ -213,8 +213,9 @@
 									  htmlData += '<li class="name">'+i.id+'&nbsp;<span>['+i.cdate+']</span></li>';
 									  htmlData += '<li class="txt">'+ i.ccontent +'</li>';
 									  htmlData += '<li class="btn">';
-									  htmlData += '<a href="#" class="rebtn">수정</a>&nbsp;';
-									  htmlData += '<a href="#" class="rebtn">삭제</a>';
+									  // updateBtn(1,"aaa","이벤트 등록했어요.","2023-02-08");
+									  htmlData += '<a class="rebtn" onclick="updateBtn('+i.cno+',\''+i.id +'\',\''+i.ccontent+'\',\''+i.cdate+'\')">수정</a>&nbsp;';
+									  htmlData += '<a class="rebtn" onclick="deleteBtn('+i.cno+')">삭제</a>';
 									  htmlData += '</li>';
 									  htmlData += '</ul>';
 								  }
@@ -225,10 +226,90 @@
 								  alert("실패");
 							  }
 						  });//ajax
-						  
-						  
-						  
 					  });//jquery
+					  
+					  //댓글삭제버튼클릭
+					  function deleteBtn(cno){
+						  if(confirm("댓글을 삭제하시겠습니까?")){
+							  $.ajax({
+								  type:"post",
+								  url:"event_commentDelete.do",
+								  data:{"cno":cno},
+								  dataType:"json",
+								  success:function(data){
+									  //alert("성공");
+									  console.log(data);
+									  var htmlData="";
+									  
+									  $("#"+cno).remove();
+									  $(".orange").text(Number($(".orange").text())-1);
+									  alert("삭제처리가 되었습니다.");
+								  },
+								  error:function(){
+									  alert("실패");
+								  } 
+							  });//ajax 
+						  }//if
+						  
+					  }//deleteBtn
+					  
+					  //댓글수정버튼클릭
+					  function updateBtn(cno,id,ccontent,cdate){
+						  alert("해당 댓글을 수정합니다.");
+						   
+						  var htmlData='';
+						  htmlData +='<li class="name">'+id+'&nbsp<span>'+cdate+'</span></li>';
+						  htmlData +='<li class="txt"><textarea class="replyType">'+ccontent+'</textarea></li>';
+						  htmlData +='<li class="btn">';
+						  htmlData +='<a class="rebtn" onclick="saveBtn('+cno+',\''+id +'\',\''+ccontent+'\',\''+cdate+'\')">완료</a>&nbsp';
+						  htmlData +='<a class="rebtn" onclick="cancelBtn('+cno+',\''+id +'\',\''+ccontent+'\',\''+cdate+'\')">취소</a>';
+						  htmlData +='</li>';
+						  
+						  $("#"+cno).html(htmlData); 
+					  }//updateBtn
+					  
+					  //완료버튼클릭
+					  function saveBtn(cno,id,ccontent,cdate){
+						  //alert($("#"+cno+" .replyType").val());
+						  ccontent = $("#"+cno+" .replyType").val();
+						  $.ajax({
+							 type:"post",
+							 url:"event_commentUpdate.do",
+							 data:{"cno":cno,"ccontent":ccontent},
+							 dataType:"json",
+							 success:function(data){
+								 alert("댓글 수정이 되었습니다.");
+								 var htmlData="";
+								 htmlData += '<li class="name">'+data.id+'&nbsp;<span>['+data.cdate+']</span></li>';
+								 htmlData += '<li class="txt">'+ data.ccontent +'</li>';
+								 htmlData += '<li class="btn">';
+								 htmlData += '<a class="rebtn" onclick="updateBtn('+data.cno+',\''+data.id +'\',\''+data.ccontent+'\',\''+data.cdate+'\')">수정</a>&nbsp;';
+								 htmlData += '<a class="rebtn" onclick="deleteBtn('+data.cno+')">삭제</a>';
+								 htmlData += '</li>';
+								  
+								 $("#"+cno).html(htmlData);
+							 },
+							 error:function(){
+								 alert("실패");
+							 }
+						  });
+					  }//saveBtn
+					  
+					  
+					  //취소버튼클릭
+					  function cancelBtn(cno,id,ccontent,cdate){
+						  alert("댓글수정을 취소합니다.");
+						  var htmlData="";
+						  htmlData += '<li class="name">'+id+'&nbsp;<span>['+cdate+']</span></li>';
+						  htmlData += '<li class="txt">'+ ccontent +'</li>';
+						  htmlData += '<li class="btn">';
+						  htmlData += '<a class="rebtn" onclick="updateBtn('+cno+',\''+id +'\',\''+ccontent+'\',\''+cdate+'\')">수정</a>&nbsp;';
+						  htmlData += '<a class="rebtn" onclick="deleteBtn('+cno+')">삭제</a>';
+						  htmlData += '</li>';
+						  
+						  $("#"+cno).html(htmlData);
+					  }//cancelBtn
+					  
 					  
 					  //댓글추가-자바스크립트
 					  function replyBtn(){
@@ -240,7 +321,7 @@
 								location.href="login.do";
 							    return;
 						  }
-						  
+						  //추가
 						  $.ajax({
 							  type:"post",
 							  url:"event_commentInsert.do",
@@ -255,8 +336,8 @@
 								  htmlData += '<li class="name">'+data.id+'&nbsp;<span>['+data.cdate+']</span></li>';
 								  htmlData += '<li class="txt">'+ data.ccontent +'</li>';
 								  htmlData += '<li class="btn">';
-								  htmlData += '<a href="#" class="rebtn">수정</a>&nbsp;';
-								  htmlData += '<a href="#" class="rebtn">삭제</a>';
+								  htmlData += '<a class="rebtn" onclick="updateBtn('+data.cno+',\''+data.id +'\',\''+data.ccontent+'\',\''+data.cdate+'\')">수정</a>&nbsp;';
+								  htmlData += '<a class="rebtn" onclick="deleteBtn('+data.cno+')">삭제</a>';
 								  htmlData += '</li>';
 								  htmlData += '</ul>';
 								  

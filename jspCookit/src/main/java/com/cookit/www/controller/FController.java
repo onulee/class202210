@@ -22,8 +22,10 @@ import com.cookit.www.service.BserviceBoardSelectAll;
 import com.cookit.www.service.BserviceBoardUpdate;
 import com.cookit.www.service.BserviceBoardView;
 import com.cookit.www.service.CService;
+import com.cookit.www.service.CserviceCommentDelete;
 import com.cookit.www.service.CserviceCommentInsert;
 import com.cookit.www.service.CserviceCommentSelectAll;
+import com.cookit.www.service.CserviceCommentUpdate;
 import com.cookit.www.service.MService;
 import com.cookit.www.service.MServiceMemberInsert;
 import com.cookit.www.service.MServiceMemberSelectOne;
@@ -141,10 +143,28 @@ public class FController extends HttpServlet {
 			cservice = new CserviceCommentInsert();
 			cservice.execute(request, response); 
 			//json
-			//String jarrayStr = "[{\"result\":\"success\"}]";
 			response.setContentType("application/json; charset=utf-8;");
 			PrintWriter writer = response.getWriter();
 			writer.println(request.getAttribute("jsonStr"));
+			writer.close();
+			return;
+		}else if(fName.equals("event_commentUpdate.do")) {   //댓글 수정저장 
+			cservice = new CserviceCommentUpdate();
+			cservice.execute(request, response); 
+			//json
+			response.setContentType("application/json; charset=utf-8;");
+			PrintWriter writer = response.getWriter();
+			writer.println(request.getAttribute("jsonStr"));
+			writer.close();
+			return;
+		}else if(fName.equals("event_commentDelete.do")) {   //댓글 삭제 
+			cservice = new CserviceCommentDelete();
+			cservice.execute(request, response); 
+			//json
+			response.setContentType("application/json; charset=utf-8;");
+			PrintWriter writer = response.getWriter();
+			writer.println("{\"result\":\""+request.getAttribute("result")+"\"}");
+			System.out.println("{\"result\":\""+request.getAttribute("result")+"\"}");
 			writer.close();
 			return;
 		}

@@ -6,6 +6,13 @@ public class CommentVo {
 
 	public CommentVo() {}
 	
+	public CommentVo(int cno) {
+		this.cno = cno;
+	}
+	public CommentVo(int cno, String ccontent) {
+		this.cno = cno;
+		this.ccontent = ccontent;
+	}
 	public CommentVo(int bno, String id, String cpw, String ccontent) {
 		this.bno = bno;
 		this.id = id;
