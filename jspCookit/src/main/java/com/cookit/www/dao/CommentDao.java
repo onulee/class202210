@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -19,30 +21,47 @@ public class CommentDao {
 	ResultSet rs = null;
 	List<CommentVo> list = null;
 	CommentVo cvo = null;
-	int cno, bno;
+	int cno, bno,readNum;
 	String id, cpw, ccontent;
 	Timestamp cdate;
 	int result = 0;
 	String query = "";
 	
 	//하단댓글 모두가져오기
-	public List<CommentVo> commentSelectAll(int bno2) {
+	public Map<String, Object> commentSelectAll(int bno2, int readNum2) {
+		Map<String, Object> map = new HashMap<>();
 		list = new ArrayList<>();
 		try {
 			conn = getConnection();
-			query="select * from c_comment where bno=? order by cno desc";
+			query = "select max(cno) readNum from c_comment where bno=?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, bno2);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				cno = rs.getInt("cno");
-				bno = rs.getInt("bno");
-				id = rs.getString("id");
-				cpw = rs.getString("cpw");
-				ccontent = rs.getString("ccontent");
-				cdate = rs.getTimestamp("cdate");
-				list.add(new CommentVo(cno, bno, id, cpw, ccontent, cdate));
+				readNum = rs.getInt("readNum");
 			}
+			System.out.println("readNum : "+readNum);
+			
+			if(readNum>readNum2) {
+				query="";
+				System.out.println("bno : "+bno2);
+				query="select * from c_comment where bno=? order by cno desc";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, bno2);
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					cno = rs.getInt("cno");
+					bno = rs.getInt("bno");
+					id = rs.getString("id");
+					cpw = rs.getString("cpw");
+					ccontent = rs.getString("ccontent");
+					cdate = rs.getTimestamp("cdate");
+					list.add(new CommentVo(cno, bno, id, cpw, ccontent, cdate));
+				}
+			}//if
+			map.put("readNum", readNum);
+			map.put("list", list);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -54,7 +73,7 @@ public class CommentDao {
 				e2.printStackTrace();
 			}
 		}
-		return list;
+		return map;
 	}//commentSelectAll
 	
 	//1개 댓글 가져오기

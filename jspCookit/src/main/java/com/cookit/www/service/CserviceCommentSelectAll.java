@@ -1,6 +1,7 @@
 package com.cookit.www.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +18,10 @@ public class CserviceCommentSelectAll implements CService {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		CommentDao cdao = new CommentDao();
 		int bno = Integer.parseInt(request.getParameter("bno"));
-		List<CommentVo> list = cdao.commentSelectAll(bno);
+		int readNum = Integer.parseInt(request.getParameter("readNum"));
+		Map<String, Object> map = cdao.commentSelectAll(bno,readNum);
+		int lastNum = (int) map.get("readNum"); //댓글최종번호
+		List<CommentVo> list = (List<CommentVo>) map.get("list");
 		
 		//json부분
 		JSONArray jarray = new JSONArray(); //[  ]
@@ -34,6 +38,10 @@ public class CserviceCommentSelectAll implements CService {
 			json.put("cdate",cdate); 
 			jarray.add(json);    
 		}
+		json = new JSONObject(); //{   }
+		json.put("lastNum",lastNum);
+		jarray.add(json);
+		
 		System.out.println(jarray.toJSONString());
 		request.setAttribute("jarrayStr", jarray.toJSONString());
 

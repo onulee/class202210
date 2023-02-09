@@ -196,37 +196,59 @@
 					</div>
 					<!-- //이전다음글 -->
 					<script>
+					  var readNum=0; //마지막으로 읽어온 댓글번호
 					  $(function(){
+						  commentSelectAll();
 						  
+					  });//jquery
+					  
+					  //2초에 한번씩 함수호출
+					  //setInterval(commentSelectAll, 3000);
+					  
+					  //댓글 모두가져오기
+					  function commentSelectAll(){
 						  $.ajax({
 							  type:"post",
 							  url:"event_commentSelectAll.do",
-							  data:{"bno":"${bvo.bno}"},
+							  data:{"bno":"${bvo.bno}","readNum":readNum},
 							  dataType:"json",
 							  success:function(data){
 								  //alert("성공");
 								  console.log(data);
+								  
+								  if(data.length==1){
+									  return;
+								  }
+								  
 								  var htmlData="";
-								  for(var i of data){ //cno,bno,id,cpw,ccontent,cdate
-									  
-									  htmlData += "<ul id="+i.cno+">";
-									  htmlData += '<li class="name">'+i.id+'&nbsp;<span>['+i.cdate+']</span></li>';
-									  htmlData += '<li class="txt">'+ i.ccontent +'</li>';
+								  for(var i=0;i<data.length-1;i++){
+								  //for(var i of data){ //cno,bno,id,cpw,ccontent,cdate
+									  htmlData += "<ul id="+data[i].cno+">";
+									  htmlData += '<li class="name">'+data[i].id+'&nbsp;<span>['+data[i].cdate+']</span></li>';
+									  //비밀번호가 없으면,내것인데 비밀번호 있으면
+									  if(data[i].cpw == null || '${sessionId}'==data[i].id)
+									    htmlData += '<li class="txt">'+ data[i].ccontent +'</li>';
+									  else
+										htmlData += '<li class="txt"><a class="passwordBtn"><span class="orange">※ 비밀글입니다.</span></a></li>';  
 									  htmlData += '<li class="btn">';
-									  // updateBtn(1,"aaa","이벤트 등록했어요.","2023-02-08");
-									  htmlData += '<a class="rebtn" onclick="updateBtn('+i.cno+',\''+i.id +'\',\''+i.ccontent+'\',\''+i.cdate+'\')">수정</a>&nbsp;';
-									  htmlData += '<a class="rebtn" onclick="deleteBtn('+i.cno+')">삭제</a>';
+									  if('${sessionId}'==data[i].id){
+										  htmlData += '<a class="rebtn" onclick="updateBtn('+data[i].cno+',\''+data[i].id +'\',\''+data[i].ccontent+'\',\''+data[i].cdate+'\')">수정</a>&nbsp;';
+										  htmlData += '<a class="rebtn" onclick="deleteBtn('+data[i].cno+')">삭제</a>';
+									  }
 									  htmlData += '</li>';
 									  htmlData += '</ul>';
-								  }
+								  }//for
+								  
+								  //data 마지막데이터 - lastNum  arr10 arr[9]
+								  readNum = data[data.length-1].lastNum;
 								  $(".replyBox").html(htmlData);
-								  $(".orange").text(data.length);
+								  $(".replyAll_num").text(data.length);
 							  },
 							  error:function(){
 								  alert("실패");
 							  }
 						  });//ajax
-					  });//jquery
+					  }
 					  
 					  //댓글삭제버튼클릭
 					  function deleteBtn(cno){
@@ -242,7 +264,7 @@
 									  var htmlData="";
 									  
 									  $("#"+cno).remove();
-									  $(".orange").text(Number($(".orange").text())-1);
+									  $(".replyAll_num").text(Number($(".replyAll_num").text())-1);
 									  alert("삭제처리가 되었습니다.");
 								  },
 								  error:function(){
@@ -346,7 +368,7 @@
 								  $(".replyType").val("");
 								  
 								  $(".replyBox").prepend(htmlData);
-								  $(".orange").text(Number($(".orange").text())+1);
+								  $(".replyAll_num").text(Number($(".replyAll_num").text())+1);
 									  
 							  },
 							  error:function(){
@@ -362,7 +384,7 @@
 					<div class="replyWrite">
 						<ul>
 							<li class="in">
-								<p class="txt">총 <span class="orange">3</span> 개의 댓글이 달려있습니다.</p>
+								<p class="txt">총 <span class="replyAll_num orange">3</span> 개의 댓글이 달려있습니다.</p>
 								<p class="password">비밀번호&nbsp;&nbsp;<input type="password" name="cpw" class="replynum" /></p>
 								<textarea name="ccontent" class="replyType"></textarea>
 							</li>
@@ -373,18 +395,8 @@
 
                     <!-- 댓글부분 -->
 					<div class="replyBox">
-					   
-					
-						<!-- 하단댓글 수정폼
-						<ul>
-							<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
-							<li class="txt"><textarea class="replyType"></textarea></li>
-							<li class="btn">
-								<a href="#" class="rebtn">완료</a>
-								<a href="#" class="rebtn">취소</a>
-							</li>
-						</ul>
-						 -->
+					   					
+						
 
 						<!-- 비밀글폼 
 						<ul>

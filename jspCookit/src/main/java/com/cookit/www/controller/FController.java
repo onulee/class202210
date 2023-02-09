@@ -32,6 +32,8 @@ import com.cookit.www.service.MServiceMemberSelectOne;
 import com.cookit.www.service.MServiceMemberUpdate;
 import com.cookit.www.service.MServiceSelectLogin;
 import com.cookit.www.service.MServiceSelectOne;
+import com.cookit.www.service.TService;
+import com.cookit.www.service.TserviceTotalSaleSelect;
 import com.cookit.www.vo.CommentVo;
 
 
@@ -48,6 +50,7 @@ public class FController extends HttpServlet {
 		MService mservice=null;
 		BService bservice=null;
 		CService cservice=null;
+		TService tservice=null;
 		String url = "";
 		int flag=0;
 		
@@ -165,6 +168,16 @@ public class FController extends HttpServlet {
 			PrintWriter writer = response.getWriter();
 			writer.println("{\"result\":\""+request.getAttribute("result")+"\"}");
 			System.out.println("{\"result\":\""+request.getAttribute("result")+"\"}");
+			writer.close();
+			return;
+		}else if(fName.equals("total_sale_chart.do")) {   // 총매출액 
+			tservice = new TserviceTotalSaleSelect();
+			tservice.execute(request, response); 
+			//json
+			response.setContentType("application/json; charset=utf-8;");
+			PrintWriter writer = response.getWriter();
+			writer.println(request.getAttribute("jsonStr"));
+			System.out.println(request.getAttribute("jsonStr"));
 			writer.close();
 			return;
 		}
